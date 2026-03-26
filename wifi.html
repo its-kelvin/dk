@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura WiFi | Next-Gen Connectivity</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0055ff',
+                        secondary: '#64748b',
+                        dark: '#0f172a',
+                    },
+                    borderRadius: {
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-dark dark:bg-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
+    <!-- Navbar (Same as index.html) -->
+    <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header transition-all duration-300">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                    <svg class="relative h-10 w-10 text-primary bg-white dark:bg-dark p-1.5 rounded-lg shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
+                        <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
+                        <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tighter leading-none">AURA NETS</span>
+                    <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary/80">Connect Fast</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-10">
+                <a href="index.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Home</a>
+                <a href="wifi.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">WiFi</a>
+                <a href="cctv.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">CCTV</a>
+                <a href="devices.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Devices</a>
+                <a href="services.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Services</a>
+                <a href="dashboard.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Dashboard</a>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="checkout.html" class="group relative p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+                    <svg class="h-6 w-6 text-secondary group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span id="cartCount" class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white dark:border-dark hidden">0</span>
+                </a>
+                
+                <button id="themeToggle" class="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                    <svg id="sunIcon" class="hidden h-5 w-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg id="moonIcon" class="h-5 w-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+
+                <div class="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2 hidden sm:block"></div>
+
+                <div id="authLinks" class="flex items-center space-x-3">
+                    <a href="auth.html" class="hidden sm:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary/25">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1">
+        <section class="pt-24 pb-32 bg-white dark:bg-dark relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/3 h-1/2 bg-primary/5 blur-[120px] -z-10 rounded-full"></div>
+            
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20" data-aos="fade-up">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4 block">Residential & Business</span>
+                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-6">Next-Gen <span class="text-primary italic">WiFi.</span></h1>
+                    <p class="text-secondary max-w-2xl mx-auto font-medium">Blazing fast speeds, unlimited data, and 99.9% uptime. Choose the plan that fits your lifestyle.</p>
+                </div>
+
+                <!-- Hotspot Packages -->
+                <div class="mb-20">
+                    <h2 class="text-2xl font-black uppercase tracking-tighter mb-8 border-l-4 border-primary pl-4">Hotspot <span class="text-primary">Packages</span></h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Basic -->
+                        <div class="group p-10 rounded-[2.5rem] bg-gray-50/50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-primary/5 relative overflow-hidden" data-aos="fade-up">
+                            <h3 class="text-3xl font-black mb-2 tracking-tighter uppercase">Hotspot Basic</h3>
+                            <div class="flex items-end gap-2 mb-8">
+                                <span class="text-5xl font-black text-dark dark:text-white">KES 500</span>
+                                <span class="text-secondary font-bold text-sm mb-1 uppercase tracking-tight">/Month</span>
+                            </div>
+                            <ul class="space-y-4 mb-10">
+                                <li class="flex items-center text-sm font-bold text-secondary">
+                                    <svg class="h-5 w-5 text-primary mr-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    Up to 10Mbps Speed
+                                </li>
+                                <li class="flex items-center text-sm font-bold text-secondary">
+                                    <svg class="h-5 w-5 text-primary mr-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    Unlimited Data Usage
+                                </li>
+                                <li class="flex items-center text-sm font-bold text-secondary">
+                                    <svg class="h-5 w-5 text-primary mr-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    KES 2,500 Installation Fee
+                                </li>
+                            </ul>
+                            <div class="mb-4">
+                                <details class="group/details">
+                                    <summary class="list-none cursor-pointer text-xs font-bold text-primary flex items-center group-hover:underline">
+                                        How it works 
+                                        <svg class="w-4 h-4 ml-2 group-open/details:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+                                    </summary>
+                                    <p class="text-[10px] text-secondary mt-2 leading-relaxed">Wireless hotspot connection via our base stations. Reliable and cost-effective for individual use.</p>
+                                </details>
+                            </div>
+                            <button onclick="scrollToBooking('Hotspot Basic')" class="w-full py-5 bg-white dark:bg-dark text-dark dark:text-white font-black rounded-2xl border border-gray-100 dark:border-gray-800 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all shadow-sm">
+                                Book Installation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PPPoE Packages -->
+                <div class="mb-20">
+                    <h2 class="text-2xl font-black uppercase tracking-tighter mb-8 border-l-4 border-blue-600 pl-4">Fiber <span class="text-blue-600">PPPoE</span></h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Business Pro -->
+                        <div class="group p-10 rounded-[2.5rem] bg-gray-50/50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-blue-600 transition-all duration-500 shadow-xl hover:shadow-blue-600/5 relative overflow-hidden" data-aos="fade-up">
+                            <div class="absolute top-0 right-0 p-4 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-bl-2xl">Fiber</div>
+                            <h3 class="text-3xl font-black mb-2 tracking-tighter uppercase">Business Pro</h3>
+                            <div class="flex items-end gap-2 mb-8">
+                                <span class="text-5xl font-black text-dark dark:text-white">KES 3,500</span>
+                                <span class="text-secondary font-bold text-sm mb-1 uppercase tracking-tight">/Month</span>
+                            </div>
+                            <ul class="space-y-4 mb-10">
+                                <li class="flex items-center text-sm font-bold text-secondary">
+                                    <svg class="h-5 w-5 text-blue-600 mr-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    Up to 50Mbps Speed
+                                </li>
+                                <li class="flex items-center text-sm font-bold text-secondary">
+                                    <svg class="h-5 w-5 text-blue-600 mr-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    Dedicated Fiber Connection
+                                </li>
+                                <li class="flex items-center text-sm font-bold text-secondary">
+                                    <svg class="h-5 w-5 text-blue-600 mr-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    KES 5,000 Installation Fee
+                                </li>
+                            </ul>
+                            <div class="mb-4">
+                                <details class="group/details">
+                                    <summary class="list-none cursor-pointer text-xs font-bold text-blue-600 flex items-center group-hover:underline">
+                                        How it works 
+                                        <svg class="w-4 h-4 ml-2 group-open/details:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+                                    </summary>
+                                    <p class="text-[10px] text-secondary mt-2 leading-relaxed">Direct fiber optic cable to your premises. Ideal for businesses and heavy home use.</p>
+                                </details>
+                            </div>
+                            <button onclick="scrollToBooking('Business Pro')" class="w-full py-5 bg-white dark:bg-dark text-dark dark:text-white font-black rounded-2xl border border-gray-100 dark:border-gray-800 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all shadow-sm">
+                                Book Installation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div id="booking-section" class="max-w-4xl mx-auto" data-aos="zoom-in">
+                    <div class="bg-dark rounded-[3rem] p-10 md:p-16 text-white shadow-3xl relative overflow-hidden border border-white/5">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,85,255,0.2),transparent)]"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="text-center mb-12">
+                                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Check <span class="text-primary italic">Availability.</span></h2>
+                                <p class="text-gray-400 font-medium">Enter your details below to see if our fiber or wireless network reaches your area.</p>
+                            </div>
+
+                            <form id="serviceForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Full Name</label>
+                                    <input type="text" name="full_name" required placeholder="John Doe" class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-gray-600">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Phone Number</label>
+                                    <input type="tel" name="phone" required placeholder="+254..." class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-gray-600">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Email Address</label>
+                                    <input type="email" name="email" required placeholder="john@example.com" class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-gray-600">
+                                </div>
+                                <div class="space-y-2 flex flex-col">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Country</label>
+                                    <input type="text" name="country" value="Kenya" readonly class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none text-gray-400">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">County / State</label>
+                                    <input type="text" name="county" required placeholder="Nairobi" class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-gray-600">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Nearest Town</label>
+                                    <input type="text" name="town" required placeholder="Westlands" class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-gray-600">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Preferred Date</label>
+                                    <input type="date" name="preferred_date" class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary outline-none transition-all">
+                                </div>
+                                <div class="md:col-span-2 space-y-2">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Service Type</label>
+                                    <select id="service_type" name="service_type" class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary outline-none transition-all text-gray-400 appearance-none">
+                                        <option value="wifi_installation">WiFi Installation</option>
+                                        <option value="fiber_upgrade">Fiber Upgrade</option>
+                                        <option value="cctv_installation">CCTV Installation</option>
+                                        <option value="site_visit">Free Site Visit</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="md:col-span-2 mt-4 text-center">
+                                    <button type="submit" class="w-full py-5 bg-primary text-white font-black rounded-2xl hover:bg-blue-600 transition-all shadow-2xl shadow-primary/20 uppercase tracking-tighter">
+                                        Request Site Visit
+                                    </button>
+                                    <p class="text-[10px] font-bold text-gray-500 mt-6 uppercase tracking-widest">No account required for service bookings</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="w-full border-t border-gray-100 dark:border-gray-900 bg-gray-50/50 dark:bg-dark py-20 mt-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-3 mb-8">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
+                            <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+                        </svg>
+                        <span class="text-2xl font-black tracking-tighter">AURA NETWORKS</span>
+                    </a>
+                    <p class="text-secondary text-sm leading-relaxed max-w-sm mb-8">
+                        Delivering the fastest fiber and wireless solutions for modern homes and businesses. We pride ourselves on reliability and 24/7 technical excellence.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Services</h4>
+                    <ul class="space-y-4 text-sm text-secondary">
+                        <li><a href="wifi.html" class="hover:text-primary transition-colors">Residential WiFi</a></li>
+                        <li><a href="wifi.html" class="hover:text-primary transition-colors">Business Fiber</a></li>
+                        <li><a href="cctv.html" class="hover:text-primary transition-colors">CCTV Security</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-colors">Maintenance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Company</h4>
+                    <ul class="space-y-4 text-sm text-secondary">
+                        <li><a href="#" class="hover:text-primary transition-colors">About Aura</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Our Coverage</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Support</h4>
+                    <ul class="space-y-4 text-sm text-secondary">
+                        <li><a href="#" class="hover:text-primary transition-colors">Help Center</a></li>
+                        <li><a href="auth.html" class="hover:text-primary transition-colors">Account Login</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-20 pt-10 border-t border-gray-100 dark:border-gray-900 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-secondary font-medium">
+                <p>&copy; <span id="year">2026</span> Aura Networks Ltd. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <span>Nairobi, Kenya</span>
+                    <span class="text-primary font-bold">24/7 Hotlines: +254 700 000 000</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="utils.js"></script>
+    <script src="cart.js"></script>
+    <script type="module">
+        import { auth, db } from "./firebase-config.js";
+        import { Auth } from "./auth.js";
+        AOS.init({ duration: 800, once: true });
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        window.scrollToBooking = function(packageName) {
+            document.getElementById('service_type').value = 'wifi_installation';
+            document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (window.Cart) {
+                window.Cart.notify(`Booking for ${packageName} selected`);
+            }
+        };
+
+        document.getElementById('serviceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (window.Cart) {
+                window.Cart.notify('Validating your area...');
+                setTimeout(() => {
+                    window.Cart.notify('Success: Technician will contact you soon!');
+                    this.reset();
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Devices | Professional Networking Store</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0055ff', secondary: '#64748b', dark: '#0f172a' },
+                    borderRadius: { '3xl': '1.5rem', '4xl': '2rem' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-dark dark:bg-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
+    <!-- Navbar (Global) -->
+    <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header transition-all duration-300">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                    <svg class="relative h-10 w-10 text-primary bg-white dark:bg-dark p-1.5 rounded-lg shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
+                        <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
+                        <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tighter leading-none">AURA NETS</span>
+                    <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary/80">Connect Fast</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-10">
+                <a href="index.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Home</a>
+                <a href="wifi.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">WiFi</a>
+                <a href="cctv.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">CCTV</a>
+                <a href="devices.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Devices</a>
+                <a href="services.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Services</a>
+                <a href="dashboard.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Dashboard</a>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="checkout.html" class="group relative p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+                    <svg class="h-6 w-6 text-secondary group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span id="cartCount" class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white dark:border-dark hidden">0</span>
+                </a>
+                
+                <button id="themeToggle" class="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                    <svg id="sunIcon" class="hidden h-5 w-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg id="moonIcon" class="h-5 w-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+
+                <div class="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2 hidden sm:block"></div>
+
+                <div id="authLinks" class="flex items-center space-x-3">
+                    <a href="auth.html" class="hidden sm:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary/25">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1">
+        <section class="py-24 bg-white dark:bg-dark">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16 gap-8">
+                    <div data-aos="fade-right">
+                        <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">Tech <span class="text-primary">Store.</span></h1>
+                        <p class="text-secondary font-medium">Professional networking hardware and computing tools.</p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-left">
+                        <div class="relative min-w-[300px]">
+                            <input type="text" id="searchInput" placeholder="Search products..." class="w-full pl-12 pr-6 py-4 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl outline-none focus:ring-2 focus:ring-primary transition-all">
+                            <svg class="absolute left-4 top-4 h-6 w-6 text-gray-400 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                        <select id="categoryFilter" class="px-6 py-4 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl outline-none focus:ring-2 focus:ring-primary transition-all font-bold text-sm">
+                            <option value="All">All Categories</option>
+                            <option value="Routers">Routers</option>
+                            <option value="Switches">Switches</option>
+                            <option value="Access Points">Access Points</option>
+                            <option value="Laptops">Laptops</option>
+                            <option value="Cables">Cables</option>
+                            <option value="Tools">Tools</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Products will be dynamically populated or hardcoded here -->
+                    <!-- Router Example -->
+                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-[2.5rem] p-6 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-500 group" data-category="Routers" data-name="UniClone U7 Pro">
+                        <div class="aspect-square rounded-3xl overflow-hidden mb-6 bg-white dark:bg-dark relative">
+                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=400" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-primary mb-2 block">Routers</span>
+                        <h3 class="text-xl font-extrabold mb-1">UniClone U7 Pro</h3>
+                        <p class="text-secondary text-xs mb-6 line-clamp-2">Ceiling-mounted WiFi 7 AP with 6 GHz support.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-black text-dark dark:text-white">KES 25,000</span>
+                            <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000" data-image="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=400" class="add-to-cart-btn p-3 bg-white dark:bg-dark rounded-xl hover:bg-primary hover:text-white transition-all transform hover:scale-110">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Laptop Example -->
+                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-[2.5rem] p-6 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-500 group" data-category="Laptops" data-name="WorkStation Pro 14">
+                        <div class="aspect-square rounded-3xl overflow-hidden mb-6 bg-white dark:bg-dark relative">
+                            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=400" alt="Product" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-primary mb-2 block">Laptops</span>
+                        <h3 class="text-xl font-extrabold mb-1">WorkStation Pro 14</h3>
+                        <p class="text-secondary text-xs mb-6 line-clamp-2">High-performance laptop for professional networking tasks.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-black text-dark dark:text-white">KES 85,000</span>
+                            <button data-id="laptop-pro-14" data-name="WorkStation Pro 14" data-price="85000" data-image="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=400" class="add-to-cart-btn p-3 bg-white dark:bg-dark rounded-xl hover:bg-primary hover:text-white transition-all transform hover:scale-110">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Global) -->
+    <footer class="w-full border-t border-gray-100 dark:border-gray-900 bg-gray-50/50 dark:bg-dark py-20 mt-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-3 mb-8">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
+                            <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+                        </svg>
+                        <span class="text-2xl font-black tracking-tighter">AURA NETWORKS</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-20 pt-10 border-t border-gray-100 dark:border-gray-900 text-xs text-secondary font-medium">
+                <p>&copy; <span id="year">2026</span> Aura Networks Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="utils.js"></script>
+    <script src="cart.js"></script>
+    <script type="module">
+        import { auth, db } from "./firebase-config.js";
+        import { Auth } from "./auth.js";
+        AOS.init({ duration: 800, once: true });
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Filter & Search Logic
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const cards = document.querySelectorAll('.product-card');
+
+        window.filterProducts = function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryTerm = categoryFilter.value;
+
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const category = card.dataset.category;
+                
+                const matchesSearch = name.includes(searchTerm);
+                const matchesCategory = categoryTerm === 'All' || category === categoryTerm;
+
+                if (matchesSearch && matchesCategory) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        };
+
+        searchInput.addEventListener('input', window.filterProducts);
+        categoryFilter.addEventListener('change', window.filterProducts);
+    </script>
+</body>
+</html>

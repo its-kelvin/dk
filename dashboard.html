@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Aura Networks</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#0055ff', secondary: '#64748b', dark: '#0f172a' },
+                    borderRadius: { '3xl': '1.5rem', '4xl': '2rem' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
+    <!-- Navbar (Global) -->
+    <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header transition-all duration-300 h-20 flex items-center">
+        <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                    <svg class="relative h-10 w-10 text-primary bg-white dark:bg-dark p-1.5 rounded-lg shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
+                        <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
+                        <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tighter leading-none">AURA NETS</span>
+                    <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary/80">Connect Fast</span>
+                </div>
+            </a>
+            <div id="authLinks" class="flex items-center space-x-3"></div>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 h-[calc(100vh-80px)] overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="hidden lg:flex w-72 flex-col border-r border-gray-100 dark:border-gray-800 bg-white dark:bg-dark p-8 space-y-4">
+            <div class="mb-10 px-4">
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Command Center</span>
+                <h2 class="text-2xl font-black tracking-tighter uppercase mt-1">Dashboard</h2>
+            </div>
+
+            <nav class="space-y-2 flex-1">
+                <button onclick="switchTab('overview')" id="tab-overview" class="w-full flex items-center px-6 py-4 rounded-2xl text-sm font-bold transition-all bg-primary text-white shadow-xl shadow-primary/20">
+                    <svg class="w-5 h-5 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    Overview
+                </button>
+                <button onclick="switchTab('orders')" id="tab-orders" class="w-full flex items-center px-6 py-4 rounded-2xl text-sm font-bold transition-all text-secondary hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary">
+                    <svg class="w-5 h-5 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    My Orders
+                </button>
+                <button onclick="switchTab('wifi')" id="tab-wifi" class="w-full flex items-center px-6 py-4 rounded-2xl text-sm font-bold transition-all text-secondary hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary">
+                    <svg class="w-5 h-5 mr-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.343 9.257c5.857-5.858 15.355-5.858 21.213 0"/></svg>
+                    WiFi Plans
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto p-6 md:p-12">
+            <div class="mx-auto max-w-5xl">
+                <!-- Overview Section -->
+                <div id="section-overview" class="dashboard-section" data-aos="fade-up">
+                    <div class="mb-12 flex items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-black tracking-tighter uppercase mb-2">Welcome back, <span id="dashUser">User</span>!</h1>
+                            <p class="text-secondary font-medium">Here's what's happening with your Aura services.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <div class="p-8 rounded-[2rem] bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-sm">
+                            <p class="text-4xl font-black mb-1">25 Mbps</p>
+                            <p class="text-xs font-bold text-secondary uppercase tracking-tight">Active Plan: Aura Home</p>
+                        </div>
+                        <div class="p-8 rounded-[2rem] bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-sm">
+                            <p class="text-4xl font-black mb-1">KES 0.00</p>
+                            <p class="text-xs font-bold text-secondary uppercase tracking-tight">Balance Due</p>
+                        </div>
+                        <div class="p-8 rounded-[2rem] bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-sm">
+                            <p class="text-4xl font-black mb-1">Active</p>
+                            <p class="text-xs font-bold text-secondary uppercase tracking-tight">System Status</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-900 rounded-[2.5rem] border border-gray-100 dark:border-gray-800 p-10">
+                        <h3 class="text-xl font-black uppercase tracking-tight mb-8">Recent Orders</h3>
+                        <div id="recentOrders" class="space-y-4">
+                            <p class="text-secondary text-sm">No recent orders found.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Section -->
+                <div id="section-orders" class="dashboard-section hidden" data-aos="fade-up">
+                    <h1 class="text-3xl font-black tracking-tighter uppercase mb-8">My Orders</h1>
+                    <div class="bg-white dark:bg-gray-900 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-gray-800">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 dark:bg-gray-800 text-secondary text-[10px] font-black uppercase tracking-widest">
+                                <tr>
+                                    <th class="px-8 py-5">Order ID</th>
+                                    <th class="px-8 py-5">Date</th>
+                                    <th class="px-8 py-5">Amount</th>
+                                    <th class="px-8 py-5">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-t border-gray-100 dark:border-gray-800">
+                                    <td class="px-8 py-6 font-bold">#ORD-1234</td>
+                                    <td class="px-8 py-6 text-sm text-secondary">March 25, 2026</td>
+                                    <td class="px-8 py-6 font-black text-primary">KES 12,500</td>
+                                    <td class="px-8 py-6"><span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-lg text-[10px] font-black uppercase">Paid</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- WiFi Section -->
+                <div id="section-wifi" class="dashboard-section hidden" data-aos="fade-up">
+                    <h1 class="text-3xl font-black tracking-tighter uppercase mb-8">WiFi Subscriptions</h1>
+                    <div class="p-10 bg-primary rounded-[3rem] text-white overflow-hidden relative">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent)]"></div>
+                        <h2 class="text-2xl font-black mb-2">Aura Home 25</h2>
+                        <p class="text-white/70 font-medium mb-8">Standard residential fiber connection.</p>
+                        <div class="flex flex-wrap gap-8">
+                            <div>
+                                <p class="text-[10px] uppercase font-black tracking-widest text-white/50 mb-1">Renewal Date</p>
+                                <p class="font-bold">April 15, 2026</p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-black tracking-widest text-white/50 mb-1">Speed</p>
+                                <p class="font-bold">25 Mbps</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="utils.js"></script>
+    <script src="cart.js"></script>
+    <script type="module">
+        import { auth, db } from "./firebase-config.js";
+        import { Auth } from "./auth.js";
+        AOS.init({ duration: 800, once: true });
+
+        // Guard: check if logged in
+        if (!Auth.isLoggedIn()) {
+            window.location.href = 'auth.html';
+        }
+
+        document.getElementById('dashUser').textContent = Auth.user?.username || 'User';
+
+        window.switchTab = function(tabId) {
+            // Hide all sections
+            document.querySelectorAll('.dashboard-section').forEach(s => s.classList.add('hidden'));
+            // Show target section
+            document.getElementById('section-' + tabId).classList.remove('hidden');
+            
+            // Update sidebar buttons
+            document.querySelectorAll('aside nav button').forEach(b => {
+                b.classList.remove('bg-primary', 'text-white', 'shadow-xl', 'shadow-primary/20');
+                b.classList.add('text-secondary', 'hover:bg-gray-50', 'dark:hover:bg-gray-900', 'hover:text-primary');
+            });
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.add('bg-primary', 'text-white', 'shadow-xl', 'shadow-primary/20');
+            activeBtn.classList.remove('text-secondary', 'hover:bg-gray-50', 'dark:hover:bg-gray-900', 'hover:text-primary');
+        };
+    </script>
+</body>
+</html>

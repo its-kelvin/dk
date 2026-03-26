@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #0055ff;
+    --secondary: #64748b;
+    --dark: #0f172a;
+}
+
+body { 
+    font-family: 'Outfit', sans-serif; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.glass-header { 
+    backdrop-filter: blur(16px); 
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass-header {
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, 
+.active-link::after {
+    width: 100%;
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, rgba(0, 85, 255, 0.1) 0%, rgba(100, 116, 139, 0.1) 100%);
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--primary) !important;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
