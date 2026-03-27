@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | Aura Networks</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#0055ff', secondary: '#64748b', dark: '#0f172a' } } }
+        }
+    </script>
+</head>
+
+<body class="bg-white text-dark min-h-screen flex flex-col">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-1 py-16 px-4">
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Title -->
+            <h1 class="text-4xl font-black uppercase tracking-tighter mb-6">
+                Help <span class="text-primary italic">Center.</span>
+            </h1>
+
+            <p class="text-secondary mb-12 max-w-2xl">
+                Need assistance? Find answers to common questions or contact our team directly.
+                We’re here to help you with WiFi setup, CCTV installation, device purchases, and more.
+            </p>
+
+            <!-- FAQ Section -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-dark mb-2">How do I get WiFi installed?</h3>
+                    <p class="text-secondary text-sm">
+                        Submit a request through the WiFi section. Our team will check your location and contact you to
+                        schedule installation.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-dark mb-2">Do I need an account to book services?</h3>
+                    <p class="text-secondary text-sm">
+                        No. You can book installations and site visits without an account. However, purchases require
+                        login.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-dark mb-2">How does M-Pesa payment work?</h3>
+                    <p class="text-secondary text-sm">
+                        After checkout, you will receive an STK push on your phone to complete the payment securely.
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-dark mb-2">How long does installation take?</h3>
+                    <p class="text-secondary text-sm">
+                        Installation time depends on your location and service availability. Our team will confirm
+                        timelines after assessment.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Direct Contact -->
+            <div class="bg-gray-50 p-8 rounded-2xl mb-16">
+                <h2 class="text-2xl font-bold text-dark mb-4 uppercase">Direct Contact</h2>
+
+                <p class="text-secondary mb-4">
+                    Reach out to us directly for urgent inquiries or support:
+                </p>
+
+                <ul class="text-secondary space-y-2">
+                    <li><strong>Phone:</strong> +254 7XX XXX XXX</li>
+                    <li><strong>Email:</strong> support@auranetworks.com</li>
+                    <li><strong>Working Hours:</strong> Mon - Sat, 8:00 AM - 6:00 PM</li>
+                </ul>
+            </div>
+
+            <!-- Leave a Message -->
+            <div class="bg-white border border-gray-100 p-8 rounded-2xl shadow-sm">
+
+                <h2 class="text-2xl font-bold text-dark mb-6 uppercase">
+                    Leave a <span class="text-primary italic">Message.</span>
+                </h2>
+
+                <form id="helpForm" class="grid md:grid-cols-2 gap-6">
+
+                    <!-- Name -->
+                    <div>
+                        <label class="text-sm font-bold uppercase text-secondary">Full Name</label>
+                        <input type="text" required
+                            class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label class="text-sm font-bold uppercase text-secondary">Phone</label>
+                        <input type="tel" required placeholder="2547XXXXXXXX"
+                            class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="md:col-span-2">
+                        <label class="text-sm font-bold uppercase text-secondary">Email</label>
+                        <input type="email" required
+                            class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="md:col-span-2">
+                        <label class="text-sm font-bold uppercase text-secondary">Subject</label>
+                        <select required
+                            class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                            <option value="">Select topic</option>
+                            <option>WiFi Issue</option>
+                            <option>CCTV Inquiry</option>
+                            <option>Order Support</option>
+                            <option>Technical Help</option>
+                        </select>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="md:col-span-2">
+                        <label class="text-sm font-bold uppercase text-secondary">Message</label>
+                        <textarea rows="4" required
+                            class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="md:col-span-2">
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-3 rounded-lg font-bold uppercase tracking-wide hover:opacity-90 transition">
+                            Send Message
+                        </button>
+                    </div>
+
+                    <!-- Success -->
+                    <p id="msgSuccess" class="hidden text-green-600 font-bold text-center md:col-span-2">
+                        ✅ Message sent successfully. Our team will contact you shortly.
+                    </p>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-gray-100 bg-gray-50 py-12">
+        <div class="mx-auto max-w-7xl px-4 text-center">
+            <p class="text-xs text-secondary font-bold uppercase tracking-widest">
+                &copy; 2026 Aura Networks Ltd. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById("helpForm");
+        const success = document.getElementById("msgSuccess");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            success.classList.remove("hidden");
+            form.reset();
+        });
+    </script>
+
+</body>
+
+</html>
