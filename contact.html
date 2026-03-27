@@ -30,54 +30,40 @@
             </p>
 
             <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-8 rounded-2xl shadow-sm">
-
                 <!-- Full Name -->
                 <div class="md:col-span-1">
-                    <label class="text-sm font-bold uppercase text-secondary">Full Name</label>
-                    <input type="text" required
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" required class="form-input">
                 </div>
-
                 <!-- Phone -->
                 <div class="md:col-span-1">
-                    <label class="text-sm font-bold uppercase text-secondary">Phone Number</label>
-                    <input type="tel" required placeholder="2547XXXXXXXX"
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" required placeholder="2547XXXXXXXX" class="form-input">
                 </div>
-
                 <!-- Email -->
                 <div class="md:col-span-2">
-                    <label class="text-sm font-bold uppercase text-secondary">Email Address</label>
-                    <input type="email" required
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" required class="form-input">
                 </div>
-
                 <!-- Country -->
                 <div>
-                    <label class="text-sm font-bold uppercase text-secondary">Country</label>
-                    <input type="text" required value="Kenya"
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    <label class="form-label">Country</label>
+                    <input type="text" required value="Kenya" class="form-input">
                 </div>
-
                 <!-- County -->
                 <div>
-                    <label class="text-sm font-bold uppercase text-secondary">County</label>
-                    <input type="text" required placeholder="e.g. Nairobi"
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    <label class="form-label">County</label>
+                    <input type="text" required placeholder="e.g. Nairobi" class="form-input">
                 </div>
-
                 <!-- Town -->
                 <div class="md:col-span-2">
-                    <label class="text-sm font-bold uppercase text-secondary">Nearest Town</label>
-                    <input type="text" required
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    <label class="form-label">Nearest Town</label>
+                    <input type="text" required class="form-input">
                 </div>
-
                 <!-- Service Type -->
                 <div class="md:col-span-2">
-                    <label class="text-sm font-bold uppercase text-secondary">Service Type</label>
-                    <select required
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    <label class="form-label">Service Type</label>
+                    <select required class="form-input">
                         <option value="">Select a service</option>
                         <option>WiFi Installation</option>
                         <option>CCTV Installation</option>
@@ -86,14 +72,12 @@
                         <option>Device Inquiry</option>
                     </select>
                 </div>
-
                 <!-- Message -->
                 <div class="md:col-span-2">
-                    <label class="text-sm font-bold uppercase text-secondary">Message</label>
+                    <label class="form-label">Message</label>
                     <textarea rows="4" placeholder="Describe your request..."
-                        class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"></textarea>
+                        class="form-input h-24 resize-none"></textarea>
                 </div>
-
                 <!-- Submit -->
                 <div class="md:col-span-2">
                     <button type="submit"
@@ -101,12 +85,10 @@
                         Submit Request
                     </button>
                 </div>
-
                 <!-- Success Message -->
                 <p id="successMsg" class="hidden text-green-600 font-bold text-center md:col-span-2">
                     ✅ Your request has been submitted. We will contact you shortly.
                 </p>
-
             </form>
 
         </div>
