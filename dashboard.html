@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,46 +9,186 @@
     <link rel="stylesheet" href="main.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Outfit', sans-serif; }
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
         .sidebar-link {
-            display: flex; align-items: center; gap: 12px;
-            padding: 10px 16px; border-radius: 12px;
-            font-size: 13px; font-weight: 600; color: #64748b;
-            transition: all 0.15s ease; cursor: pointer; border: none; background: none; width: 100%; text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
         }
-        .sidebar-link:hover { background: #f1f5f9; color: #0055ff; }
-        .sidebar-link.active { background: #0055ff; color: #fff; }
-        .dark .sidebar-link:hover { background: rgba(255,255,255,0.07); }
-        .dark .sidebar-link.active { background: #0055ff; }
+
+        .sidebar-link:hover {
+            background: #f1f5f9;
+            color: #0055ff;
+        }
+
+        .sidebar-link.active {
+            background: #0055ff;
+            color: #fff;
+        }
+
+        .dark .sidebar-link:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .dark .sidebar-link.active {
+            background: #0055ff;
+        }
+
         .hub-card {
-            background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
-            padding: 20px; text-align: center; cursor: pointer;
-            transition: all 0.15s ease; text-decoration: none; display: block; color: inherit;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
-        .dark .hub-card { background: #1e293b; border-color: rgba(255,255,255,0.07); }
-        .hub-card:hover { border-color: #0055ff; box-shadow: 0 4px 20px rgba(0,85,255,0.12); transform: translateY(-2px); }
-        .hub-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
-        .stat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 20px; }
-        .dark .stat-card { background: #1e293b; border-color: rgba(255,255,255,0.07); }
-        .section-view { display: none; }
-        .section-view.active { display: block; }
+
+        .dark .hub-card {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        .hub-card:hover {
+            border-color: #0055ff;
+            box-shadow: 0 4px 20px rgba(0, 85, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .hub-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+
+        .dark .stat-card {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        .section-view {
+            display: none;
+        }
+
+        .section-view.active {
+            display: block;
+        }
+
         /* Mobile sidebar overlay */
-        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 40; }
-        .sidebar-overlay.open { display: block; }
-        aside { transition: transform 0.2s ease; }
-        @media (max-width: 1023px) {
-            aside { position: fixed; left: 0; top: 0; bottom: 0; z-index: 50; transform: translateX(-100%); }
-            aside.open { transform: translateX(0); }
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 40;
         }
-        .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
-        .badge-green { background: rgba(34,197,94,0.1); color: #16a34a; }
-        .badge-yellow { background: rgba(234,179,8,0.1); color: #ca8a04; }
-        .badge-blue { background: rgba(0,85,255,0.1); color: #0055ff; }
-        .badge-gray { background: rgba(100,116,139,0.1); color: #64748b; }
-        .track-step { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; }
-        .track-dot { width: 12px; height: 12px; border-radius: 50%; margin-top: 3px; flex-shrink: 0; }
-        .track-line { width: 2px; height: 32px; background: #e2e8f0; margin-left: 5px; }
-        .dark .track-line { background: rgba(255,255,255,0.1); }
+
+        .sidebar-overlay.open {
+            display: block;
+        }
+
+        aside {
+            transition: transform 0.2s ease;
+        }
+
+        @media (max-width: 1023px) {
+            aside {
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 50;
+                transform: translateX(-100%);
+            }
+
+            aside.open {
+                transform: translateX(0);
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-green {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+
+        .badge-yellow {
+            background: rgba(234, 179, 8, 0.1);
+            color: #ca8a04;
+        }
+
+        .badge-blue {
+            background: rgba(0, 85, 255, 0.1);
+            color: #0055ff;
+        }
+
+        .badge-gray {
+            background: rgba(100, 116, 139, 0.1);
+            color: #64748b;
+        }
+
+        .track-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+        }
+
+        .track-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .track-line {
+            width: 2px;
+            height: 32px;
+            background: #e2e8f0;
+            margin-left: 5px;
+        }
+
+        .dark .track-line {
+            background: rgba(255, 255, 255, 0.1);
+        }
     </style>
     <script>
         tailwind.config = {
@@ -56,6 +197,7 @@
         }
     </script>
 </head>
+
 <body class="bg-gray-50 dark:bg-[#0f172a] text-[#0f172a] dark:text-white min-h-screen">
 
     <!-- Sidebar Overlay (mobile) -->
@@ -66,11 +208,17 @@
         <div class="w-full flex items-center justify-between px-4 sm:px-6">
             <div class="flex items-center gap-3">
                 <!-- Mobile menu btn -->
-                <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="menuBtn">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <button onclick="toggleSidebar()"
+                    class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    id="menuBtn">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
                 <a href="index.html" class="flex items-center gap-2">
-                    <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
                         <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
                         <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
                         <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
@@ -80,60 +228,104 @@
                 </a>
             </div>
             <div class="flex items-center gap-2">
-                <button onclick="switchView('cart')" class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                    <span id="cartCount" class="absolute top-0.5 right-0.5 bg-primary text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center hidden">0</span>
+                <button onclick="switchView('cart')"
+                    class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span id="cartCount"
+                        class="absolute top-0.5 right-0.5 bg-primary text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center hidden">0</span>
                 </button>
-                <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    <svg id="sunIcon" class="hidden h-5 w-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    <svg id="moonIcon" class="h-5 w-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <button id="themeToggle"
+                    class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <svg id="sunIcon" class="hidden h-5 w-5 text-yellow-500" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5" />
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <svg id="moonIcon" class="h-5 w-5 text-secondary" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
                 </button>
-                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold" id="avatarInitial">U</div>
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold"
+                    id="avatarInitial">U</div>
             </div>
         </div>
     </nav>
 
     <div class="flex h-[calc(100vh-56px)] overflow-hidden">
         <!-- Sidebar -->
-        <aside id="sidebar" class="w-60 flex-col bg-white dark:bg-[#1e293b] border-r border-gray-100 dark:border-gray-800 p-4 space-y-1 hidden lg:flex overflow-y-auto">
+        <aside id="sidebar"
+            class="w-60 flex-col bg-white dark:bg-[#1e293b] border-r border-gray-100 dark:border-gray-800 p-4 space-y-1 hidden lg:flex overflow-y-auto">
             <p class="text-[9px] font-black uppercase tracking-widest text-secondary/60 px-3 pt-2 pb-1">Menu</p>
             <button class="sidebar-link active" onclick="switchView('home')" id="link-home">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
                 Home
             </button>
             <p class="text-[9px] font-black uppercase tracking-widest text-secondary/60 px-3 pt-4 pb-1">Services</p>
             <button class="sidebar-link" onclick="switchView('services')" id="link-services">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
+                </svg>
                 Services
             </button>
             <button class="sidebar-link" onclick="switchView('products')" id="link-products">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
                 Products
             </button>
             <p class="text-[9px] font-black uppercase tracking-widest text-secondary/60 px-3 pt-4 pb-1">Account</p>
             <button class="sidebar-link" onclick="switchView('orders')" id="link-orders">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
                 My Orders
             </button>
             <button class="sidebar-link" onclick="switchView('tracking')" id="link-tracking">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
                 Track Order
             </button>
             <button class="sidebar-link" onclick="switchView('cart')" id="link-cart">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
                 Cart
             </button>
             <p class="text-[9px] font-black uppercase tracking-widest text-secondary/60 px-3 pt-4 pb-1">Company</p>
             <button class="sidebar-link" onclick="switchView('about')" id="link-about">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 About Us
             </button>
             <button class="sidebar-link" onclick="switchView('contact')" id="link-contact">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
                 Contact Us
             </button>
             <button class="sidebar-link" onclick="switchView('settings')" id="link-settings">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
                 Settings
             </button>
         </aside>
@@ -144,7 +336,8 @@
             <!-- HOME HUB -->
             <div class="section-view active" id="view-home">
                 <div class="mb-6">
-                    <h1 class="text-2xl font-black uppercase tracking-tight">Welcome, <span id="dashUser" class="text-primary">User</span>!</h1>
+                    <h1 class="text-2xl font-black uppercase tracking-tight">Welcome, <span id="dashUser"
+                            class="text-primary">User</span>!</h1>
                     <p class="text-secondary text-sm mt-1">Your Aura Networks command centre.</p>
                 </div>
                 <!-- Quick Stats -->
@@ -171,56 +364,81 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
                     <a href="wifi.html" class="hub-card">
                         <div class="hub-icon bg-blue-50 dark:bg-blue-900/30">
-                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.343 9.257c5.857-5.858 15.355-5.858 21.213 0"/></svg>
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.343 9.257c5.857-5.858 15.355-5.858 21.213 0" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold">WiFi Plans</p>
                         <p class="text-[10px] text-secondary mt-0.5">Fiber & ISP services</p>
                     </a>
                     <a href="cctv.html" class="hub-card">
                         <div class="hub-icon bg-purple-50 dark:bg-purple-900/30">
-                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold">CCTV Systems</p>
                         <p class="text-[10px] text-secondary mt-0.5">Security solutions</p>
                     </a>
                     <a href="devices.html" class="hub-card">
                         <div class="hub-icon bg-green-50 dark:bg-green-900/30">
-                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold">Tech Store</p>
                         <p class="text-[10px] text-secondary mt-0.5">Devices & hardware</p>
                     </a>
                     <a href="services.html" class="hub-card">
                         <div class="hub-icon bg-orange-50 dark:bg-orange-900/30">
-                            <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                            <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold">Services</p>
                         <p class="text-[10px] text-secondary mt-0.5">Installations & support</p>
                     </a>
                     <button onclick="switchView('orders')" class="hub-card text-left">
                         <div class="hub-icon bg-sky-50 dark:bg-sky-900/30">
-                            <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                            <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold text-left">My Orders</p>
                         <p class="text-[10px] text-secondary mt-0.5 text-left">View order history</p>
                     </button>
                     <button onclick="switchView('tracking')" class="hub-card text-left">
                         <div class="hub-icon bg-teal-50 dark:bg-teal-900/30">
-                            <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                            <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold text-left">Track Order</p>
                         <p class="text-[10px] text-secondary mt-0.5 text-left">Live shipment status</p>
                     </button>
                     <button onclick="switchView('contact')" class="hub-card text-left">
                         <div class="hub-icon bg-pink-50 dark:bg-pink-900/30">
-                            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold text-left">Contact Us</p>
                         <p class="text-[10px] text-secondary mt-0.5 text-left">Get help & support</p>
                     </button>
                     <button onclick="switchView('settings')" class="hub-card text-left">
                         <div class="hub-icon bg-gray-100 dark:bg-gray-700">
-                            <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
                         </div>
                         <p class="text-sm font-bold text-left">Settings</p>
                         <p class="text-[10px] text-secondary mt-0.5 text-left">Account preferences</p>
@@ -233,27 +451,43 @@
                 <h1 class="text-2xl font-black uppercase tracking-tight mb-5">Our Services</h1>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <a href="wifi.html" class="hub-card text-left p-5">
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mb-3">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.343 9.257c5.857-5.858 15.355-5.858 21.213 0"/></svg>
+                        <div
+                            class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mb-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.343 9.257c5.857-5.858 15.355-5.858 21.213 0" />
+                            </svg>
                         </div>
                         <h3 class="text-base font-bold mb-1">WiFi / Fiber Internet</h3>
-                        <p class="text-[11px] text-secondary">High-speed fiber connectivity for home and business. Plans from KES 1,500/mo.</p>
+                        <p class="text-[11px] text-secondary">High-speed fiber connectivity for home and business. Plans
+                            from KES 1,500/mo.</p>
                         <span class="text-primary text-[11px] font-bold mt-2 block">View Plans →</span>
                     </a>
                     <a href="cctv.html" class="hub-card text-left p-5">
-                        <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center mb-3">
-                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <div
+                            class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center mb-3">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
                         </div>
                         <h3 class="text-base font-bold mb-1">CCTV & Surveillance</h3>
-                        <p class="text-[11px] text-secondary">Professional camera installation and monitoring systems for homes and offices.</p>
+                        <p class="text-[11px] text-secondary">Professional camera installation and monitoring systems
+                            for homes and offices.</p>
                         <span class="text-purple-600 text-[11px] font-bold mt-2 block">View Packages →</span>
                     </a>
                     <a href="services.html" class="hub-card text-left p-5">
-                        <div class="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center mb-3">
-                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <div
+                            class="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center mb-3">
+                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
                         </div>
                         <h3 class="text-base font-bold mb-1">Tech Support & Repair</h3>
-                        <p class="text-[11px] text-secondary">Network setup, device repair, cabling, and IT consultation services.</p>
+                        <p class="text-[11px] text-secondary">Network setup, device repair, cabling, and IT consultation
+                            services.</p>
                         <span class="text-orange-500 text-[11px] font-bold mt-2 block">Book Service →</span>
                     </a>
                 </div>
@@ -266,36 +500,60 @@
                     <a href="devices.html" class="text-sm font-bold text-primary hover:underline">View Full Store →</a>
                 </div>
                 <div class="product-grid-layout">
-                    <div class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
+                    <div
+                        class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
                         <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-900">
-                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300" alt="Router" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
+                                alt="Router"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
-                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Routers</span>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Routers</span>
                         <h3 class="text-sm font-extrabold mb-0.5 leading-tight">UniClone U7 Pro</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ceiling-mounted WiFi 7 AP with 6 GHz
+                            support.</p>
                         <p class="text-sm font-black text-primary">KES 25,000</p>
                     </div>
-                    <div class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
+                    <div
+                        class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
                         <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-900">
-                            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=300" alt="Laptop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=300"
+                                alt="Laptop"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
-                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Laptops</span>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Laptops</span>
                         <h3 class="text-sm font-extrabold mb-0.5 leading-tight">WorkStation Pro 14</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">High-performance laptop for professional
+                            networking tasks.</p>
                         <p class="text-sm font-black text-primary">KES 85,000</p>
                     </div>
-                    <div class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
+                    <div
+                        class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
                         <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-900">
-                            <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&q=80&w=300" alt="Access Point" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&q=80&w=300"
+                                alt="Access Point"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
-                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Access Points</span>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Access
+                            Points</span>
                         <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Ubiquiti U6 Pro</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Indoor Wi-Fi 6 access point for
+                            enterprise networks.</p>
                         <p class="text-sm font-black text-primary">KES 18,500</p>
                     </div>
-                    <div class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
+                    <div
+                        class="bg-white dark:bg-[#1e293b] rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200 group">
                         <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-900">
-                            <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&q=80&w=300" alt="Switch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&q=80&w=300"
+                                alt="Switch"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
-                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Switches</span>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Switches</span>
                         <h3 class="text-sm font-extrabold mb-0.5 leading-tight">MikroTik CRS326</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">24-port gigabit smart managed switch.
+                        </p>
                         <p class="text-sm font-black text-primary">KES 32,000</p>
                     </div>
                 </div>
@@ -304,15 +562,23 @@
             <!-- ORDERS -->
             <div class="section-view" id="view-orders">
                 <h1 class="text-2xl font-black uppercase tracking-tight mb-5">My Orders</h1>
-                <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+                <div
+                    class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
                     <table class="w-full text-left">
                         <thead class="bg-gray-50 dark:bg-gray-800">
                             <tr>
-                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary">Order ID</th>
-                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary hidden sm:table-cell">Date</th>
-                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary">Amount</th>
-                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary">Status</th>
-                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary hidden sm:table-cell">Action</th>
+                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary">
+                                    Order ID</th>
+                                <th
+                                    class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary hidden sm:table-cell">
+                                    Date</th>
+                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary">
+                                    Amount</th>
+                                <th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary">
+                                    Status</th>
+                                <th
+                                    class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-secondary hidden sm:table-cell">
+                                    Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -321,7 +587,8 @@
                                 <td class="px-5 py-4 text-xs text-secondary hidden sm:table-cell">March 25, 2026</td>
                                 <td class="px-5 py-4 font-black text-sm text-primary">KES 12,500</td>
                                 <td class="px-5 py-4"><span class="badge badge-green">Paid</span></td>
-                                <td class="px-5 py-4 hidden sm:table-cell"><button onclick="switchView('tracking')" class="text-[11px] font-bold text-primary hover:underline">Track →</button></td>
+                                <td class="px-5 py-4 hidden sm:table-cell"><button onclick="switchView('tracking')"
+                                        class="text-[11px] font-bold text-primary hover:underline">Track →</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -332,15 +599,18 @@
             <div class="section-view" id="view-tracking">
                 <h1 class="text-2xl font-black uppercase tracking-tight mb-5">Track Order</h1>
                 <!-- Search -->
-                <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5 mb-5">
+                <div
+                    class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5 mb-5">
                     <p class="text-xs font-bold text-secondary mb-3">Enter your order ID to check the status</p>
                     <div class="flex gap-3">
                         <input type="text" id="trackInput" placeholder="e.g. #ORD-1234" class="form-input flex-1">
-                        <button onclick="trackOrder()" class="px-5 py-2 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors">Track</button>
+                        <button onclick="trackOrder()"
+                            class="px-5 py-2 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors">Track</button>
                     </div>
                 </div>
                 <!-- Result -->
-                <div id="trackResult" class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5 hidden">
+                <div id="trackResult"
+                    class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5 hidden">
                     <div class="flex items-center justify-between mb-4">
                         <div>
                             <p class="text-xs text-secondary font-medium">Order ID</p>
@@ -396,12 +666,15 @@
             <div class="section-view" id="view-cart">
                 <div class="flex items-center justify-between mb-5">
                     <h1 class="text-2xl font-black uppercase tracking-tight">Cart</h1>
-                    <a href="checkout.html" class="px-5 py-2 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors">Checkout</a>
+                    <a href="checkout.html"
+                        class="px-5 py-2 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors">Checkout</a>
                 </div>
                 <div id="dashCartItems" class="space-y-3">
-                    <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5 text-center">
+                    <div
+                        class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5 text-center">
                         <p class="text-secondary text-sm">Your cart is empty.</p>
-                        <a href="devices.html" class="text-primary font-bold text-sm hover:underline">Browse Products →</a>
+                        <a href="devices.html" class="text-primary font-bold text-sm hover:underline">Browse Products
+                            →</a>
                     </div>
                 </div>
             </div>
@@ -409,12 +682,22 @@
             <!-- ABOUT US -->
             <div class="section-view" id="view-about">
                 <h1 class="text-2xl font-black uppercase tracking-tight mb-5">About Us</h1>
-                <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-6 max-w-2xl">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path><path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path><path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path><line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line></svg>
+                <div
+                    class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-6 max-w-2xl">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
+                            <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+                        </svg>
                     </div>
                     <h2 class="text-xl font-black mb-2">Aura Networks Ltd.</h2>
-                    <p class="text-secondary text-sm leading-relaxed mb-4">Aura Networks is a leading ISP and tech services provider based in Kenya. We offer high-speed fiber internet, professional CCTV installations, and enterprise-grade networking solutions tailored to homes and businesses.</p>
+                    <p class="text-secondary text-sm leading-relaxed mb-4">Aura Networks is a leading ISP and tech
+                        services provider based in Kenya. We offer high-speed fiber internet, professional CCTV
+                        installations, and enterprise-grade networking solutions tailored to homes and businesses.</p>
                     <div class="grid grid-cols-3 gap-3 mt-5">
                         <div class="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-xl">
                             <p class="text-xl font-black text-primary">500+</p>
@@ -437,7 +720,8 @@
                 <h1 class="text-2xl font-black uppercase tracking-tight mb-5">Contact Us</h1>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
                     <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5">
-                        <p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-3">Send a Message</p>
+                        <p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-3">Send a Message
+                        </p>
                         <form class="space-y-3" onsubmit="sendMessage(event)">
                             <div>
                                 <label class="form-label">Your Name</label>
@@ -449,22 +733,44 @@
                             </div>
                             <div>
                                 <label class="form-label">Message</label>
-                                <textarea class="form-input h-24 resize-none" placeholder="How can we help you?"></textarea>
+                                <textarea class="form-input h-24 resize-none"
+                                    placeholder="How can we help you?"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors">Send Message</button>
+                            <button type="submit"
+                                class="w-full py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors">Send
+                                Message</button>
                         </form>
                     </div>
                     <div class="space-y-3">
-                        <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-3">Direct Contact</p>
+                        <div
+                            class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5">
+                            <p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-3">Direct
+                                Contact</p>
                             <div class="space-y-3 text-sm">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
-                                    <div><p class="font-semibold">WhatsApp</p><p class="text-secondary text-xs">+254 700 000 000</p></div>
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                                        </svg></div>
+                                    <div>
+                                        <p class="font-semibold">WhatsApp</p>
+                                        <p class="text-secondary text-xs">+254 700 000 000</p>
+                                    </div>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
-                                    <div><p class="font-semibold">Email</p><p class="text-secondary text-xs">support@auranets.co.ke</p></div>
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg></div>
+                                    <div>
+                                        <p class="font-semibold">Email</p>
+                                        <p class="text-secondary text-xs">support@auranets.co.ke</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -487,7 +793,9 @@
                                 <label class="form-label">Email Address</label>
                                 <input type="email" class="form-input" id="settingEmail" placeholder="your@email.com">
                             </div>
-                            <button class="w-full py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors mt-1">Save Changes</button>
+                            <button
+                                class="w-full py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors mt-1">Save
+                                Changes</button>
                         </div>
                     </div>
                     <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5">
@@ -497,14 +805,17 @@
                                 <p class="text-sm font-semibold">Dark Mode</p>
                                 <p class="text-[11px] text-secondary">Toggle dark/light theme</p>
                             </div>
-                            <button onclick="document.documentElement.classList.toggle('dark')" class="w-12 h-6 bg-primary rounded-full relative cursor-pointer">
+                            <button onclick="document.documentElement.classList.toggle('dark')"
+                                class="w-12 h-6 bg-primary rounded-full relative cursor-pointer">
                                 <span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
                             </button>
                         </div>
                     </div>
                     <div class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5">
                         <p class="text-[10px] font-black uppercase tracking-widest text-secondary mb-4">Account</p>
-                        <button onclick="logoutUser()" class="w-full py-2.5 bg-red-50 text-red-600 text-sm font-bold rounded-xl hover:bg-red-100 transition-colors border border-red-100">Sign Out</button>
+                        <button onclick="logoutUser()"
+                            class="w-full py-2.5 bg-red-50 text-red-600 text-sm font-bold rounded-xl hover:bg-red-100 transition-colors border border-red-100">Sign
+                            Out</button>
                     </div>
                 </div>
             </div>
@@ -531,7 +842,7 @@
         if (document.getElementById('settingName')) document.getElementById('settingName').value = name;
         if (document.getElementById('settingEmail')) document.getElementById('settingEmail').value = user?.email || '';
 
-        window.switchView = function(viewId) {
+        window.switchView = function (viewId) {
             // Hide all
             document.querySelectorAll('.section-view').forEach(v => v.classList.remove('active'));
             // Show target
@@ -545,7 +856,7 @@
             closeSidebar();
         };
 
-        window.toggleSidebar = function() {
+        window.toggleSidebar = function () {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
             sidebar.classList.toggle('open');
@@ -554,27 +865,27 @@
             sidebar.style.display = 'flex';
         };
 
-        window.closeSidebar = function() {
+        window.closeSidebar = function () {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
             sidebar.classList.remove('open');
             overlay.classList.remove('open');
         };
 
-        window.trackOrder = function() {
+        window.trackOrder = function () {
             const val = document.getElementById('trackInput').value.trim();
             if (!val) return;
             document.getElementById('trackId').textContent = val;
             document.getElementById('trackResult').classList.remove('hidden');
         };
 
-        window.sendMessage = function(e) {
+        window.sendMessage = function (e) {
             e.preventDefault();
             alert('Message sent! Our team will respond within 24 hours.');
             e.target.reset();
         };
 
-        window.logoutUser = function() {
+        window.logoutUser = function () {
             Auth.logout && Auth.logout();
             window.location.href = 'auth.html';
         };
@@ -594,4 +905,5 @@
         });
     </script>
 </body>
+
 </html>
