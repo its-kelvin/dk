@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,14 +30,19 @@
         }
     </script>
 </head>
-<body class="bg-white text-dark dark:bg-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
+
+<body
+    class="bg-white text-dark dark:bg-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
     <!-- Navbar (Same as index.html) -->
     <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header transition-all duration-300">
         <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <a href="index.html" class="flex items-center space-x-3 group">
                 <div class="relative">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                    <svg class="relative h-10 w-10 text-primary bg-white dark:bg-dark p-1.5 rounded-lg shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                    </div>
+                    <svg class="relative h-10 w-10 text-primary bg-white dark:bg-dark p-1.5 rounded-lg shadow-sm"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
                         <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
                         <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
@@ -50,35 +56,81 @@
             </a>
 
             <div class="hidden lg:flex items-center space-x-10">
-                <a href="index.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Home</a>
+                <a href="index.html"
+                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Home</a>
                 <a href="wifi.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">WiFi</a>
                 <a href="cctv.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">CCTV</a>
-                <a href="devices.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Devices</a>
-                <a href="services.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Services</a>
-                <a href="dashboard.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">Dashboard</a>
+                <a href="devices.html"
+                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Devices</a>
+                <a href="services.html"
+                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Services</a>
+                <a href="dashboard.html"
+                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Dashboard</a>
+            </div>
+
+            <!-- Mobile Menu Overlay -->
+            <div id="mobileMenuOverlay" class="mobile-menu-overlay lg:hidden">
+                <button onclick="closeMobileMenu()" class="absolute top-6 right-6 p-2 text-white">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div class="flex flex-col items-center space-y-8">
+                    <a href="index.html" onclick="closeMobileMenu()"
+                        class="text-2xl font-black text-white hover:text-primary transition-colors">Home</a>
+                    <a href="wifi.html" onclick="closeMobileMenu()"
+                        class="text-2xl font-black text-white hover:text-primary transition-colors">WiFi</a>
+                    <a href="cctv.html" onclick="closeMobileMenu()"
+                        class="text-2xl font-black text-white hover:text-primary transition-colors">CCTV</a>
+                    <a href="devices.html" onclick="closeMobileMenu()"
+                        class="text-2xl font-black text-white hover:text-primary transition-colors">Devices</a>
+                    <a href="services.html" onclick="closeMobileMenu()"
+                        class="text-2xl font-black text-white hover:text-primary transition-colors">Services</a>
+                    <a href="dashboard.html" onclick="closeMobileMenu()"
+                        class="text-2xl font-black text-white hover:text-primary transition-colors">Dashboard</a>
+                </div>
             </div>
 
             <div class="flex items-center space-x-3">
-                <a href="checkout.html" class="group relative p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
-                    <svg class="h-6 w-6 text-secondary group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                <button onclick="toggleMobileMenu()"
+                    class="lg:hidden p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+                    <svg class="h-6 w-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <span id="cartCount" class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white dark:border-dark hidden">0</span>
+                </button>
+
+                <a href="checkout.html"
+                    class="group relative p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+                    <svg class="h-6 w-6 text-secondary group-hover:text-primary transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span id="cartCount"
+                        class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white dark:border-dark hidden">0</span>
                 </a>
-                
-                <button id="themeToggle" class="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
-                    <svg id="sunIcon" class="hidden h-5 w-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+
+                <button id="themeToggle"
+                    class="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                    <svg id="sunIcon" class="hidden h-5 w-5 text-yellow-500" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5" />
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                     </svg>
-                    <svg id="moonIcon" class="h-5 w-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    <svg id="moonIcon" class="h-5 w-5 text-secondary" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                     </svg>
                 </button>
 
                 <div class="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2 hidden sm:block"></div>
 
                 <div id="authLinks" class="flex items-center space-x-3">
-                    <a href="auth.html" class="hidden sm:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary/25">
+                    <a href="auth.html"
+                        class="hidden sm:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary/25">
                         Login
                     </a>
                 </div>
@@ -90,17 +142,22 @@
         <section class="pt-10 pb-12 bg-white dark:bg-dark">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="mb-8">
-                    <span class="text-xs font-bold uppercase tracking-[0.15em] text-primary mb-1 block">Residential & Business</span>
-                    <h1 class="text-3xl font-black tracking-tighter uppercase leading-none mb-1">Next-Gen <span class="text-primary italic">WiFi.</span></h1>
-                    <p class="text-secondary text-sm font-medium">Blazing fast speeds, unlimited data, and 99.9% uptime. Choose the plan that fits your lifestyle.</p>
+                    <span class="text-xs font-bold uppercase tracking-[0.15em] text-primary mb-1 block">Residential &
+                        Business</span>
+                    <h1 class="text-3xl font-black tracking-tighter uppercase leading-none mb-1">Next-Gen <span
+                            class="text-primary italic">WiFi.</span></h1>
+                    <p class="text-secondary text-sm font-medium">Blazing fast speeds, unlimited data, and 99.9% uptime.
+                        Choose the plan that fits your lifestyle.</p>
                 </div>
 
                 <!-- Hotspot Packages -->
                 <div class="mb-8">
-                    <h2 class="text-sm font-black uppercase tracking-widest mb-4 border-l-4 border-primary pl-3">Hotspot <span class="text-primary">Packages</span></h2>
+                    <h2 class="text-sm font-black uppercase tracking-widest mb-4 border-l-4 border-primary pl-3">Hotspot
+                        <span class="text-primary">Packages</span></h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Basic -->
-                        <div class="group p-5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200">
+                        <div
+                            class="group p-5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200">
                             <h3 class="text-lg font-black mb-1 uppercase tracking-tight">Hotspot Basic</h3>
                             <div class="flex items-end gap-1 mb-4">
                                 <span class="text-3xl font-black">KES 500</span>
@@ -108,19 +165,29 @@
                             </div>
                             <ul class="space-y-2 mb-4">
                                 <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none"
+                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
                                     Up to 10Mbps Speed
                                 </li>
                                 <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none"
+                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
                                     Unlimited Data Usage
                                 </li>
                                 <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none"
+                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
                                     KES 2,500 Installation Fee
                                 </li>
                             </ul>
-                            <button onclick="scrollToBooking('Hotspot Basic')" class="w-full py-2.5 bg-white dark:bg-dark text-dark dark:text-white text-xs font-bold rounded-xl border border-gray-200 dark:border-gray-700 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
+                            <button onclick="scrollToBooking('Hotspot Basic')"
+                                class="w-full py-2.5 bg-white dark:bg-dark text-dark dark:text-white text-xs font-bold rounded-xl border border-gray-200 dark:border-gray-700 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
                                 Book Installation
                             </button>
                         </div>
@@ -129,11 +196,15 @@
 
                 <!-- PPPoE Packages -->
                 <div class="mb-8">
-                    <h2 class="text-sm font-black uppercase tracking-widest mb-4 border-l-4 border-blue-600 pl-3">Fiber <span class="text-blue-600">PPPoE</span></h2>
+                    <h2 class="text-sm font-black uppercase tracking-widest mb-4 border-l-4 border-blue-600 pl-3">Fiber
+                        <span class="text-blue-600">PPPoE</span></h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- Business Pro -->
-                        <div class="group p-5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-blue-600 transition-all duration-200 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 px-3 py-1 bg-blue-600 text-white text-[9px] font-black uppercase rounded-bl-xl">Fiber</div>
+                        <div
+                            class="group p-5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-blue-600 transition-all duration-200 relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 px-3 py-1 bg-blue-600 text-white text-[9px] font-black uppercase rounded-bl-xl">
+                                Fiber</div>
                             <h3 class="text-lg font-black mb-1 uppercase tracking-tight">Business Pro</h3>
                             <div class="flex items-end gap-1 mb-4">
                                 <span class="text-3xl font-black">KES 3,500</span>
@@ -141,19 +212,29 @@
                             </div>
                             <ul class="space-y-2 mb-4">
                                 <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none"
+                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
                                     Up to 50Mbps Speed
                                 </li>
                                 <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none"
+                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
                                     Dedicated Fiber Connection
                                 </li>
                                 <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none"
+                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
                                     KES 5,000 Installation Fee
                                 </li>
                             </ul>
-                            <button onclick="scrollToBooking('Business Pro')" class="w-full py-2.5 bg-white dark:bg-dark text-dark dark:text-white text-xs font-bold rounded-xl border border-gray-200 dark:border-gray-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
+                            <button onclick="scrollToBooking('Business Pro')"
+                                class="w-full py-2.5 bg-white dark:bg-dark text-dark dark:text-white text-xs font-bold rounded-xl border border-gray-200 dark:border-gray-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
                                 Book Installation
                             </button>
                         </div>
@@ -163,8 +244,10 @@
                 <!-- Booking Form -->
                 <div id="booking-section" class="max-w-2xl">
                     <div class="form-card">
-                        <h2 class="text-base font-black uppercase tracking-tight mb-1">Check <span class="text-primary italic">Availability.</span></h2>
-                        <p class="text-secondary text-xs mb-5">Enter your details to see if our network reaches your area.</p>
+                        <h2 class="text-base font-black uppercase tracking-tight mb-1">Check <span
+                                class="text-primary italic">Availability.</span></h2>
+                        <p class="text-secondary text-xs mb-5">Enter your details to see if our network reaches your
+                            area.</p>
 
                         <form id="serviceForm" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div>
@@ -177,7 +260,8 @@
                             </div>
                             <div>
                                 <label class="form-label">Email Address</label>
-                                <input type="email" name="email" required placeholder="john@example.com" class="form-input">
+                                <input type="email" name="email" required placeholder="john@example.com"
+                                    class="form-input">
                             </div>
                             <div>
                                 <label class="form-label">County / State</label>
@@ -201,10 +285,12 @@
                                 </select>
                             </div>
                             <div class="sm:col-span-2">
-                                <button type="submit" class="w-full py-3 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors uppercase tracking-wide">
+                                <button type="submit"
+                                    class="w-full py-3 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-colors uppercase tracking-wide">
                                     Request Site Visit
                                 </button>
-                                <p class="text-[10px] font-medium text-secondary mt-3 text-center">No account required for service bookings</p>
+                                <p class="text-[10px] font-medium text-secondary mt-3 text-center">No account required
+                                    for service bookings</p>
                             </div>
                         </form>
                     </div>
@@ -216,10 +302,11 @@
     <!-- Footer (Same as index.html) -->
     <footer class="w-full border-t border-gray-100 dark:border-gray-900 bg-gray-50/50 dark:bg-dark py-20 mt-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-                <div class="col-span-1 lg:col-span-2">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 lg:gap-8">
+                <div class="col-span-2 md:col-span-4 lg:col-span-2">
                     <a href="index.html" class="flex items-center space-x-3 mb-8">
-                        <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
                             <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
                             <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
                             <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
@@ -228,11 +315,13 @@
                         <span class="text-2xl font-black tracking-tighter">AURA NETWORKS</span>
                     </a>
                     <p class="text-secondary text-sm leading-relaxed max-w-sm mb-8">
-                        Delivering the fastest fiber and wireless solutions for modern homes and businesses. We pride ourselves on reliability and 24/7 technical excellence.
+                        Delivering the fastest fiber and wireless solutions for modern homes and businesses. We pride
+                        ourselves on reliability and 24/7 technical excellence.
                     </p>
                 </div>
                 <div>
-                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Services</h4>
+                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Services
+                    </h4>
                     <ul class="space-y-4 text-sm text-secondary">
                         <li><a href="wifi.html" class="hover:text-primary transition-colors">Residential WiFi</a></li>
                         <li><a href="wifi.html" class="hover:text-primary transition-colors">Business Fiber</a></li>
@@ -259,7 +348,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="mt-20 pt-10 border-t border-gray-100 dark:border-gray-900 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-secondary font-medium">
+            <div
+                class="mt-20 pt-10 border-t border-gray-100 dark:border-gray-900 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-secondary font-medium">
                 <p>&copy; <span id="year">2026</span> Aura Networks Ltd. All rights reserved.</p>
                 <div class="flex space-x-6">
                     <span>Nairobi, Kenya</span>
@@ -279,7 +369,7 @@
         AOS.init({ duration: 400, once: true });
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        window.scrollToBooking = function(packageName) {
+        window.scrollToBooking = function (packageName) {
             document.getElementById('service_type').value = 'wifi_installation';
             document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
             if (window.Cart) {
@@ -287,7 +377,7 @@
             }
         };
 
-        document.getElementById('serviceForm').addEventListener('submit', function(e) {
+        document.getElementById('serviceForm').addEventListener('submit', function (e) {
             e.preventDefault();
             if (window.Cart) {
                 window.Cart.notify('Validating your area...');
@@ -299,4 +389,5 @@
         });
     </script>
 </body>
+
 </html>
