@@ -12,103 +12,77 @@
             theme: { extend: { colors: { primary: '#0055ff', secondary: '#64748b', dark: '#0f172a' } } }
         }
     </script>
-</head>
 
 <body class="bg-white text-dark min-h-screen flex flex-col">
     <div id="header-placeholder"></div>
 
-    <main class="flex-1 py-16 px-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <main class="flex-1 flex items-center py-12">
+        <div class="w-full px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 text-center">
+                <h1 class="text-4xl font-black uppercase tracking-tighter leading-none mb-2">Contact <span
+                        class="text-primary italic">Us.</span></h1>
+                <p class="text-secondary font-medium">Get in touch with our technical team today.</p>
+            </div>
 
-            <h1 class="text-3xl font-black uppercase tracking-tighter mb-6">
-                Contact <span class="text-primary italic">Us.</span>
-            </h1>
-
-            <p class="text-secondary mb-10 max-w-xl">
-                Have questions, need installation, or want to book a technician? Fill out the form below and our team
-                will contact you shortly.
-            </p>
-
-            <form id="contactForm"
-                class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 p-6 rounded-2xl border border-gray-100 max-w-3xl">
-                <!-- Full Name -->
-                <div class="md:col-span-1">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" required class="form-input">
-                </div>
-                <!-- Phone -->
-                <div class="md:col-span-1">
-                    <label class="form-label">Phone Number</label>
-                    <input type="tel" required placeholder="2547XXXXXXXX" class="form-input">
-                </div>
-                <!-- Email -->
-                <div class="md:col-span-2">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" required class="form-input">
-                </div>
-                <!-- Country -->
-                <div>
-                    <label class="form-label">Country</label>
-                    <input type="text" required value="Kenya" class="form-input">
-                </div>
-                <!-- County -->
-                <div>
-                    <label class="form-label">County</label>
-                    <input type="text" required placeholder="e.g. Nairobi" class="form-input">
-                </div>
-                <!-- Town -->
-                <div class="md:col-span-2">
-                    <label class="form-label">Nearest Town</label>
-                    <input type="text" required class="form-input">
-                </div>
-                <!-- Service Type -->
-                <div class="md:col-span-2">
-                    <label class="form-label">Service Type</label>
-                    <select required class="form-input">
-                        <option value="">Select a service</option>
-                        <option>WiFi Installation</option>
-                        <option>CCTV Installation</option>
-                        <option>Networking Setup</option>
-                        <option>Maintenance / Repair</option>
-                        <option>Device Inquiry</option>
-                    </select>
-                </div>
-                <!-- Message -->
-                <div class="md:col-span-2">
-                    <label class="form-label">Message</label>
-                    <textarea rows="4" placeholder="Describe your request..."
-                        class="form-input h-24 resize-none"></textarea>
-                </div>
-                <!-- Submit -->
-                <div class="md:col-span-2">
-                    <button type="submit"
-                        class="w-full bg-primary text-white py-3 rounded-lg font-bold uppercase tracking-wide hover:opacity-90 transition">
-                        Submit Request
-                    </button>
-                </div>
-                <!-- Success Message -->
-                <p id="successMsg" class="hidden text-green-600 font-bold text-center md:col-span-2">
-                    ✅ Your request has been submitted. We will contact you shortly.
-                </p>
-            </form>
-
+            <div class="bg-gray-50 border border-gray-100 rounded-3xl p-6 lg:p-10 shadow-sm max-w-7xl mx-auto">
+                <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label class="form-label">Full Name</label>
+                        <input type="text" required placeholder="John Doe" class="form-input">
+                    </div>
+                    <div>
+                        <label class="form-label">Phone</label>
+                        <input type="tel" required placeholder="2547..." class="form-input">
+                    </div>
+                    <div>
+                        <label class="form-label">Email</label>
+                        <input type="email" required placeholder="john@example.com" class="form-input">
+                    </div>
+                    <div>
+                        <label class="form-label">County</label>
+                        <input type="text" required placeholder="Nairobi" class="form-input">
+                    </div>
+                    <div>
+                        <label class="form-label">Nearest Town</label>
+                        <input type="text" required placeholder="Westlands" class="form-input">
+                    </div>
+                    <div>
+                        <label class="form-label">Service Type</label>
+                        <select class="form-input">
+                            <option>WiFi Installation</option>
+                            <option>CCTV Security</option>
+                            <option>Networking Store</option>
+                            <option>Maintenance</option>
+                        </select>
+                    </div>
+                    <div class="lg:col-span-2">
+                        <label class="form-label">How can we help?</label>
+                        <input type="text" placeholder="Brief description of your inquiry" class="form-input">
+                    </div>
+                    <div class="md:col-span-2 lg:col-span-4 mt-2">
+                        <button type="submit"
+                            class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-blue-600 transition-colors uppercase tracking-widest text-sm shadow-lg shadow-primary/20">Send
+                            Message</button>
+                    </div>
+                </form>
+                <p id="contactSuccess" class="hidden text-green-600 font-bold text-center mt-4">✅ Message sent! We'll be
+                    in touch soon.</p>
+            </div>
         </div>
     </main>
+
     <div id="footer-placeholder"></div>
 
+    <script src="utils.js"></script>
+    <script src="cart.js"></script>
     <script>
-        const form = document.getElementById("contactForm");
-        const successMsg = document.getElementById("successMsg");
-
-        form.addEventListener("submit", function (e) {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-
-            // Simulate submission (replace with Firebase later)
-            successMsg.classList.remove("hidden");
-            form.reset();
+            document.getElementById('contactSuccess').classList.remove('hidden');
+            if (window.Cart) window.Cart.notify('Message received!');
+            this.reset();
         });
     </script>
-
 </body>
 
 </html>
