@@ -77,57 +77,82 @@
     </nav>
 
     <main class="flex-1">
-        <section class="py-24 bg-gray-50 dark:bg-dark relative">
+        <section class="py-10 bg-gray-50 dark:bg-dark">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-20" data-aos="fade-up">
-                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-6">Aura <span class="text-primary italic">Security.</span></h1>
-                    <p class="text-secondary max-w-2xl mx-auto font-medium">Protect what matters most with our cutting-edge CCTV solutions. High-resolution, AI-powered, and always on.</p>
+                <div class="mb-8">
+                    <h1 class="text-3xl font-black tracking-tighter uppercase mb-1">Aura <span class="text-primary italic">Security.</span></h1>
+                    <p class="text-secondary text-sm font-medium">Professional CCTV systems — high-resolution, AI-powered, and always on.</p>
                 </div>
 
-                <!-- Categories -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-                    <button onclick="filterCameras('IP Cameras')" class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all group">
-                        <div class="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                        </div>
-                        <h3 class="font-bold text-lg">IP Cameras</h3>
-                    </button>
-                    <button onclick="filterCameras('Analog Cameras')" class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl hover:border-blue-400 border border-transparent transition-all group">
-                        <div class="h-12 w-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
-                        </div>
-                        <h3 class="font-bold text-lg">Analog Cameras</h3>
-                    </button>
-                    <button onclick="filterCameras('Wireless Cameras')" class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl hover:border-purple-400 border border-transparent transition-all group">
-                        <div class="h-12 w-12 rounded-2xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.414 7.929a16 16 0 0121.172 0"/></svg>
-                        </div>
-                        <h3 class="font-bold text-lg">Wireless</h3>
-                    </button>
-                    <button onclick="filterCameras('PTZ Cameras')" class="p-6 bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl hover:border-green-400 border border-transparent transition-all group">
-                        <div class="h-12 w-12 rounded-2xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        </div>
-                        <h3 class="font-bold text-lg">PTZ Cameras</h3>
-                    </button>
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <button onclick="filterCameras('All')" class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">All</button>
+                    <button onclick="filterCameras('IP Cameras')" class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">IP Cameras</button>
+                    <button onclick="filterCameras('Analog Cameras')" class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Analog</button>
+                    <button onclick="filterCameras('Wireless Cameras')" class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Wireless</button>
+                    <button onclick="filterCameras('PTZ Cameras')" class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">PTZ</button>
                 </div>
 
-                <!-- Products -->
-                <div id="camera-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Products Grid -->
+                <div id="camera-list" class="product-grid-layout">
                     <!-- CCTV 1 -->
-                    <div class="camera-item bg-white dark:bg-gray-800 rounded-4xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 group hover:shadow-2xl hover:border-primary transition-all duration-500" data-category="IP Cameras">
-                        <div class="aspect-square rounded-3xl overflow-hidden mb-6 bg-gray-100 dark:bg-gray-900 relative">
-                            <img src="images/cctv-ip.png" alt="CCTV 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute top-4 left-4">
-                                <span class="px-3 py-1 bg-primary text-white text-[10px] font-black uppercase rounded-lg">Best Seller</span>
-                            </div>
+                    <div class="camera-item bg-white dark:bg-gray-800 rounded-2xl p-3 border border-gray-100 dark:border-gray-700 group hover:border-primary transition-all duration-300" data-category="IP Cameras">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-100 dark:bg-gray-900 relative">
+                            <img src="images/cctv-ip.png" alt="4K IP Dome" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-primary text-white text-[9px] font-black uppercase rounded-md">Best Seller</span>
                         </div>
-                        <h3 class="text-xl font-extrabold mb-1">4K IP Dome Camera</h3>
-                        <p class="text-secondary text-sm mb-6">Ultra HD, Night Vision & AI Detection</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-2xl font-black text-primary">KES 12,500</span>
-                            <button data-id="cctv-ip-4k" data-name="4K IP Dome Camera" data-price="12500" data-image="images/cctv-ip.png" class="add-to-cart-btn p-3 bg-gray-100 dark:bg-gray-900 rounded-xl hover:bg-primary hover:text-white transition-all transform hover:rotate-12">
-                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4K IP Dome Camera</h3>
+                        <p class="text-secondary text-[10px] mb-2">Ultra HD, Night Vision & AI Detection</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-primary">KES 12,500</span>
+                            <button data-id="cctv-ip-4k" data-name="4K IP Dome Camera" data-price="12500" data-image="images/cctv-ip.png" class="add-to-cart-btn p-2 bg-gray-100 dark:bg-gray-900 rounded-lg border border-gray-200 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- CCTV 2 -->
+                    <div class="camera-item bg-white dark:bg-gray-800 rounded-2xl p-3 border border-gray-100 dark:border-gray-700 group hover:border-primary transition-all duration-300" data-category="Analog Cameras">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-100 dark:bg-gray-900">
+                            <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=300" alt="Analog" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Analog</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">HD Bullet Camera</h3>
+                        <p class="text-secondary text-[10px] mb-2">1080p outdoor, weatherproof</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-primary">KES 7,500</span>
+                            <button data-id="cctv-bullet" data-name="HD Bullet Camera" data-price="7500" data-image="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=300" class="add-to-cart-btn p-2 bg-gray-100 dark:bg-gray-900 rounded-lg border border-gray-200 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- CCTV 3 -->
+                    <div class="camera-item bg-white dark:bg-gray-800 rounded-2xl p-3 border border-gray-100 dark:border-gray-700 group hover:border-primary transition-all duration-300" data-category="Wireless Cameras">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-100 dark:bg-gray-900">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=300" alt="Wireless" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-purple-600 mb-1 block">Wireless</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">WiFi Smart Camera</h3>
+                        <p class="text-secondary text-[10px] mb-2">2MP, two-way audio, motion alerts</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-primary">KES 9,500</span>
+                            <button data-id="cctv-wifi" data-name="WiFi Smart Camera" data-price="9500" data-image="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=300" class="add-to-cart-btn p-2 bg-gray-100 dark:bg-gray-900 rounded-lg border border-gray-200 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- CCTV 4 -->
+                    <div class="camera-item bg-white dark:bg-gray-800 rounded-2xl p-3 border border-gray-100 dark:border-gray-700 group hover:border-primary transition-all duration-300" data-category="PTZ Cameras">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-100 dark:bg-gray-900">
+                            <img src="https://images.unsplash.com/photo-1580983218765-f663bec07b37?auto=format&fit=crop&q=80&w=300" alt="PTZ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-green-600 mb-1 block">PTZ</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Auto-Track PTZ Cam</h3>
+                        <p class="text-secondary text-[10px] mb-2">360° rotation, 30x optical zoom</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-primary">KES 35,000</span>
+                            <button data-id="cctv-ptz" data-name="Auto-Track PTZ Cam" data-price="35000" data-image="https://images.unsplash.com/photo-1580983218765-f663bec07b37?auto=format&fit=crop&q=80&w=300" class="add-to-cart-btn p-2 bg-gray-100 dark:bg-gray-900 rounded-lg border border-gray-200 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                             </button>
                         </div>
                     </div>
@@ -135,31 +160,31 @@
             </div>
         </section>
 
-        <!-- Gallery / Information -->
-        <section class="py-24 border-t border-gray-100 dark:border-gray-900">
+        <!-- Installation Info -->
+        <section class="py-12 border-t border-gray-100 dark:border-gray-900">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div data-aos="fade-right">
-                        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-8">Professional <span class="text-primary italic">Installation.</span></h2>
-                        <div class="space-y-6">
-                            <div class="flex items-start space-x-4">
-                                <div class="h-6 w-6 mt-1 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h2 class="text-2xl font-black uppercase tracking-tight leading-tight mb-5">Professional <span class="text-primary italic">Installation.</span></h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="h-5 w-5 mt-0.5 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 </div>
-                                <p class="text-secondary leading-relaxed"><span class="font-bold text-dark dark:text-white">Free Site Survey:</span> We assess your property to find the optimal camera placements.</p>
+                                <p class="text-secondary text-sm"><span class="font-bold text-dark dark:text-white">Free Site Survey:</span> We assess your property to find the optimal camera placements.</p>
                             </div>
-                            <div class="flex items-start space-x-4">
-                                <div class="h-6 w-6 mt-1 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <div class="flex items-start gap-3">
+                                <div class="h-5 w-5 mt-0.5 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 </div>
-                                <p class="text-secondary leading-relaxed"><span class="font-bold text-dark dark:text-white">Mobile Monitoring:</span> Access live feeds and recorded footage from your phone 24/7.</p>
+                                <p class="text-secondary text-sm"><span class="font-bold text-dark dark:text-white">Mobile Monitoring:</span> Access live feeds and recorded footage from your phone 24/7.</p>
                             </div>
                         </div>
-                        <a href="services.html" class="mt-10 inline-flex items-center px-10 py-5 bg-dark dark:bg-white text-white dark:text-dark font-black rounded-2xl hover:bg-primary dark:hover:bg-primary transition-all">Book Installation</a>
+                        <a href="services.html" class="mt-6 inline-flex items-center px-6 py-2.5 bg-dark dark:bg-white text-white dark:text-dark text-sm font-bold rounded-xl hover:bg-primary dark:hover:bg-primary transition-all">Book Installation</a>
                     </div>
-                    <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                        <div class="h-64 rounded-3xl overflow-hidden shadow-2xl"><img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover"></div>
-                        <div class="h-64 rounded-3xl overflow-hidden shadow-2xl translate-y-8"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover"></div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="h-44 rounded-2xl overflow-hidden shadow-lg"><img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover"></div>
+                        <div class="h-44 rounded-2xl overflow-hidden shadow-lg mt-6"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover"></div>
                     </div>
                 </div>
             </div>
@@ -201,7 +226,7 @@
     <script type="module">
         import { auth, db } from "./firebase-config.js";
         import { Auth } from "./auth.js";
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 400, once: true });
         document.getElementById('year').textContent = new Date().getFullYear();
 
         window.filterCameras = function(category) {
