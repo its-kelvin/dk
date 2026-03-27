@@ -3,35 +3,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
     highlightActiveLink();
     handleNavbarScroll();
 });
-
-// Theme Management
-function initTheme() {
-    const themeToggle = document.getElementById('themeToggle');
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
-    const body = document.body;
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    if (savedTheme === 'dark') {
-        body.classList.add('dark');
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            const isDark = body.classList.contains('dark');
-            sunIcon.classList.toggle('hidden', !isDark);
-            moonIcon.classList.toggle('hidden', isDark);
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-    }
-}
 
 // Active Link Highlighting
 function highlightActiveLink() {
