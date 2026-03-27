@@ -206,6 +206,7 @@
     <script src="utils.js"></script>
     <script src="cart.js"></script>
     <script type="module">
+        import { collection, addDoc, doc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
         import { auth, db } from "./firebase-config.js";
         import { Auth } from "./auth.js";
         AOS.init({ duration: 400, once: true });
@@ -260,20 +261,98 @@
                 return;
             }
 
+            const customerName = document.getElementById('custName').value;
+            const customerLocation = document.getElementById('custLocation').value;
+            const totalAmount = Cart.getTotal();
+            const cartItems = Cart.items.map(item => ({
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity,
+                image: item.image
+            }));
+
             const modal = document.getElementById('paymentModal');
             const loading = document.getElementById('paymentLoading');
             const success = document.getElementById('paymentSuccess');
 
             modal.classList.remove('opacity-0', 'pointer-events-none');
             modal.children[0].classList.remove('scale-90');
+            success.classList.add('hidden'); // Hide success initially
             loading.classList.remove('hidden');
 
+            try {
+                // 1. Create an order in Firestore with 'pending' status
+                const newOrderRef = await addDoc(collection(db, 'orders'), {
+                    userId: Auth.user.uid,
+                    customerName: customerName,
+                    customerPhone: phone,
+                    deliveryLocation: customerLocation,
+                    items: cartItems,
+                    totalAmount: totalAmount,
+                    status: 'pending',
+                    createdAt: serverTimestamp()
+                });
+                const orderId = newOrderRef.id;
+
+                // 2. Initiate M-Pesa STK Push via your backend
+                const response = await fetch('http://localhost:3000/api/mpesa/stkpush', { // Replace with your actual backend URL
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: phone, amount: totalAmount, orderId: orderId })
+                });
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    Cart.notify('STK Push sent to your phone. Please complete payment.');
+                    // The backend will update the order status to 'paid' on successful callback
+                    // We can now listen for this change in real-time
+
+                    // 3. Listen for real-time updates on this specific order
+                    const unsubscribe = onSnapshot(doc(db, 'orders', orderId), (docSnapshot) => {
+                        if (docSnapshot.exists) {
+                            const orderData = docSnapshot.data();
+                            if (orderData.status === 'paid') {
+                                loading.classList.add('hidden');
+                                success.classList.remove('hidden');
+                                Cart.clearCart();
+                                window.updateSummary();
+                                unsubscribe(); // Stop listening once paid
+                                setTimeout(() => window.location.href = 'dashboard.html', 3000);
+                            } else if (orderData.status === 'failed') {
+                                loading.classList.add('hidden');
+                                Cart.notify(`Payment failed: ${orderData.paymentError || 'Unknown error'}`);
+                                modal.classList.add('opacity-0', 'pointer-events-none'); // Close modal
+                                modal.children[0].classList.add('scale-90');
+                                unsubscribe();
+                            }
+                        }
+                    });
+
+                } else {
+                    Cart.notify(`STK Push failed: ${data.message || 'Unknown error'}`);
+                    modal.classList.add('opacity-0', 'pointer-events-none'); // Close modal
+                    modal.children[0].classList.add('scale-90');
+                    loading.classList.add('hidden');
+                }
+
+            } catch (error) {
+                console.error("Payment initiation error:", error);
+                Cart.notify(`Error initiating payment: ${error.message}`);
+                modal.classList.add('opacity-0', 'pointer-events-none'); // Close modal
+                modal.children[0].classList.add('scale-90');
+                loading.classList.add('hidden');
+            }
+
+            /*
+            // Old simulated payment logic - remove this
             setTimeout(() => {
                 loading.classList.add('hidden');
                 success.classList.remove('hidden');
                 Cart.clearCart();
                 window.updateSummary();
             }, 5000);
+            */
         }
     </script>
 </body>

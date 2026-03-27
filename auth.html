@@ -111,15 +111,30 @@
 
         document.getElementById('authForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            const formData = new FormData(this);
-            const user = {
-                email: formData.get('email'),
-                username: formData.get('fullName') || formData.get('email').split('@')[0],
-                role: 'customer'
-            };
+            const email = this.querySelector('input[name="email"]').value;
+            const password = this.querySelector('input[name="password"]').value;
+            const fullName = this.querySelector('input[name="fullName"]')?.value;
 
-            Auth.saveUser(user);
-            window.location.href = 'dashboard.html';
+            if (isLogin) {
+                Auth.login(email, password)
+                    .then(() => {
+                        window.location.href = 'dashboard.html';
+                    })
+                    .catch(error => {
+                        alert(`Login failed: ${error.message}`);
+                        console.error("Login error:", error);
+                    });
+            } else {
+                if (!fullName) {
+                    alert("Please enter your full name to register.");
+                    return;
+                }
+                Auth.register(email, password, fullName)
+                    .then(() => {
+                        window.location.href = 'dashboard.html';
+                    })
+                    .catch(error => alert(`Registration failed: ${error.message}`));
+            }
         });
     </script>
 </body>

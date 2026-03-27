@@ -2,6 +2,17 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const admin = require('firebase-admin');
+
+// Initialize Firebase Admin using your service account
+const serviceAccount = require('./serviceAccountKey.json');
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://dkweb-c820f-default-rtdb.firebaseio.com"
+});
+
+const db = admin.firestore();
 
 const app = express();
 app.use(express.json());
@@ -59,7 +70,7 @@ app.post('/api/mpesa/stkpush', async (req, res) => {
             PartyA: formattedPhone,
             PartyB: shortcode,
             PhoneNumber: formattedPhone,
-            CallBackURL: callbackUrl,
+            CallBackURL: callbackUrl, // This should be your publicly accessible backend URL
             AccountReference: orderId || 'FortuneDKOrder',
             TransactionDesc: 'FORTUNE DK Payment'
         }, {
@@ -67,7 +78,18 @@ app.post('/api/mpesa/stkpush', async (req, res) => {
         });
 
         res.json({ status: 'success', data: response.data });
+
+        // Store CheckoutRequestID in Firestore for later lookup by callback
+        if (orderId && response.data.CheckoutRequestID) {
+            await db.collection('orders').doc(orderId).update({
+                checkoutRequestID: response.data.CheckoutRequestID,
+                stkPushInitiatedAt: admin.firestore.FieldValue.serverTimestamp(),
+                stkPushResponse: response.data // Store the full response for debugging
+            }).catch(err => console.error('Firestore Update Error (STK Push):', err));
+        }
+
     } catch (error) {
+        // Log the full error response from M-Pesa if available
         console.error('STK Push Error:', error.response?.data || error.message);
         res.status(500).json({ status: 'error', message: 'Failed to initiate STK Push' });
     }
@@ -76,22 +98,34 @@ app.post('/api/mpesa/stkpush', async (req, res) => {
 /**
  * Handle M-Pesa Callback
  */
-app.post('/api/mpesa/callback', (req, res) => {
+app.post('/api/mpesa/callback', async (req, res) => {
     const callbackData = req.body.Body.stkCallback;
     console.log('M-Pesa Callback Received:', JSON.stringify(callbackData, null, 2));
 
-    if (callbackData.ResultCode === 0) {
-        // Payment Success
-        const metadata = callbackData.CallbackMetadata.Item;
-        const amount = metadata.find(i => i.Name === 'Amount').Value;
-        const transactionId = metadata.find(i => i.Name === 'MpesaReceiptNumber').Value;
-        const phone = metadata.find(i => i.Name === 'PhoneNumber').Value;
+    const checkoutRequestID = callbackData.CheckoutRequestID;
 
-        console.log(`Payment Success: ${amount} by ${phone}, TX: ${transactionId}`);
-        // TODO: Update Firebase Firestore order status to 'paid'
+    // Find the order using the CheckoutRequestID
+    const ordersRef = db.collection('orders');
+    const snapshot = await ordersRef.where('checkoutRequestID', '==', checkoutRequestID).limit(1).get();
+
+    if (snapshot.empty) {
+        console.log('No order found for this checkoutRequestID');
+        return res.json({ ResultCode: 1, ResultDesc: 'Order Not Found' });
+    }
+
+    const orderDoc = snapshot.docs[0];
+
+    if (callbackData.ResultCode === 0) {
+        const metadata = callbackData.CallbackMetadata.Item;
+        const transactionId = metadata.find(i => i.Name === 'MpesaReceiptNumber').Value;
+
+        await orderDoc.ref.update({
+            status: 'paid',
+            mpesaReceipt: transactionId,
+            paidAt: admin.firestore.FieldValue.serverTimestamp()
+        });
     } else {
-        // Payment Failed
-        console.log(`Payment Failed: ${callbackData.ResultDesc}`);
+        await orderDoc.ref.update({ status: 'failed', paymentError: callbackData.ResultDesc });
     }
 
     res.json({ ResultCode: 0, ResultDesc: 'Accepted' });

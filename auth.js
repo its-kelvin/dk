@@ -1,31 +1,80 @@
 /**
- * FORTUNE DK - Auth System (Static Simulation with Firebase ready handles)
+ * FORTUNE DK - Auth System (Firebase Implementation)
  */
+import { auth, db } from './firebase-config.js';
+import {
+    onAuthStateChanged, signOut,
+    createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
 export const Auth = {
     user: null,
 
     init() {
-        this.loadUser();
-        this.updateUI();
+        // Listen for real-time auth state changes
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = {
+                    uid: user.uid,
+                    email: user.email,
+                    username: user.displayName || user.email.split('@')[0]
+                };
+                localStorage.setItem('fortune_dk_user', JSON.stringify(this.user));
+            } else {
+                this.user = null;
+                localStorage.removeItem('fortune_dk_user'); // Clear local storage on logout
+            }
+            this.updateUI();
+        });
     },
 
-    loadUser() {
-        const savedUser = localStorage.getItem('fortune_dk_user');
-        this.user = savedUser ? JSON.parse(savedUser) : null;
+    // No longer needed as onAuthStateChanged handles this
+    // loadUser() {
+    //     const savedUser = localStorage.getItem('fortune_dk_user');
+    //     this.user = savedUser ? JSON.parse(savedUser) : null;
+    // },
+
+    async register(email, password, fullName) {
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Update user profile with display name
+            await updateProfile(user, { displayName: fullName });
+
+            // Optionally, save additional user data to Firestore
+            await db.collection('users').doc(user.uid).set({
+                email: user.email,
+                displayName: fullName,
+                createdAt: new Date(),
+                role: 'customer' // Default role
+            });
+
+            console.log("User registered and profile updated:", user);
+            return user;
+        } catch (error) {
+            console.error("Registration Error:", error);
+            throw error; // Re-throw to be handled by UI
+        }
     },
 
-    saveUser(user) {
-        localStorage.setItem('fortune_dk_user', JSON.stringify(user));
-        this.user = user;
-        this.updateUI();
+    async login(email, password) {
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            return userCredential.user;
+        } catch (error) {
+            console.error("Login Error:", error);
+            throw error; // Re-throw to be handled by UI
+        }
     },
 
-    logout() {
-        localStorage.removeItem('fortune_dk_user');
-        this.user = null;
-        this.updateUI();
-        window.location.href = 'index.html';
+    async logout() {
+        try {
+            await signOut(auth);
+            window.location.href = 'index.html';
+        } catch (error) {
+            console.error("Logout Error:", error);
+        }
     },
 
     isLoggedIn() {

@@ -67,8 +67,7 @@ window.toggleProfileDropdown = function () {
 };
 
 window.handleLogout = function () {
-    localStorage.removeItem('fortune_dk_user');
-    window.location.href = 'index.html';
+    Auth.logout(); // Use the Firebase Auth logout function
 };
 
 function initProfileUI() {

@@ -453,7 +453,7 @@
             <!-- ORDERS -->
             <div class="section-view" id="view-orders">
                 <h1 class="text-2xl font-black uppercase tracking-tight mb-5">My Orders</h1>
-                <div
+                <div id="ordersListContainer"
                     class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
                     <table class="w-full text-left">
                         <thead class="bg-gray-50 dark:bg-gray-800">
@@ -472,14 +472,10 @@
                                     Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="ordersTableBody">
                             <tr class="border-t border-gray-100 dark:border-gray-800">
-                                <td class="px-5 py-4 font-bold text-sm">#ORD-1234</td>
-                                <td class="px-5 py-4 text-xs text-secondary hidden sm:table-cell">March 25, 2026</td>
-                                <td class="px-5 py-4 font-black text-sm text-primary">KES 12,500</td>
-                                <td class="px-5 py-4"><span class="badge badge-green">Paid</span></td>
-                                <td class="px-5 py-4 hidden sm:table-cell"><button onclick="switchView('tracking')"
-                                        class="text-[11px] font-bold text-primary hover:underline">Track →</button></td>
+                                <td colspan="5" class="px-5 py-4 text-center text-secondary text-sm">Loading orders...
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -500,56 +496,16 @@
                     </div>
                 </div>
                 <!-- Result -->
-                <div id="trackResult"
+                <div id="trackResult" class="hidden"
                     class="bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-gray-800 p-5 hidden">
                     <div class="flex items-center justify-between mb-4">
                         <div>
                             <p class="text-xs text-secondary font-medium">Order ID</p>
                             <p class="font-black text-base" id="trackId">#ORD-1234</p>
                         </div>
-                        <span class="badge badge-green">Delivered</span>
+                        <span class="badge" id="trackStatusBadge"></span>
                     </div>
-                    <div>
-                        <div class="track-step">
-                            <div>
-                                <div class="track-dot bg-green-500"></div>
-                                <div class="track-line"></div>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold">Order Placed</p>
-                                <p class="text-[11px] text-secondary">March 25, 2026 — 09:14 AM</p>
-                            </div>
-                        </div>
-                        <div class="track-step">
-                            <div>
-                                <div class="track-dot bg-green-500"></div>
-                                <div class="track-line"></div>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold">Payment Confirmed</p>
-                                <p class="text-[11px] text-secondary">March 25, 2026 — 09:20 AM</p>
-                            </div>
-                        </div>
-                        <div class="track-step">
-                            <div>
-                                <div class="track-dot bg-green-500"></div>
-                                <div class="track-line"></div>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold">Processing</p>
-                                <p class="text-[11px] text-secondary">March 25, 2026 — 02:00 PM</p>
-                            </div>
-                        </div>
-                        <div class="track-step">
-                            <div>
-                                <div class="track-dot bg-primary"></div>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold text-primary">Out for Delivery</p>
-                                <p class="text-[11px] text-secondary">March 26, 2026 — 10:30 AM</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="trackStepsContainer"></div>
                 </div>
             </div>
 
@@ -722,6 +678,8 @@
     <script src="utils.js"></script>
     <script src="cart.js"></script>
     <script type="module">
+        import { collection, query, where, orderBy, onSnapshot, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
         import { auth, db } from "./firebase-config.js";
         import { Auth } from "./auth.js";
 
@@ -734,6 +692,10 @@
 
         const dashUser = document.getElementById('dashUser');
         if (dashUser) dashUser.textContent = name;
+
+        // Global variable to store current tracking order listener
+        let currentOrderTrackingUnsubscribe = null;
+        let currentOrdersListUnsubscribe = null;
 
         // Pre-fill settings
         if (document.getElementById('settingName')) document.getElementById('settingName').value = name;
@@ -750,7 +712,71 @@
             const activeLink = document.getElementById('link-' + viewId);
             if (activeLink) activeLink.classList.add('active');
 
+            // Manage Firestore listeners
+            if (currentOrderTrackingUnsubscribe) {
+                currentOrderTrackingUnsubscribe();
+                currentOrderTrackingUnsubscribe = null;
+            }
+            if (currentOrdersListUnsubscribe) {
+                currentOrdersListUnsubscribe();
+                currentOrdersListUnsubscribe = null;
+            }
+            if (viewId === 'orders') fetchAndDisplayOrders();
+
             if (window.innerWidth < 1024) window.closeMenu();
+        };
+
+        async function fetchAndDisplayOrders() {
+            if (!Auth.user) return;
+            const q = query(collection(db, 'orders'), where('userId', '==', Auth.user.uid), orderBy('createdAt', 'desc'));
+
+            currentOrdersListUnsubscribe = onSnapshot(q, (snapshot) => {
+                const tbody = document.getElementById('ordersTableBody');
+                if (snapshot.empty) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="px-5 py-4 text-center text-secondary">No orders found.</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = snapshot.docs.map(doc => {
+                    const data = doc.data();
+                    const date = data.createdAt?.toDate().toLocaleDateString() || 'Pending';
+                    const statusClass = data.status === 'paid' ? 'badge-green' : 'badge-yellow';
+                    return `
+                        <tr class="border-t border-gray-100 dark:border-gray-800">
+                            <td class="px-5 py-4 font-bold text-sm">#${doc.id.substring(0, 8)}</td>
+                            <td class="px-5 py-4 text-xs text-secondary hidden sm:table-cell">${date}</td>
+                            <td class="px-5 py-4 font-black text-sm text-primary">KES ${data.totalAmount.toLocaleString()}</td>
+                            <td class="px-5 py-4"><span class="badge ${statusClass}">${data.status}</span></td>
+                            <td class="px-5 py-4 hidden sm:table-cell">
+                                <button onclick="switchView('tracking'); document.getElementById('trackInput').value='${doc.id}'; window.trackOrder();"
+                                    class="text-[11px] font-bold text-primary hover:underline">Track →</button>
+                            </td>
+                        </tr>`;
+                }).join('');
+            });
+        }
+
+        window.trackOrder = async function () {
+            const val = document.getElementById('trackInput').value.trim();
+            if (!val) return;
+
+            const docRef = doc(db, 'orders', val);
+            if (currentOrderTrackingUnsubscribe) currentOrderTrackingUnsubscribe();
+
+            currentOrderTrackingUnsubscribe = onSnapshot(docRef, (docSnap) => {
+                const resultDiv = document.getElementById('trackResult');
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    document.getElementById('trackId').textContent = '#' + docSnap.id.substring(0, 12);
+                    const statusBadge = resultDiv.querySelector('.badge') || document.getElementById('trackStatusBadge');
+                    if (statusBadge) {
+                        statusBadge.textContent = data.status;
+                        statusBadge.className = `badge ${data.status === 'paid' ? 'badge-green' : 'badge-yellow'}`;
+                    }
+                    resultDiv.classList.remove('hidden');
+                } else {
+                    alert("Order not found. Please check the ID.");
+                }
+            });
         };
 
         // DASHBOARD SPECIFIC MENU OVERRIDES
