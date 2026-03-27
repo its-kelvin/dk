@@ -730,8 +730,9 @@
 
         const user = Auth.user;
         const name = user?.username || user?.email?.split('@')[0] || 'User';
-        document.getElementById('dashUser').textContent = name;
-        document.getElementById('avatarInitial').textContent = name.charAt(0).toUpperCase();
+
+        const dashUser = document.getElementById('dashUser');
+        if (dashUser) dashUser.textContent = name;
 
         // Pre-fill settings
         if (document.getElementById('settingName')) document.getElementById('settingName').value = name;
@@ -780,20 +781,6 @@
             Auth.logout && Auth.logout();
             window.location.href = 'auth.html';
         };
-
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const sunIcon = document.getElementById('sunIcon');
-        const moonIcon = document.getElementById('moonIcon');
-        const isDark = localStorage.getItem('theme') === 'dark' || document.documentElement.classList.contains('dark');
-        if (isDark) { document.documentElement.classList.add('dark'); sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); }
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            const dark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('theme', dark ? 'dark' : 'light');
-            sunIcon.classList.toggle('hidden', !dark);
-            moonIcon.classList.toggle('hidden', dark);
-        });
     </script>
 </body>
 
