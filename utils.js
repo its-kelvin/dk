@@ -3,8 +3,24 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    highlightActiveLink();
+    loadHeader();
 });
+
+async function loadHeader() {
+    const placeholder = document.getElementById('header-placeholder');
+    if (!placeholder) return;
+
+    try {
+        const response = await fetch('header.html');
+        const html = await response.text();
+        placeholder.innerHTML = html;
+        highlightActiveLink();
+        if (window.Cart) window.Cart.updateBadge();
+        if (window.Auth) window.Auth.updateUI();
+    } catch (error) {
+        console.error('Error loading header:', error);
+    }
+}
 
 // Global Navigation Handlers
 window.toggleMenu = function () {
