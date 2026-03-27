@@ -200,10 +200,35 @@
 
 <body class="bg-gray-50 dark:bg-[#0f172a] text-[#0f172a] dark:text-white min-h-screen">
 
-    <!-- Top Navbar -->
-    <nav class="sticky top-0 z-30 w-full glass-header h-14 flex items-center">
-        <div class="w-full flex items-center justify-between px-4 sm:px-6">
-            <div class="flex items-center gap-3">
+    <!-- Mobile Navigation Components -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
+    <div class="mobile-sidebar lg:hidden" id="mobileSidebar">
+        <div class="flex items-center justify-between mb-10">
+            <span class="text-xl font-black tracking-tighter">AURA NETS</span>
+            <button onclick="closeMenu()" class="p-2 text-secondary">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 18L18 6M6 6l12 12" stroke-width="2" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6">
+            <a href="index.html" class="text-lg font-bold text-dark">Home</a>
+            <a href="wifi.html" class="text-lg font-bold text-dark">WiFi Solutions</a>
+            <a href="cctv.html" class="text-lg font-bold text-dark">Smart CCTV</a>
+            <a href="devices.html" class="text-lg font-bold text-dark">Tech Store</a>
+            <a href="services.html" class="text-lg font-bold text-dark">Professional Services</a>
+            <a href="dashboard.html" class="text-lg font-bold text-primary">Sales Portal</a>
+        </nav>
+    </div>
+
+    <nav class="sticky top-0 z-50 w-full bg-white border-b border-gray-100 h-16 flex items-center">
+        <div class="w-full flex items-center justify-between px-4 lg:px-8">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMenu()" class="lg:hidden p-2 -ml-2">
+                    <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2.5" stroke-linecap="round" />
+                    </svg>
+                </button>
                 <a href="index.html" class="flex items-center gap-2">
                     <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.5">
@@ -212,15 +237,21 @@
                         <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
                         <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
                     </svg>
-                    <span class="text-lg font-black tracking-tighter">AURA NETS</span>
+                    <span class="text-xl font-black tracking-tighter hidden sm:block">AURA NETS</span>
                 </a>
             </div>
-            <!-- Mobile Dashboard Nav Links -->
-            <div class="flex lg:hidden items-center gap-4 overflow-x-auto px-2 py-1">
-                <button onclick="switchView('home')" class="text-xs font-bold text-secondary">Home</button>
-                <button onclick="switchView('services')" class="text-xs font-bold text-secondary">Services</button>
-                <button onclick="switchView('products')" class="text-xs font-bold text-secondary">Products</button>
-                <button onclick="switchView('orders')" class="text-xs font-bold text-secondary">Orders</button>
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="index.html"
+                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Home</a>
+                <a href="wifi.html"
+                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">WiFi</a>
+                <a href="cctv.html"
+                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">CCTV</a>
+                <a href="devices.html"
+                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Store</a>
+                <a href="services.html"
+                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Services</a>
             </div>
             <div class="flex items-center gap-2">
                 <button onclick="switchView('cart')"
@@ -331,29 +362,28 @@
             <!-- HOME HUB -->
             <div class="section-view active" id="view-home">
                 <div class="mb-6">
-                    <h1 class="text-2xl font-black uppercase tracking-tight">Welcome, <span id="dashUser"
-                            class="text-primary">User</span>!</h1>
-                    <p class="text-secondary text-sm mt-1">Your Aura Networks command centre.</p>
+                    <h1 class="text-3xl font-black uppercase tracking-tight">Sales <span
+                            class="text-primary italic">Overview.</span></h1>
+                    <p class="text-secondary text-sm mt-1">Explore our latest high-performance tech solutions.</p>
                 </div>
-                <!-- Quick Stats -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-                    <div class="stat-card">
-                        <p class="text-[10px] font-bold text-secondary uppercase tracking-wide mb-1">Active Plan</p>
-                        <p class="text-lg font-black leading-none">25 Mbps</p>
+
+                <!-- Promo Banner -->
+                <div
+                    class="w-full h-48 rounded-3xl bg-gradient-to-r from-primary to-blue-400 p-8 flex flex-col justify-center mb-10 text-white relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-black mb-2 uppercase italic">Flash Sale: Fiber Upgrade</h2>
+                        <p class="text-sm opacity-90 mb-4 max-w-xs">Double your speed for the same price. Limited time
+                            offer for existing customers.</p>
+                        <a href="wifi.html"
+                            class="px-6 py-2 bg-white text-primary text-xs font-black rounded-xl uppercase tracking-widest">Upgrade
+                            Now</a>
                     </div>
-                    <div class="stat-card">
-                        <p class="text-[10px] font-bold text-secondary uppercase tracking-wide mb-1">Balance Due</p>
-                        <p class="text-lg font-black leading-none">KES 0</p>
-                    </div>
-                    <div class="stat-card">
-                        <p class="text-[10px] font-bold text-secondary uppercase tracking-wide mb-1">Orders</p>
-                        <p class="text-lg font-black leading-none">1</p>
-                    </div>
-                    <div class="stat-card">
-                        <p class="text-[10px] font-bold text-secondary uppercase tracking-wide mb-1">Status</p>
-                        <span class="badge badge-green">Active</span>
-                    </div>
+                    <svg class="absolute right-[-20px] top-[-20px] w-64 h-64 opacity-10 group-hover:scale-110 transition-transform"
+                        fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
                 </div>
+
                 <!-- Nav Hub Grid -->
                 <h2 class="text-xs font-black uppercase tracking-widest text-secondary mb-3">Quick Access</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">

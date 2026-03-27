@@ -106,21 +106,38 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
-.nav-container {
+/* Slide-in Mobile Sidebar */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0.5rem 0;
+    flex-direction: column;
 }
 
-@media (min-width: 1024px) {
-    .nav-container {
-        gap: 2.5rem;
-        flex-wrap: nowrap;
-        padding: 0;
-    }
+.mobile-sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    display: none;
+}
+
+.sidebar-overlay.active {
+    display: block;
 }
 
 .form-input:focus {
