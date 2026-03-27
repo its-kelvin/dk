@@ -3,22 +3,34 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadHeader();
+    loadComponents();
 });
 
-async function loadHeader() {
-    const placeholder = document.getElementById('header-placeholder');
-    if (!placeholder) return;
+async function loadComponents() {
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    const footerPlaceholder = document.getElementById('footer-placeholder');
 
-    try {
-        const response = await fetch('header.html');
-        const html = await response.text();
-        placeholder.innerHTML = html;
-        highlightActiveLink();
-        if (window.Cart) window.Cart.updateBadge();
-        if (window.Auth) window.Auth.updateUI();
-    } catch (error) {
-        console.error('Error loading header:', error);
+    if (headerPlaceholder) {
+        try {
+            const response = await fetch('header.html');
+            headerPlaceholder.innerHTML = await response.text();
+            highlightActiveLink();
+            if (window.Cart) window.Cart.updateBadge();
+            if (window.Auth) window.Auth.updateUI();
+        } catch (error) {
+            console.error('Error loading header:', error);
+        }
+    }
+
+    if (footerPlaceholder) {
+        try {
+            const response = await fetch('footer.html');
+            footerPlaceholder.innerHTML = await response.text();
+            const yr = document.getElementById('year');
+            if (yr) yr.textContent = new Date().getFullYear();
+        } catch (error) {
+            console.error('Error loading footer:', error);
+        }
     }
 }
 
