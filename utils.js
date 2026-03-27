@@ -1,5 +1,5 @@
 /**
- * Aura Networks - Utility Functions
+ * FORTUNE DK - Utility Functions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -56,7 +56,7 @@ window.closeMenu = function () {
 // Profile Dropdown Handlers
 window.toggleProfileDropdown = function () {
     const dropdown = document.getElementById('profile-dropdown');
-    const user = localStorage.getItem('aura_user');
+    const user = localStorage.getItem('fortune_dk_user');
 
     if (!user) {
         window.location.href = 'auth.html';
@@ -67,12 +67,12 @@ window.toggleProfileDropdown = function () {
 };
 
 window.handleLogout = function () {
-    localStorage.removeItem('aura_user');
+    localStorage.removeItem('fortune_dk_user');
     window.location.href = 'index.html';
 };
 
 function initProfileUI() {
-    const user = localStorage.getItem('aura_user');
+    const user = localStorage.getItem('fortune_dk_user');
     const profileContainer = document.getElementById('profile-container');
     if (user && profileContainer) {
         // We could change the icon to an avatar initial here if desired

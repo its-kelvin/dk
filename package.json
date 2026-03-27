@@ -1,7 +1,7 @@
 {
-  "name": "aura-nets-mpesa-server",
+  "name": "fortune-dk-mpesa-server",
   "version": "1.0.0",
-  "description": "M-Pesa STK Push Integration for Aura Networks",
+  "description": "M-Pesa STK Push Integration for FORTUNE DK",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

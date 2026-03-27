@@ -60,8 +60,8 @@ app.post('/api/mpesa/stkpush', async (req, res) => {
             PartyB: shortcode,
             PhoneNumber: formattedPhone,
             CallBackURL: callbackUrl,
-            AccountReference: orderId || 'AuraNetsOrder',
-            TransactionDesc: 'Aura Networks Payment'
+            AccountReference: orderId || 'FortuneDKOrder',
+            TransactionDesc: 'FORTUNE DK Payment'
         }, {
             headers: { Authorization: `Bearer ${token}` }
         });
@@ -98,5 +98,5 @@ app.post('/api/mpesa/callback', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Aura M-Pesa Server running on port ${PORT}`);
+    console.log(`FORTUNE DK M-Pesa Server running on port ${PORT}`);
 });

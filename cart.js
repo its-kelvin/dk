@@ -1,5 +1,5 @@
 /**
- * Aura Networks - Cart System
+ * FORTUNE DK - Cart System
  */
 
 const Cart = {
@@ -12,12 +12,12 @@ const Cart = {
     },
 
     loadCart() {
-        const savedCart = localStorage.getItem('aura_cart');
+        const savedCart = localStorage.getItem('fortune_dk_cart');
         this.items = savedCart ? JSON.parse(savedCart) : [];
     },
 
     saveCart() {
-        localStorage.setItem('aura_cart', JSON.stringify(this.items));
+        localStorage.setItem('fortune_dk_cart', JSON.stringify(this.items));
         this.updateBadge();
     },
 

@@ -1,5 +1,5 @@
 /**
- * Aura Networks - Auth System (Static Simulation with Firebase ready handles)
+ * FORTUNE DK - Auth System (Static Simulation with Firebase ready handles)
  */
 
 export const Auth = {
@@ -11,18 +11,18 @@ export const Auth = {
     },
 
     loadUser() {
-        const savedUser = localStorage.getItem('aura_user');
+        const savedUser = localStorage.getItem('fortune_dk_user');
         this.user = savedUser ? JSON.parse(savedUser) : null;
     },
 
     saveUser(user) {
-        localStorage.setItem('aura_user', JSON.stringify(user));
+        localStorage.setItem('fortune_dk_user', JSON.stringify(user));
         this.user = user;
         this.updateUI();
     },
 
     logout() {
-        localStorage.removeItem('aura_user');
+        localStorage.removeItem('fortune_dk_user');
         this.user = null;
         this.updateUI();
         window.location.href = 'index.html';
