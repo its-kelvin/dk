@@ -1,0 +1,13 @@
+{
+    "hosting": {
+        "site": "testing-web-dk",
+        "public": "public",
+        "cleanUrls": true,
+        "trailingSlash": false,
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
+}

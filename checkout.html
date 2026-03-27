@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout | Aura Networks</title>
+    <title>Checkout | FORTUNE DK</title>
     <link rel="stylesheet" href="main.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -26,7 +26,7 @@
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
     <div class="mobile-sidebar lg:hidden" id="mobileSidebar">
         <div class="flex items-center justify-between mb-10">
-            <span class="text-xl font-black tracking-tighter">AURA NETS</span>
+            <span class="text-xl font-black tracking-tighter">FORTUNE DK</span>
             <button onclick="closeMenu()" class="p-2 text-secondary">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" />
@@ -39,7 +39,7 @@
             <a href="cctv.html" onclick="closeMenu()" class="text-lg font-bold text-dark">Smart CCTV</a>
             <a href="devices.html" onclick="closeMenu()" class="text-lg font-bold text-dark">Tech Store</a>
             <a href="services.html" onclick="closeMenu()" class="text-lg font-bold text-dark">Professional Services</a>
-            <a href="dashboard.html" onclick="closeMenu()" class="text-lg font-bold text-primary">Portal</a>
+            <a href="dashboard.html" onclick="closeMenu()" class="text-lg font-bold text-primary">account?>
         </nav>
     </div>
 
@@ -65,7 +65,7 @@
                         </svg>
                     </div>
                     <div class="hidden sm:flex flex-col">
-                        <span class="text-2xl font-black tracking-tighter leading-none">AURA NETS</span>
+                        <span class="text-2xl font-black tracking-tighter leading-none">FORTUNE DK</span>
                         <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary/80">Connect
                             Fast</span>
                     </div>
@@ -79,7 +79,7 @@
                 <a href="devices.html" class="nav-link text-sm font-bold uppercase tracking-wider">Store</a>
                 <a href="services.html" class="nav-link text-sm font-bold uppercase tracking-wider">Services</a>
                 <a href="dashboard.html"
-                    class="nav-link text-sm font-bold uppercase tracking-wider text-primary">Portal</a>
+                    class="nav-link text-sm font-bold uppercase tracking-wider text-primary">Account</a>
             </div>
         </div>
         </div>
@@ -100,7 +100,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="form-label">Full Name</label>
-                                <input type="text" id="custName" required placeholder="John Doe" class="form-input">
+                                <input type="text" id="custName" required placeholder="Kelvin K..." class="form-input">
                             </div>
                             <div>
                                 <label class="form-label">Phone for M-Pesa</label>
@@ -153,10 +153,7 @@
                                 <span>Subtotal</span>
                                 <span id="summarySubtotal">KES 0</span>
                             </div>
-                            <div class="flex justify-between text-secondary font-semibold text-xs">
-                                <span>Installation</span>
-                                <span id="summaryShipping">KES 0</span>
-                            </div>
+
                             <div class="flex justify-between font-black text-base border-t border-gray-100 pt-2">
                                 <span>Total</span>
                                 <span id="summaryTotal" class="text-primary">KES 0</span>
@@ -224,15 +221,26 @@
             }
 
             list.innerHTML = Cart.items.map(item => `
-                <div class="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-dark rounded-2xl">
+                <div class="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-dark rounded-2xl relative group">
                     <div class="h-12 w-12 rounded-xl overflow-hidden bg-white shrink-0">
                         <img src="${item.image}" class="w-full h-full object-cover">
                     </div>
                     <div class="flex-1">
                         <h4 class="text-xs font-black truncate">${item.name}</h4>
-                        <p class="text-[10px] text-secondary font-bold">Qty: ${item.quantity}</p>
+                        <p class="text-[10px] text-secondary font-bold">Unit: KES ${item.price.toLocaleString()}</p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <button onclick="Cart.updateQuantity('${item.id}', ${item.quantity - 1}); window.updateSummary();" 
+                                    class="w-5 h-5 flex items-center justify-center bg-white border border-gray-200 rounded-md text-xs hover:border-primary">-</button>
+                            <span class="text-[10px] font-black">${item.quantity}</span>
+                            <button onclick="Cart.updateQuantity('${item.id}', ${item.quantity + 1}); window.updateSummary();" 
+                                    class="w-5 h-5 flex items-center justify-center bg-white border border-gray-200 rounded-md text-xs hover:border-primary">+</button>
+                        </div>
                     </div>
-                    <span class="text-xs font-black">KES ${(item.price * item.quantity).toLocaleString()}</span>
+                    <div class="text-right">
+                        <span class="text-xs font-black block">KES ${(item.price * item.quantity).toLocaleString()}</span>
+                        <button onclick="Cart.removeItem('${item.id}'); window.updateSummary();" 
+                                class="text-[9px] text-red-500 font-bold uppercase hover:underline">Remove</button>
+                    </div>
                 </div>
             `).join('');
 
@@ -296,7 +304,11 @@
                 const orderId = newOrderRef.id;
 
                 // 2. Initiate M-Pesa STK Push via your backend
-                const response = await fetch('http://localhost:3000/api/mpesa/stkpush', { // Replace with your actual backend URL
+                // When you deploy your index.js to Render/Railway, replace the URL below
+                const PROD_API_URL = 'https://fortune-dk-api.onrender.com';
+                const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:3000' : PROD_API_URL;
+
+                const response = await fetch(`${API_BASE}/api/mpesa/stkpush`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ phone: phone, amount: totalAmount, orderId: orderId })

@@ -6,6 +6,7 @@ import {
     onAuthStateChanged, signOut,
     createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile
 } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 export const Auth = {
     user: null,
@@ -43,10 +44,10 @@ export const Auth = {
             await updateProfile(user, { displayName: fullName });
 
             // Optionally, save additional user data to Firestore
-            await db.collection('users').doc(user.uid).set({
+            await setDoc(doc(db, 'users', user.uid), {
                 email: user.email,
                 displayName: fullName,
-                createdAt: new Date(),
+                createdAt: serverTimestamp(),
                 role: 'customer' // Default role
             });
 
