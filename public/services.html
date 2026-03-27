@@ -107,7 +107,7 @@
                                 </div>
                                 <div>
                                     <label class="form-label">Full Name</label>
-                                    <input type="text" required placeholder="John Doe" class="form-input">
+                                    <input type="text" required placeholder="Kelvin K...." class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">Phone</label>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div>
                                     <label class="form-label">Email</label>
-                                    <input type="email" required placeholder="john@example.com" class="form-input">
+                                    <input type="email" required placeholder="kelvin@example.com" class="form-input">
                                 </div>
                                 <div>
                                     <label class="form-label">County</label>
@@ -158,23 +158,71 @@
     <script src="utils.js"></script>
     <script src="cart.js"></script>
     <script type="module">
+        import AOS from 'aos';
         import { auth, db } from "./firebase-config.js";
         import { Auth } from "./auth.js";
-        AOS.init({ duration: 400, once: true });
-        document.getElementById('year').textContent = new Date().getFullYear();
 
-        window.scrollToForm = function (service) {
-            document.getElementById('targetService').value = service;
-            document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // 1. Initialize AOS (Animations)
+        AOS.init({ duration: 400, once: true });
+
+        // 2. Set Footer Year (With safety check to prevent script crashes)
+        const yearEl = document.getElementById('year');
+        if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+        }
+
+        /**
+         * Global function to handle button clicks from the Service cards.
+         * Updates the form and scrolls the user down.
+         */
+        window.scrollToForm = function (serviceName) {
+            const targetInput = document.getElementById('targetService');
+            const formSection = document.getElementById('booking-form');
+
+            // Update the "Service Target" read-only field
+            if (targetInput) {
+                targetInput.value = serviceName;
+                // Add a brief highlight to show it changed
+                targetInput.classList.add('ring-2', 'ring-primary/30');
+                setTimeout(() => targetInput.classList.remove('ring-2', 'ring-primary/30'), 1500);
+            }
+
+            // Smooth scroll to the form
+            if (formSection) {
+                formSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // Auto-focus the Full Name field after the scroll finishes
+                const nameField = formSection.querySelector('input[placeholder="John Doe"]');
+                if (nameField) {
+                    setTimeout(() => nameField.focus(), 800);
+                }
+            }
         };
 
-        document.getElementById('techForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (window.Cart) {
-                window.Cart.notify('Booking scheduled! Our team will call you.');
+        /**
+         * Form Submission Logic
+         */
+        const techForm = document.getElementById('techForm');
+        if (techForm) {
+            techForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Check if cart.js utility is available for notifications
+                if (window.Cart && typeof window.Cart.notify === 'function') {
+                    window.Cart.notify('Booking scheduled! Our team will call you.');
+                } else {
+                    alert('Success! Your request has been sent.');
+                }
+
+                // Reset the form but keep the service name if they want to book another
+                const currentService = document.getElementById('targetService').value;
                 this.reset();
-            }
-        });
+                document.getElementById('targetService').value = currentService;
+            });
+        }
     </script>
 </body>
 

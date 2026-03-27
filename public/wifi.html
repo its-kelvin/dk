@@ -43,8 +43,17 @@
                         Business</span>
                     <h1 class="text-3xl font-black tracking-tighter uppercase leading-none mb-1">Next-Gen <span
                             class="text-primary italic">WiFi.</span></h1>
-                    <p class="text-secondary text-sm font-medium">Blazing fast speeds, unlimited data, and 99.9% uptime.
-                        Choose the plan that fits your lifestyle.</p>
+                    <p class="text-secondary text-sm font-medium">We provide fast, reliable, and secure WiFi connections
+                        designed to meet everyday internet needs. Our service ensures smooth browsing, streaming,
+                        learning, and business operations with minimal interruptions.</p>
+                    <h2 class="text-2xl font-black uppercase tracking-tight mb-6 border-l-4 border-primary pl-4">
+                        OUR WIFI <span class="text-primary">SOLUTIONS</span></h2>
+                    <p class="text-secondary text-sm font-medium">Home WiFi: Fast and stable internet for streaming,
+                        gaming, online classes, and daily use.
+                        School WiFi: Reliable connectivity for e-learning, research, and digital classrooms.
+                        Organizational WiFi: Secure and efficient internet for offices, institutions, and NGOs.
+                        Business WiFi: High-performance internet with strong speeds and low downtime for business
+                        operations..</p>
                 </div>
 
                 <!-- Hotspot Packages Section -->
@@ -92,8 +101,7 @@
                     <!-- Right: Pricing Panel -->
                     <div class="bg-gray-50 dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-sm"
                         data-aos="fade-left">
-                        <h3 class="text-xl font-black mb-8 uppercase tracking-tight">Hotspot Packages <span
-                                class="text-primary">(KSh)</span></h3>
+                        <h3 class="text-xl font-black mb-8 uppercase tracking-tight">Hotspot Packages</h3>
 
                         <!-- Single Device -->
                         <div class="mb-10">
@@ -378,7 +386,7 @@
                                 </div>
                                 <div>
                                     <label class="form-label">Full Name</label>
-                                    <input type="text" name="full_name" required placeholder="John Doe"
+                                    <input type="text" name="full_name" required placeholder="Kelvin K..."
                                         class="form-input">
                                 </div>
                                 <div>
@@ -387,7 +395,7 @@
                                 </div>
                                 <div>
                                     <label class="form-label">Email Address</label>
-                                    <input type="email" name="email" required placeholder="john@example.com"
+                                    <input type="email" name="email" required placeholder="Kelvin@example.com"
                                         class="form-input">
                                 </div>
                                 <div>
@@ -427,29 +435,35 @@
 
     <div id="footer-placeholder"></div>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="utils.js"></script>
     <script src="cart.js"></script>
     <script type="module">
         import { auth, db } from "./firebase-config.js";
         import { Auth } from "./auth.js";
-        AOS.init({ duration: 400, once: true });
-        document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Initialize AOS and Footer Year
+        AOS.init({ duration: 400, once: true });
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        /**
+         * Handles package selection, updates the form, and scrolls to the booking section.
+         */
         window.scrollToBooking = function (packageName) {
             const packageField = document.getElementById('selected_package');
             const serviceTypeField = document.getElementById('service_type');
             const bookingSection = document.getElementById('booking-section');
 
+            // 1. Update the hidden/visible package input
             if (packageField) {
                 packageField.value = packageName;
-                // Add a small highlight effect
+                // Visual feedback highlight
                 packageField.classList.add('ring-2', 'ring-primary/50');
                 setTimeout(() => packageField.classList.remove('ring-2', 'ring-primary/50'), 2000);
             }
 
-            // Smart-select the service type based on the package name
+            // 2. Smart-select the service type based on package keywords
             if (serviceTypeField) {
                 const name = packageName.toLowerCase();
                 if (name.includes('business')) {
@@ -461,28 +475,46 @@
                 }
             }
 
+            // 3. Scroll to the form and focus the first input
             if (bookingSection) {
                 bookingSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // Focus the first meaningful input
+
                 const nameInput = bookingSection.querySelector('input[name="full_name"]');
-                if (nameInput) setTimeout(() => nameInput.focus(), 800);
+                if (nameInput) {
+                    // Delay focus slightly to allow smooth scroll to finish
+                    setTimeout(() => nameInput.focus(), 800);
+                }
             }
 
-            if (window.Cart) {
-                window.Cart.notify(`Booking for ${packageName} selected`);
+            // 4. Cart Notification (Optional UI feedback)
+            if (window.Cart && typeof window.Cart.notify === 'function') {
+                window.Cart.notify(`Selected: ${packageName}`);
             }
         };
 
-        document.getElementById('serviceForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (window.Cart) {
-                window.Cart.notify('Validating your area...');
-                setTimeout(() => {
-                    window.Cart.notify('Success: Technician will contact you soon!');
-                    this.reset();
-                }, 1500);
-            }
-        });
+        /**
+         * Form Submission Handler
+         */
+        const serviceForm = document.getElementById('serviceForm');
+        if (serviceForm) {
+            serviceForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (window.Cart && typeof window.Cart.notify === 'function') {
+                    window.Cart.notify('Validating your location...');
+
+                    // Simulate processing (Replace with your actual Firebase/API logic)
+                    setTimeout(() => {
+                        window.Cart.notify('Success: A technician will contact you shortly!');
+                        serviceForm.reset();
+                    }, 1500);
+                } else {
+                    // Fallback if Cart utility is not loaded
+                    alert('Request sent successfully!');
+                    serviceForm.reset();
+                }
+            });
+        }
     </script>
 </body>
 
