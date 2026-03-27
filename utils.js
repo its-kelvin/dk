@@ -20,18 +20,6 @@ function highlightActiveLink() {
     });
 }
 
-// Navbar Scroll Effect
-function handleNavbarScroll() {
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('shadow-lg', 'bg-white/90', 'dark:bg-dark/90');
-        } else {
-            navbar.classList.remove('shadow-lg', 'bg-white/90', 'dark:bg-dark/90');
-        }
-    });
-}
-
 // helper to format currency
 function formatCurrency(amount) {
     return new Intl.NumberFormat('en-KE', {

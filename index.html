@@ -35,11 +35,11 @@
     </script>
 </head>
 
-<body
-    class="bg-white text-dark dark:bg-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
+<body class="bg-white text-dark min-h-screen flex flex-col selection:bg-primary/20">
     <!-- Navbar -->
-    <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header transition-all duration-300">
-        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header py-4 lg:py-0">
+        <div
+            class="mx-auto flex flex-col lg:flex-row lg:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
             <a href="index.html" class="flex items-center space-x-3 group">
                 <div class="relative">
                     <div
@@ -59,7 +59,7 @@
                 </div>
             </a>
 
-            <div class="nav-container items-center">
+            <div class="nav-container">
                 <a href="index.html"
                     class="nav-link text-sm font-semibold hover:text-primary transition-colors">Home</a>
                 <a href="wifi.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">WiFi</a>
@@ -82,16 +82,6 @@
                     <span id="cartCount"
                         class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white hidden">0</span>
                 </a>
-
-                <div class="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2 hidden sm:block"></div>
-
-                <div id="authLinks" class="flex items-center space-x-3">
-                    <!-- Dynamic Auth content here -->
-                    <a href="auth.html"
-                        class="hidden sm:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary/25">
-                        Login
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
