@@ -59,7 +59,7 @@
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center space-x-10">
+            <div class="nav-container items-center">
                 <a href="index.html"
                     class="nav-link text-sm font-semibold hover:text-primary transition-colors">Home</a>
                 <a href="wifi.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">WiFi</a>
@@ -72,39 +72,7 @@
                     class="nav-link text-sm font-semibold hover:text-primary transition-colors">Dashboard</a>
             </div>
 
-            <!-- Mobile Menu Overlay -->
-            <div id="mobileMenuOverlay" class="mobile-menu-overlay lg:hidden">
-                <button onclick="closeMobileMenu()" class="absolute top-6 right-6 p-2 text-dark">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-                <div class="flex flex-col items-center space-y-8">
-                    <a href="index.html" onclick="closeMobileMenu()"
-                        class="text-2xl font-black text-dark hover:text-primary transition-colors">Home</a>
-                    <a href="wifi.html" onclick="closeMobileMenu()"
-                        class="text-2xl font-black text-dark hover:text-primary transition-colors">WiFi</a>
-                    <a href="cctv.html" onclick="closeMobileMenu()"
-                        class="text-2xl font-black text-dark hover:text-primary transition-colors">CCTV</a>
-                    <a href="devices.html" onclick="closeMobileMenu()"
-                        class="text-2xl font-black text-dark hover:text-primary transition-colors">Devices</a>
-                    <a href="services.html" onclick="closeMobileMenu()"
-                        class="text-2xl font-black text-dark hover:text-primary transition-colors">Services</a>
-                    <a href="dashboard.html" onclick="closeMobileMenu()"
-                        class="text-2xl font-black text-dark hover:text-primary transition-colors">Dashboard</a>
-                </div>
-            </div>
-
             <div class="flex items-center space-x-3">
-                <button onclick="toggleMobileMenu()"
-                    class="lg:hidden p-2.5 rounded-xl hover:bg-gray-100 transition-all">
-                    <svg class="h-6 w-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-
                 <a href="checkout.html" class="group relative p-2.5 rounded-xl hover:bg-gray-100 transition-all">
                     <svg class="h-6 w-6 text-secondary group-hover:text-primary transition-colors" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
@@ -330,8 +298,8 @@
     <!-- Footer -->
     <footer class="w-full border-t border-gray-100 dark:border-gray-900 bg-gray-50/50 dark:bg-dark py-20 mt-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-                <div class="sm:col-span-2 lg:col-span-2">
+            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+                <div class="col-span-2 lg:col-span-2">
                     <a href="index.html" class="flex items-center space-x-3 mb-8">
                         <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5">

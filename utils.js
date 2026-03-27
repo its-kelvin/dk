@@ -40,14 +40,3 @@ function formatCurrency(amount) {
         minimumFractionDigits: 0
     }).format(amount);
 }
-
-// Mobile Menu Toggle
-window.toggleMobileMenu = function () {
-    const menu = document.getElementById('mobileMenuOverlay');
-    if (menu) menu.classList.toggle('active');
-};
-
-window.closeMobileMenu = function () {
-    const menu = document.getElementById('mobileMenuOverlay');
-    if (menu) menu.classList.remove('active');
-};
