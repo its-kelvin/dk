@@ -15,8 +15,8 @@ async function loadComponents() {
             const response = await fetch('header.html');
             headerPlaceholder.innerHTML = await response.text();
             highlightActiveLink();
+            initProfileUI();
             if (window.Cart) window.Cart.updateBadge();
-            if (window.Auth) window.Auth.updateUI();
         } catch (error) {
             console.error('Error loading header:', error);
         }
@@ -52,6 +52,34 @@ window.closeMenu = function () {
         overlay.classList.remove('active');
     }
 };
+
+// Profile Dropdown Handlers
+window.toggleProfileDropdown = function () {
+    const dropdown = document.getElementById('profile-dropdown');
+    const user = localStorage.getItem('aura_user');
+
+    if (!user) {
+        window.location.href = 'auth.html';
+        return;
+    }
+
+    if (dropdown) dropdown.classList.toggle('hidden');
+};
+
+window.handleLogout = function () {
+    localStorage.removeItem('aura_user');
+    window.location.href = 'index.html';
+};
+
+function initProfileUI() {
+    const user = localStorage.getItem('aura_user');
+    const profileContainer = document.getElementById('profile-container');
+    if (user && profileContainer) {
+        // We could change the icon to an avatar initial here if desired
+        const icon = profileContainer.querySelector('svg');
+        if (icon) icon.classList.add('text-primary');
+    }
+}
 
 // Active Link Highlighting
 function highlightActiveLink() {

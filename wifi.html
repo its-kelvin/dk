@@ -33,6 +33,7 @@
 
 <body class="bg-white text-dark min-h-screen flex flex-col selection:bg-primary/20">
     <div id="header-placeholder"></div>
+    <div id="footer-placeholder"></div>
 
     <main class="flex-1">
         <section class="pt-10 pb-12 bg-white dark:bg-dark">
@@ -46,96 +47,315 @@
                         Choose the plan that fits your lifestyle.</p>
                 </div>
 
-                <!-- Hotspot Packages -->
-                <div class="mb-8">
-                    <h2 class="text-sm font-black uppercase tracking-widest mb-4 border-l-4 border-primary pl-3">Hotspot
-                        <span class="text-primary">Packages</span>
-                    </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- Basic -->
-                        <div
-                            class="group p-5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-200">
-                            <h3 class="text-lg font-black mb-1 uppercase tracking-tight">Hotspot Basic</h3>
-                            <div class="flex items-end gap-1 mb-4">
-                                <span class="text-3xl font-black">FREE INSTALLATION</span>
-                                <span class="text-secondary font-bold text-xs mb-1">IN FIBER READY ZONES</span>
+                <!-- Hotspot Packages Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    <!-- Left: Description -->
+                    <div data-aos="fade-right">
+                        <h2 class="text-2xl font-black uppercase tracking-tight mb-6 border-l-4 border-primary pl-4">
+                            Aura <span class="text-primary">Hotspot</span></h2>
+                        <p class="text-secondary leading-relaxed mb-8">
+                            Aura Hotspot provides flexible, pay-as-you-go internet access. Perfect for areas with fiber
+                            ready zones, offering free installation and zero commitment. Simply connect to our signal,
+                            choose your package, and start browsing.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-primary shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1">Free Installation</h4>
+                                    <p class="text-xs text-secondary">No setup fees in fiber ready zones.</p>
+                                </div>
                             </div>
-                            <ul class="space-y-2 mb-4">
-                                <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none"
-                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                        <path d="M5 13l4 4L19 7" />
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-primary shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
-                                    Up to 15Mbps Speed
-                                </li>
-                                <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none"
-                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                        <path d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    Unlimited Data Usage
-                                </li>
-                                <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-primary mr-2 flex-shrink-0" fill="none"
-                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                        <path d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    Multiple package options
-                                </li>
-                            </ul>
-                            <button onclick="scrollToBooking('Hotspot Basic')"
-                                class="w-full py-2.5 bg-white dark:bg-dark text-dark dark:text-white text-xs font-bold rounded-xl border border-gray-200 dark:border-gray-700 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
-                                Book Installation
-                            </button>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1">Up to 15Mbps</h4>
+                                    <p class="text-xs text-secondary">Blazing fast speeds for all tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Pricing Panel -->
+                    <div class="bg-gray-50 dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-sm"
+                        data-aos="fade-left">
+                        <h3 class="text-xl font-black mb-8 uppercase tracking-tight">Hotspot Packages <span
+                                class="text-primary">(KSh)</span></h3>
+
+                        <!-- Single Device -->
+                        <div class="mb-10">
+                            <div class="flex items-center gap-2 mb-4">
+                                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-[10px] font-black text-secondary uppercase tracking-widest">Valid for 1
+                                    Device</p>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <button onclick="scrollToBooking('Hotspot 10 KSh (1 Hr)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">1 Hour</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        10 KSh</p>
+                                </button>
+                                <button onclick="scrollToBooking('Hotspot 25 KSh (18 Hrs)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">18 Hours</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        25 KSh</p>
+                                </button>
+                                <button onclick="scrollToBooking('Hotspot 40 KSh (1 Day)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">1 Day</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        40 KSh</p>
+                                </button>
+                                <button onclick="scrollToBooking('Hotspot 150 KSh (1 Week)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">1 Week</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        150 KSh</p>
+                                </button>
+                                <button onclick="scrollToBooking('Hotspot 500 KSh (1 Month)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">1 Month</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        500 KSh</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2 Devices -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-[10px] font-black text-secondary uppercase tracking-widest">Valid for 2
+                                    Devices</p>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <button onclick="scrollToBooking('Hotspot 60 KSh (1 Day, 2 Dev)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">1 Day</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        60 KSh</p>
+                                </button>
+                                <button onclick="scrollToBooking('Hotspot 300 KSh (1 Wk, 2 Dev)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">1 Week</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        300 KSh</p>
+                                </button>
+                                <button onclick="scrollToBooking('Hotspot 800 KSh (1 Mo, 2 Dev)')"
+                                    class="p-3 bg-white dark:bg-dark rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary transition-all text-left group">
+                                    <p class="text-[10px] text-secondary font-bold mb-1">1 Month</p>
+                                    <p
+                                        class="text-lg font-black text-dark dark:text-white group-hover:text-primary transition-colors">
+                                        800 KSh</p>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- PPPoE Packages -->
-                <div class="mb-8">
-                    <h2 class="text-sm font-black uppercase tracking-widest mb-4 border-l-4 border-blue-600 pl-3">Fiber
-                        <span class="text-blue-600">INTERNET</span>
-                    </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- Business Pro -->
+                <!-- Home Internet Packages Section -->
+                <div class="mb-16" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                        <div>
+                            <h2 class="text-2xl font-black uppercase tracking-tight border-l-4 border-blue-600 pl-4">
+                                Home <span class="text-blue-600">Internet</span> Packages</h2>
+                            <p class="text-secondary text-sm font-medium mt-2">All plans are billed monthly</p>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-100 p-4 rounded-2xl max-w-sm">
+                            <p class="text-[10px] text-blue-800 leading-tight font-bold">
+                                <span class="uppercase">Note:</span> Prices exclude installation fee and router cost.
+                                These are monthly subscription prices.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <!-- 1500 -> 6 Mbps -->
                         <div
-                            class="group p-5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-blue-600 transition-all duration-200 relative overflow-hidden">
-                            <div
-                                class="absolute top-0 right-0 px-3 py-1 bg-blue-600 text-white text-[9px] font-black uppercase rounded-bl-xl">
-                                Fiber</div>
-                            <h3 class="text-lg font-black mb-1 uppercase tracking-tight">HOME WIFI</h3>
-                            <div class="flex items-end gap-1 mb-4">
-                                <span class="text-3xl font-black">From as low as KES 1,500</span>
-                                <span class="text-secondary font-bold text-xs mb-1">/Month</span>
+                            class="p-6 bg-white border border-gray-100 rounded-3xl hover:border-blue-600 transition-all group shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-widest text-secondary">Home</span>
                             </div>
-                            <ul class="space-y-2 mb-4">
-                                <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none"
-                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                        <path d="M5 13l4 4L19 7" />
+                            <h3 class="text-2xl font-black text-dark mb-1">6 Mbps</h3>
+                            <p class="text-blue-600 font-bold text-lg mb-6">1,500 KSh <span
+                                    class="text-xs text-secondary font-medium">/mo</span></p>
+                            <button onclick="scrollToBooking('Home 6 Mbps (1,500 KSh)')"
+                                class="w-full py-2.5 bg-gray-50 text-dark text-xs font-bold rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-all">Select
+                                Package</button>
+                        </div>
+                        <!-- 2000 -> 8 Mbps -->
+                        <div
+                            class="p-6 bg-white border border-gray-100 rounded-3xl hover:border-blue-600 transition-all group shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
-                                    Speed determined by package size
+                                </div>
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-widest text-secondary">Standard</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-dark mb-1">8 Mbps</h3>
+                            <p class="text-blue-600 font-bold text-lg mb-6">2,000 KSh <span
+                                    class="text-xs text-secondary font-medium">/mo</span></p>
+                            <button onclick="scrollToBooking('Home 8 Mbps (2,000 KSh)')"
+                                class="w-full py-2.5 bg-gray-50 text-dark text-xs font-bold rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-all">Select
+                                Package</button>
+                        </div>
+                        <!-- 2500 -> 12 Mbps -->
+                        <div
+                            class="p-6 bg-white border border-gray-100 rounded-3xl hover:border-blue-600 transition-all group shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.343 9.257c5.857-5.858 15.355-5.858 21.213 0" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-widest text-secondary">Premium</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-dark mb-1">12 Mbps</h3>
+                            <p class="text-blue-600 font-bold text-lg mb-6">2,500 KSh <span
+                                    class="text-xs text-secondary font-medium">/mo</span></p>
+                            <button onclick="scrollToBooking('Home 12 Mbps (2,500 KSh)')"
+                                class="w-full py-2.5 bg-gray-50 text-dark text-xs font-bold rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-all">Select
+                                Package</button>
+                        </div>
+                        <!-- 3000 -> 15 Mbps -->
+                        <div
+                            class="p-6 bg-white border border-gray-100 rounded-3xl hover:border-blue-600 transition-all group shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-widest text-secondary">Ultima</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-dark mb-1">15 Mbps</h3>
+                            <p class="text-blue-600 font-bold text-lg mb-6">3,000 KSh <span
+                                    class="text-xs text-secondary font-medium">/mo</span></p>
+                            <button onclick="scrollToBooking('Home 15 Mbps (3,000 KSh)')"
+                                class="w-full py-2.5 bg-gray-50 text-dark text-xs font-bold rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-all">Select
+                                Package</button>
+                        </div>
+                        <!-- 3500 -> 20 Mbps -->
+                        <div
+                            class="p-6 bg-white border border-gray-100 rounded-3xl hover:border-blue-600 transition-all group shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-widest text-secondary">Extreme</span>
+                            </div>
+                            <h3 class="text-2xl font-black text-dark mb-1">20 Mbps</h3>
+                            <p class="text-blue-600 font-bold text-lg mb-6">3,500 KSh <span
+                                    class="text-xs text-secondary font-medium">/mo</span></p>
+                            <button onclick="scrollToBooking('Home 20 Mbps (3,500 KSh)')"
+                                class="w-full py-2.5 bg-gray-50 text-dark text-xs font-bold rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-all">Select
+                                Package</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Fiber Section -->
+                <div class="mb-16" data-aos="fade-up">
+                    <h2 class="text-2xl font-black uppercase tracking-tight mb-8 border-l-4 border-dark pl-4">Business
+                        <span class="text-primary italic">Fiber</span> Package
+                    </h2>
+                    <div
+                        class="max-w-xl p-8 bg-dark rounded-[2.5rem] text-white relative overflow-hidden group shadow-2xl">
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-black uppercase rounded-lg border border-primary/20">Enterprise</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest opacity-60">High-speed
+                                    dedicated connection</span>
+                            </div>
+                            <div class="flex items-end gap-2 mb-2">
+                                <h3 class="text-5xl font-black italic">50 Mbps</h3>
+                                <span class="text-primary font-black text-xl mb-1">Business Pro</span>
+                            </div>
+                            <p class="text-3xl font-black mb-8 text-primary">5,000 KSh <span
+                                    class="text-sm font-medium opacity-60">/month</span></p>
+
+                            <ul class="space-y-3 mb-10">
+                                <li class="flex items-center text-sm font-bold opacity-90">
+                                    <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Ideal for offices and businesses
                                 </li>
-                                <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none"
-                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                        <path d="M5 13l4 4L19 7" />
+                                <li class="flex items-center text-sm font-bold opacity-90">
+                                    <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 13l4 4L19 7" />
                                     </svg>
-                                    Dedicated Fiber Connection
-                                </li>
-                                <li class="flex items-center text-xs font-semibold text-secondary">
-                                    <svg class="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" fill="none"
-                                        stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                        <path d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    KES 3,500 Installation Fee
+                                    99.9% S.L.A Uptime Guarantee
                                 </li>
                             </ul>
-                            <button onclick="scrollToBooking('Business Pro')"
-                                class="w-full py-2.5 bg-white dark:bg-dark text-dark dark:text-white text-xs font-bold rounded-xl border border-gray-200 dark:border-gray-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all">
-                                Book Installation
-                            </button>
+
+                            <button onclick="scrollToBooking('Business Fiber 50 Mbps (5,000 KSh)')"
+                                class="px-10 py-4 bg-white text-dark font-black rounded-2xl hover:bg-primary hover:text-white transition-all transform hover:scale-105">Get
+                                Business Pro</button>
                         </div>
+                        <!-- Background decoration -->
+                        <svg class="absolute right-[-20px] bottom-[-20px] w-64 h-64 opacity-5 group-hover:scale-110 transition-transform duration-700"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
                     </div>
                 </div>
 
@@ -148,6 +368,11 @@
                             area.</p>
 
                         <form id="serviceForm" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="sm:col-span-2">
+                                <label class="form-label">Selected Package</label>
+                                <input type="text" id="selected_package" name="selected_package" readonly
+                                    placeholder="None selected" class="form-input bg-gray-50 text-primary font-bold">
+                            </div>
                             <div>
                                 <label class="form-label">Full Name</label>
                                 <input type="text" name="full_name" required placeholder="John Doe" class="form-input">
@@ -197,65 +422,6 @@
         </section>
     </main>
 
-    <!-- Footer (Same as index.html) -->
-    <footer class="w-full border-t border-gray-100 dark:border-gray-900 bg-gray-50/50 dark:bg-dark py-20 mt-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 lg:gap-8">
-                <div class="col-span-2 md:col-span-4 lg:col-span-2">
-                    <a href="index.html" class="flex items-center space-x-3 mb-8">
-                        <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
-                            <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
-                            <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
-                            <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
-                        </svg>
-                        <span class="text-2xl font-black tracking-tighter">AURA NETWORKS</span>
-                    </a>
-                    <p class="text-secondary text-sm leading-relaxed max-w-sm mb-8">
-                        Delivering the fastest fiber and wireless solutions for modern homes and businesses. We pride
-                        ourselves on reliability and 24/7 technical excellence.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Services
-                    </h4>
-                    <ul class="space-y-4 text-sm text-secondary">
-                        <li><a href="wifi.html" class="hover:text-primary transition-colors">Residential WiFi</a></li>
-                        <li><a href="wifi.html" class="hover:text-primary transition-colors">Business Fiber</a></li>
-                        <li><a href="cctv.html" class="hover:text-primary transition-colors">CCTV Security</a></li>
-                        <li><a href="services.html" class="hover:text-primary transition-colors">Maintenance</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Company</h4>
-                    <ul class="space-y-4 text-sm text-secondary">
-                        <li><a href="about.html" class="hover:text-primary transition-colors">About Aura</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Our Coverage</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
-                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-sm font-black uppercase mb-6 tracking-widest text-dark dark:text-white">Support</h4>
-                    <ul class="space-y-4 text-sm text-secondary">
-                        <li><a href="help.html" class="hover:text-primary transition-colors">Help Center</a></li>
-                        <li><a href="auth.html" class="hover:text-primary transition-colors">Account Login</a></li>
-                        <li><a href="terms.html" class="hover:text-primary transition-colors">Terms of Service</a></li>
-                        <li><a href="privacy.html" class="hover:text-primary transition-colors">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div
-                class="mt-20 pt-10 border-t border-gray-100 dark:border-gray-900 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-secondary font-medium">
-                <p>&copy; <span id="year">2026</span> Aura Networks Ltd. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <span>Nairobi, Kenya</span>
-                    <span class="text-primary font-bold">24/7 Hotlines: +254 700 000 000</span>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -268,6 +434,11 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         window.scrollToBooking = function (packageName) {
+            const packageField = document.getElementById('selected_package');
+            if (packageField) {
+                packageField.value = packageName;
+            }
+
             document.getElementById('service_type').value = 'wifi_installation';
             document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
             if (window.Cart) {
