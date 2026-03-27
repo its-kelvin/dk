@@ -21,11 +21,9 @@
     </script>
 </head>
 
-<body
-    class="bg-white text-dark dark:bg-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
-    <!-- Navbar (Global) -->
-    <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header transition-all duration-300">
-        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+<body class="bg-white text-dark min-h-screen flex flex-col selection:bg-primary/20">
+    <nav id="navbar" class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="mx-auto flex flex-col lg:flex-row lg:h-20 max-w-7xl items-center justify-between px-4 py-3 lg:py-0">
             <a href="index.html" class="flex items-center space-x-3 group">
                 <div class="relative">
                     <div
@@ -45,17 +43,16 @@
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center space-x-10">
-                <a href="index.html"
-                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Home</a>
-                <a href="wifi.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">WiFi</a>
-                <a href="cctv.html" class="nav-link text-sm font-semibold hover:text-primary transition-colors">CCTV</a>
+            <div class="nav-container">
+                <a href="index.html" class="nav-link text-[11px] lg:text-sm font-bold uppercase tracking-wider">Home</a>
+                <a href="wifi.html" class="nav-link text-[11px] lg:text-sm font-bold uppercase tracking-wider">WiFi</a>
+                <a href="cctv.html" class="nav-link text-[11px] lg:text-sm font-bold uppercase tracking-wider">CCTV</a>
                 <a href="devices.html"
-                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Devices</a>
+                    class="nav-link text-[11px] lg:text-sm font-bold uppercase tracking-wider">Store</a>
                 <a href="services.html"
-                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Services</a>
+                    class="nav-link text-[11px] lg:text-sm font-bold uppercase tracking-wider">Services</a>
                 <a href="dashboard.html"
-                    class="nav-link text-sm font-semibold hover:text-primary transition-colors">Dashboard</a>
+                    class="nav-link text-[11px] lg:text-sm font-bold uppercase tracking-wider text-primary">Portal</a>
             </div>
 
             <!-- Mobile Menu Overlay -->

@@ -106,19 +106,20 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
-/* Navigation Container - Layered on Mobile */
 .nav-container {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0.5rem 0;
 }
 
 @media (min-width: 1024px) {
     .nav-container {
         gap: 2.5rem;
         flex-wrap: nowrap;
+        padding: 0;
     }
 }
 

@@ -4,7 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     highlightActiveLink();
-    handleNavbarScroll();
 });
 
 // Active Link Highlighting
