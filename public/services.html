@@ -157,48 +157,62 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="utils.js"></script>
     <script src="cart.js"></script>
+
     <script type="module">
-        import AOS from 'aos';
+        // Note: We do not 'import AOS' here because it's already loaded via CDN globally.
+        // If using Firebase, ensure these paths are correct relative to this file:
         import { auth, db } from "./firebase-config.js";
-        import { Auth } from "./auth.js";
+        // import { Auth } from "./auth.js"; // Uncomment if needed
 
-        // 1. Initialize AOS (Animations)
-        AOS.init({ duration: 400, once: true });
+        // Initialize AOS safely
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 400,
+                once: true,
+                disable: 'mobile' // Optional: improves performance on small screens
+            });
+        }
 
-        // 2. Set Footer Year (With safety check to prevent script crashes)
+        // Set Footer Year
         const yearEl = document.getElementById('year');
         if (yearEl) {
             yearEl.textContent = new Date().getFullYear();
         }
 
         /**
-         * Global function to handle button clicks from the Service cards.
-         * Updates the form and scrolls the user down.
+         * ATTACH TO WINDOW
+         * This makes the function accessible to the 'onclick' attributes in your HTML
          */
         window.scrollToForm = function (serviceName) {
             const targetInput = document.getElementById('targetService');
             const formSection = document.getElementById('booking-form');
 
-            // Update the "Service Target" read-only field
+            // 1. Update the Input Field
             if (targetInput) {
                 targetInput.value = serviceName;
-                // Add a brief highlight to show it changed
-                targetInput.classList.add('ring-2', 'ring-primary/30');
-                setTimeout(() => targetInput.classList.remove('ring-2', 'ring-primary/30'), 1500);
+
+                // Visual feedback: highlight the input
+                targetInput.classList.add('ring-2', 'ring-primary');
+                setTimeout(() => {
+                    targetInput.classList.remove('ring-2', 'ring-primary');
+                }, 1000);
             }
 
-            // Smooth scroll to the form
+            // 2. Perform the Scroll
             if (formSection) {
                 formSection.scrollIntoView({
                     behavior: 'smooth',
-                    block: 'center'
+                    block: 'start' // 'start' usually works better than 'center' for forms
                 });
 
-                // Auto-focus the Full Name field after the scroll finishes
-                const nameField = formSection.querySelector('input[placeholder="John Doe"]');
-                if (nameField) {
-                    setTimeout(() => nameField.focus(), 800);
-                }
+                // 3. Focus the first empty input (Full Name)
+                // We use a slight delay to allow the scroll animation to begin
+                setTimeout(() => {
+                    const firstInput = formSection.querySelector('input[type="text"]:not([readonly])');
+                    if (firstInput) firstInput.focus();
+                }, 600);
+            } else {
+                console.error("Element #booking-form not found!");
             }
         };
 
@@ -210,14 +224,14 @@
             techForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                // Check if cart.js utility is available for notifications
+                // Logic for notification
                 if (window.Cart && typeof window.Cart.notify === 'function') {
                     window.Cart.notify('Booking scheduled! Our team will call you.');
                 } else {
-                    alert('Success! Your request has been sent.');
+                    alert('Success! Your request for ' + document.getElementById('targetService').value + ' has been sent.');
                 }
 
-                // Reset the form but keep the service name if they want to book another
+                // Reset form but preserve the service name
                 const currentService = document.getElementById('targetService').value;
                 this.reset();
                 document.getElementById('targetService').value = currentService;
