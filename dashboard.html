@@ -200,85 +200,9 @@
 
 <body class="bg-gray-50 dark:bg-[#0f172a] text-[#0f172a] dark:text-white min-h-screen">
 
-    <!-- Mobile Navigation Components -->
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
-    <div class="mobile-sidebar lg:hidden" id="mobileSidebar">
-        <div class="flex items-center justify-between mb-10">
-            <span class="text-xl font-black tracking-tighter">AURA NETS</span>
-            <button onclick="closeMenu()" class="p-2 text-secondary">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path d="M6 18L18 6M6 6l12 12" stroke-width="2" />
-                </svg>
-            </button>
-        </div>
-        <nav class="flex flex-col gap-6">
-            <a href="index.html" class="text-lg font-bold text-dark">Home</a>
-            <a href="wifi.html" class="text-lg font-bold text-dark">WiFi Solutions</a>
-            <a href="cctv.html" class="text-lg font-bold text-dark">Smart CCTV</a>
-            <a href="devices.html" class="text-lg font-bold text-dark">Tech Store</a>
-            <a href="services.html" class="text-lg font-bold text-dark">Professional Services</a>
-            <a href="dashboard.html" class="text-lg font-bold text-primary">Sales Portal</a>
-        </nav>
-    </div>
+    <div id="header-placeholder"></div>
 
-    <nav class="sticky top-0 z-50 w-full bg-white border-b border-gray-100 h-16 flex items-center">
-        <div class="w-full flex items-center justify-between px-4 lg:px-8">
-            <div class="flex items-center gap-4">
-                <button onclick="toggleMenu()" class="lg:hidden p-2 -ml-2">
-                    <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2.5" stroke-linecap="round" />
-                    </svg>
-                </button>
-                <a href="index.html" class="flex items-center gap-2">
-                    <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
-                        <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
-                        <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
-                        <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
-                    </svg>
-                    <span class="text-xl font-black tracking-tighter hidden sm:block">AURA NETS</span>
-                </a>
-            </div>
-            <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center gap-8">
-                <a href="index.html"
-                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Home</a>
-                <a href="wifi.html"
-                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">WiFi</a>
-                <a href="cctv.html"
-                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">CCTV</a>
-                <a href="devices.html"
-                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Store</a>
-                <a href="services.html"
-                    class="text-sm font-bold uppercase tracking-wider hover:text-primary transition-colors">Services</a>
-            </div>
-            <div class="flex items-center gap-2">
-                <button onclick="switchView('cart')"
-                    class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span id="cartCount"
-                        class="absolute top-0.5 right-0.5 bg-primary text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center hidden">0</span>
-                </button>
-                <div class="hidden lg:flex items-center gap-8">
-                    <a href="index.html" class="nav-link text-sm font-bold uppercase tracking-wider">Home</a>
-                    <a href="wifi.html" class="nav-link text-sm font-bold uppercase tracking-wider">WiFi</a>
-                    <a href="cctv.html" class="nav-link text-sm font-bold uppercase tracking-wider">CCTV</a>
-                    <a href="devices.html" class="nav-link text-sm font-bold uppercase tracking-wider">Store</a>
-                    <a href="services.html" class="nav-link text-sm font-bold uppercase tracking-wider">Services</a>
-                    <a href="dashboard.html"
-                        class="nav-link text-sm font-bold uppercase tracking-wider text-primary">Portal</a>
-                </div>
-                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold"
-                    id="avatarInitial">U</div>
-            </div>
-        </div>
-    </nav>
-
-    <div class="flex h-[calc(100vh-56px)] overflow-hidden">
+    <div class="flex h-[calc(100vh-80px)] overflow-hidden">
         <!-- Sidebar -->
         <aside id="sidebar"
             class="w-60 flex-col bg-white dark:bg-[#1e293b] border-r border-gray-100 dark:border-gray-800 p-4 space-y-1 hidden lg:flex overflow-y-auto">
