@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Aura Networks</title>
-    <meta name="description" content="Your Aura Networks dashboard — manage services, products, orders, and settings.">
+    <title>Dashboard | FORTUNE DK</title>
+    <meta name="description" content="Your FORTUNE DK dashboard — manage services, products, orders, and settings.">
     <link rel="stylesheet" href="main.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -713,6 +713,7 @@
                 </div>
             </div>
 
+            <div id="footer-placeholder" class="mt-auto"></div>
         </main>
     </div>
 
@@ -741,28 +742,39 @@
         window.switchView = function (viewId) {
             // Hide all
             document.querySelectorAll('.section-view').forEach(v => v.classList.remove('active'));
-            // Show target
+
             const target = document.getElementById('view-' + viewId);
             if (target) target.classList.add('active');
+
             document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
             const activeLink = document.getElementById('link-' + viewId);
             if (activeLink) activeLink.classList.add('active');
 
-            if (window.innerWidth < 1024) window.toggleMenu();
+            if (window.innerWidth < 1024) window.closeMenu();
         };
 
-        // OVERRIDE GLOBAL MENU FOR DASHBOARD
+        // DASHBOARD SPECIFIC MENU OVERRIDES
         window.toggleMenu = function () {
             const sidebar = document.getElementById('dashboardSidebar');
             const overlay = document.getElementById('sidebarOverlay');
             if (sidebar && overlay) {
-                sidebar.classList.toggle('open');
-                sidebar.classList.toggle('hidden');
-                sidebar.classList.toggle('flex');
-                overlay.classList.toggle('active');
+                const isOpening = sidebar.classList.contains('hidden');
+                sidebar.classList.toggle('hidden', !isOpening);
+                sidebar.classList.toggle('flex', isOpening);
+                sidebar.classList.toggle('open', isOpening);
+                overlay.classList.toggle('active', isOpening);
             }
         };
-        window.closeMenu = window.toggleMenu;
+
+        window.closeMenu = function () {
+            const sidebar = document.getElementById('dashboardSidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (sidebar && overlay) {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('flex', 'open');
+                overlay.classList.remove('active');
+            }
+        };
 
         window.trackOrder = function () {
             const val = document.getElementById('trackInput').value.trim();

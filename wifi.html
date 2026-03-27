@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura WiFi | Next-Gen Connectivity</title>
+    <title>FORTUNE DK WiFi | Next-Gen Connectivity</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS -->
@@ -439,8 +439,14 @@
         window.scrollToBooking = function (packageName) {
             const packageField = document.getElementById('selected_package');
             const serviceTypeField = document.getElementById('service_type');
+            const bookingSection = document.getElementById('booking-section');
 
-            if (packageField) packageField.value = packageName;
+            if (packageField) {
+                packageField.value = packageName;
+                // Add a small highlight effect
+                packageField.classList.add('ring-2', 'ring-primary/50');
+                setTimeout(() => packageField.classList.remove('ring-2', 'ring-primary/50'), 2000);
+            }
 
             // Smart-select the service type based on the package name
             if (serviceTypeField) {
@@ -454,7 +460,13 @@
                 }
             }
 
-            document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (bookingSection) {
+                bookingSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Focus the first meaningful input
+                const nameInput = bookingSection.querySelector('input[name="full_name"]');
+                if (nameInput) setTimeout(() => nameInput.focus(), 800);
+            }
+
             if (window.Cart) {
                 window.Cart.notify(`Booking for ${packageName} selected`);
             }
