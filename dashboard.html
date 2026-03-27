@@ -308,7 +308,7 @@
                 <!-- Nav Hub Grid -->
                 <h2 class="text-xs font-black uppercase tracking-widest text-secondary mb-3">Quick Access</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
-                    <a href="wifi.html" class="hub-card">
+                    <button onclick="switchView('services')" class="hub-card text-left w-full">
                         <div class="hub-icon bg-blue-50 dark:bg-blue-900/30">
                             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -317,8 +317,8 @@
                         </div>
                         <p class="text-sm font-bold">WiFi Plans</p>
                         <p class="text-[10px] text-secondary mt-0.5">Fiber & ISP services</p>
-                    </a>
-                    <a href="cctv.html" class="hub-card">
+                    </button>
+                    <button onclick="switchView('services')" class="hub-card text-left w-full">
                         <div class="hub-icon bg-purple-50 dark:bg-purple-900/30">
                             <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -327,8 +327,8 @@
                         </div>
                         <p class="text-sm font-bold">CCTV Systems</p>
                         <p class="text-[10px] text-secondary mt-0.5">Security solutions</p>
-                    </a>
-                    <a href="devices.html" class="hub-card">
+                    </button>
+                    <button onclick="switchView('products')" class="hub-card text-left w-full">
                         <div class="hub-icon bg-green-50 dark:bg-green-900/30">
                             <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -337,8 +337,8 @@
                         </div>
                         <p class="text-sm font-bold">Tech Store</p>
                         <p class="text-[10px] text-secondary mt-0.5">Devices & hardware</p>
-                    </a>
-                    <a href="services.html" class="hub-card">
+                    </button>
+                    <button onclick="switchView('services')" class="hub-card text-left w-full">
                         <div class="hub-icon bg-orange-50 dark:bg-orange-900/30">
                             <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -347,7 +347,7 @@
                         </div>
                         <p class="text-sm font-bold">Services</p>
                         <p class="text-[10px] text-secondary mt-0.5">Installations & support</p>
-                    </a>
+                    </button>
                     <button onclick="switchView('orders')" class="hub-card text-left">
                         <div class="hub-icon bg-sky-50 dark:bg-sky-900/30">
                             <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

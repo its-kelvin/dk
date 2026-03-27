@@ -438,11 +438,22 @@
 
         window.scrollToBooking = function (packageName) {
             const packageField = document.getElementById('selected_package');
-            if (packageField) {
-                packageField.value = packageName;
+            const serviceTypeField = document.getElementById('service_type');
+
+            if (packageField) packageField.value = packageName;
+
+            // Smart-select the service type based on the package name
+            if (serviceTypeField) {
+                const name = packageName.toLowerCase();
+                if (name.includes('business')) {
+                    serviceTypeField.value = 'fiber_upgrade';
+                } else if (name.includes('cctv')) {
+                    serviceTypeField.value = 'cctv_installation';
+                } else {
+                    serviceTypeField.value = 'wifi_installation';
+                }
             }
 
-            document.getElementById('service_type').value = 'wifi_installation';
             document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
             if (window.Cart) {
                 window.Cart.notify(`Booking for ${packageName} selected`);
