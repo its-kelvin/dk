@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,45 +19,84 @@
             }
         }
     </script>
-</head>
-<body class="bg-gray-50 dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col selection:bg-primary/20 transition-colors duration-300">
-    <!-- Navbar (Global) -->
-    <nav id="navbar" class="sticky top-0 z-[100] w-full glass-header transition-all duration-300">
-        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <div class="relative">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                    <svg class="relative h-10 w-10 text-primary bg-white dark:bg-dark p-1.5 rounded-lg shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
-                        <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
-                        <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
-                        <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+
+<body class="bg-gray-50 text-dark min-h-screen flex flex-col selection:bg-primary/20">
+
+    <!-- Mobile Navigation Components -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
+    <div class="mobile-sidebar lg:hidden" id="mobileSidebar">
+        <div class="flex items-center justify-between mb-10">
+            <span class="text-xl font-black tracking-tighter">AURA NETS</span>
+            <button onclick="closeMenu()" class="p-2 text-secondary">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6">
+            <a href="index.html" onclick="closeMenu()" class="text-lg font-bold text-dark">Home</a>
+            <a href="wifi.html" onclick="closeMenu()" class="text-lg font-bold text-dark">WiFi Solutions</a>
+            <a href="cctv.html" onclick="closeMenu()" class="text-lg font-bold text-dark">Smart CCTV</a>
+            <a href="devices.html" onclick="closeMenu()" class="text-lg font-bold text-dark">Tech Store</a>
+            <a href="services.html" onclick="closeMenu()" class="text-lg font-bold text-dark">Professional Services</a>
+            <a href="dashboard.html" onclick="closeMenu()" class="text-lg font-bold text-primary">Portal</a>
+        </nav>
+    </div>
+
+    <nav id="navbar" class="sticky top-0 z-50 w-full bg-white border-b border-gray-100">
+        <div class="mx-auto flex h-16 lg:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMenu()" class="lg:hidden p-2 -ml-2">
+                    <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2.5" stroke-linecap="round" />
                     </svg>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-2xl font-black tracking-tighter leading-none">AURA NETS</span>
-                    <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary/80">Connect Fast</span>
-                </div>
-            </a>
-            <div class="flex items-center space-x-3">
-                <button id="themeToggle" class="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
-                    <svg id="sunIcon" class="hidden h-5 w-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    <svg id="moonIcon" class="h-5 w-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                        </div>
+                        <svg class="relative h-9 w-9 lg:h-10 lg:w-10 text-primary bg-white p-1.5 rounded-lg shadow-sm"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke-linecap="round"></path>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke-linecap="round"></path>
+                            <path d="M8.59 16.11a6 6 0 0 1 6.82 0" stroke-linecap="round"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round"></line>
+                        </svg>
+                    </div>
+                    <div class="hidden sm:flex flex-col">
+                        <span class="text-2xl font-black tracking-tighter leading-none">AURA NETS</span>
+                        <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary/80">Connect
+                            Fast</span>
+                    </div>
+                </a>
             </div>
+
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="index.html" class="nav-link text-sm font-bold uppercase tracking-wider">Home</a>
+                <a href="wifi.html" class="nav-link text-sm font-bold uppercase tracking-wider">WiFi</a>
+                <a href="cctv.html" class="nav-link text-sm font-bold uppercase tracking-wider">CCTV</a>
+                <a href="devices.html" class="nav-link text-sm font-bold uppercase tracking-wider">Store</a>
+                <a href="services.html" class="nav-link text-sm font-bold uppercase tracking-wider">Services</a>
+                <a href="dashboard.html"
+                    class="nav-link text-sm font-bold uppercase tracking-wider text-primary">Portal</a>
+            </div>
+        </div>
         </div>
     </nav>
 
     <main class="flex-1 py-8">
         <div class="mx-auto max-w-5xl px-4 sm:px-6">
-            <h1 class="text-2xl font-black uppercase tracking-tight mb-6">Your <span class="text-primary italic">Checkout.</span></h1>
-            
+            <h1 class="text-2xl font-black uppercase tracking-tight mb-6">Your <span
+                    class="text-primary italic">Checkout.</span></h1>
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Left: Forms -->
                 <div class="lg:col-span-2 space-y-4">
                     <!-- Delivery Form -->
                     <div class="form-card">
-                        <h2 class="text-sm font-black uppercase mb-4 border-l-4 border-primary pl-3 tracking-tight">1. Delivery Info</h2>
+                        <h2 class="text-sm font-black uppercase mb-4 border-l-4 border-primary pl-3 tracking-tight">1.
+                            Delivery Info</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="form-label">Full Name</label>
@@ -68,23 +108,33 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <label class="form-label">Delivery Location</label>
-                                <input type="text" id="custLocation" required placeholder="Apartment, Street, Town" class="form-input">
+                                <input type="text" id="custLocation" required placeholder="Apartment, Street, Town"
+                                    class="form-input">
                             </div>
                         </div>
                     </div>
 
                     <!-- Payment Method -->
                     <div class="form-card">
-                        <h2 class="text-sm font-black uppercase mb-4 border-l-4 border-green-600 pl-3 tracking-tight">2. Payment Method</h2>
-                        <div class="p-4 border-2 border-primary bg-primary/5 rounded-xl flex items-center justify-between">
+                        <h2 class="text-sm font-black uppercase mb-4 border-l-4 border-green-600 pl-3 tracking-tight">2.
+                            Payment Method</h2>
+                        <div
+                            class="p-4 border-2 border-primary bg-primary/5 rounded-xl flex items-center justify-between">
                             <div class="flex items-center gap-3">
-                                <div class="h-10 w-10 bg-green-600 rounded-lg flex items-center justify-center font-black text-white text-sm">M</div>
+                                <div
+                                    class="h-10 w-10 bg-green-600 rounded-lg flex items-center justify-center font-black text-white text-sm">
+                                    M</div>
                                 <div>
                                     <h3 class="text-sm font-bold">M-Pesa STK Push</h3>
-                                    <p class="text-secondary text-[10px] uppercase font-bold tracking-wide">Automatic prompt to your phone</p>
+                                    <p class="text-secondary text-[10px] uppercase font-bold tracking-wide">Automatic
+                                        prompt to your phone</p>
                                 </div>
                             </div>
-                            <svg class="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <svg class="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -93,7 +143,7 @@
                 <div>
                     <div class="form-card sticky top-20">
                         <h2 class="text-sm font-black uppercase mb-4 tracking-tight">Order Summary</h2>
-                        
+
                         <div id="cartItemsList" class="space-y-2 mb-5 max-h-56 overflow-y-auto pr-1">
                             <!-- JS populated -->
                         </div>
@@ -113,7 +163,9 @@
                             </div>
                         </div>
 
-                        <button onclick="processPayment()" class="w-full mt-5 py-3 bg-primary text-white font-bold rounded-xl hover:bg-blue-600 transition-colors text-sm uppercase tracking-wide">Pay Now with M-Pesa</button>
+                        <button onclick="processPayment()"
+                            class="w-full mt-5 py-3 bg-primary text-white font-bold rounded-xl hover:bg-blue-600 transition-colors text-sm uppercase tracking-wide">Pay
+                            Now with M-Pesa</button>
                     </div>
                 </div>
             </div>
@@ -121,20 +173,30 @@
     </main>
 
     <!-- Payment Modal -->
-    <div id="paymentModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-dark/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-gray-900 rounded-[3rem] p-12 max-w-sm w-full text-center shadow-3xl transform scale-90 transition-transform duration-300">
+    <div id="paymentModal"
+        class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-dark/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div
+            class="bg-white dark:bg-gray-900 rounded-[3rem] p-12 max-w-sm w-full text-center shadow-3xl transform scale-90 transition-transform duration-300">
             <div id="paymentLoading" class="hidden">
-                <div class="h-20 w-20 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-8"></div>
+                <div
+                    class="h-20 w-20 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-8">
+                </div>
                 <h3 class="text-2xl font-black mb-4">STK Push Sent.</h3>
-                <p class="text-secondary text-sm font-medium">Check your phone and enter your M-Pesa PIN to complete payment.</p>
+                <p class="text-secondary text-sm font-medium">Check your phone and enter your M-Pesa PIN to complete
+                    payment.</p>
             </div>
             <div id="paymentSuccess" class="hidden">
-                <div class="h-20 w-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-8 text-green-600">
-                    <svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                <div
+                    class="h-20 w-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-8 text-green-600">
+                    <svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                    </svg>
                 </div>
                 <h3 class="text-2xl font-black mb-4">Payment Successful!</h3>
-                <p class="text-secondary text-sm font-medium mb-8">Thank you for your order. We are processing your request. Redirecting to dashboard...</p>
-                <button onclick="window.location.href='dashboard.html'" class="w-full py-4 bg-green-600 text-white font-bold rounded-2xl">Go to Dashboard</button>
+                <p class="text-secondary text-sm font-medium mb-8">Thank you for your order. We are processing your
+                    request. Redirecting to dashboard...</p>
+                <button onclick="window.location.href='dashboard.html'"
+                    class="w-full py-4 bg-green-600 text-white font-bold rounded-2xl">Go to Dashboard</button>
             </div>
         </div>
     </div>
@@ -148,11 +210,11 @@
         import { Auth } from "./auth.js";
         AOS.init({ duration: 400, once: true });
 
-        window.updateSummary = function() {
+        window.updateSummary = function () {
             const list = document.getElementById('cartItemsList');
             const sub = document.getElementById('summarySubtotal');
             const total = document.getElementById('summaryTotal');
-            
+
             if (!Cart.items.length) {
                 list.innerHTML = `<div class="text-center py-10 text-secondary text-xs uppercase font-bold">Your cart is empty</div>`;
                 sub.textContent = 'KES 0';
@@ -180,7 +242,7 @@
 
         window.updateSummary();
 
-        window.processPayment = async function() {
+        window.processPayment = async function () {
             if (!Auth.isLoggedIn()) {
                 Cart.notify('Please login before checking out');
                 setTimeout(() => window.location.href = 'auth.html', 1500);
@@ -215,4 +277,5 @@
         }
     </script>
 </body>
+
 </html>
