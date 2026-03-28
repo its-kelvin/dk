@@ -19,39 +19,6 @@
             }
         }
     </script>
-    <style>
-        .product-card {
-            perspective: 1000px;
-            min-height: 400px;
-        }
-
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .product-card.flipped .card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .card-front,
-        .card-back {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .card-back {
-            transform: rotateY(180deg);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body class="bg-white text-dark min-h-screen flex flex-col selection:bg-primary/20">
@@ -103,125 +70,79 @@
                 <!-- Products Grid -->
                 <div id="camera-list" class="product-grid-layout">
                     <!-- 1. PTZ-1 -->
-                    <div class="camera-item product-card group" data-category="PTZ Cameras"
-                        data-name="Hikvision DS-2DE7A432IW-AEB(T5) 4MP AcuSense IR PTZ">
-                        <div class="card-inner">
-                            <div
-                                class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
-                                <div
-                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                                    <img src="images/ptz-1.png" alt="Ptz-1" class="w-full h-full object-cover">
-                                </div>
-                                <span
-                                    class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
-                                    Cameras</span>
-                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4MP AcuSense IR PTZ</h3>
-                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">32x Optical Zoom, 1/1.8"
-                                    progressive scan CMOS, 360° endless pan.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-black text-dark dark:text-white">KES 120,000</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="toggleFeatures(this)"
-                                            class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                        <button data-id="cctv-ptz-1" data-name="4MP AcuSense PTZ" data-price="120000"
-                                            class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg ...">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 4v16m8-8H4" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">
-                                        Specifications</h3>
-                                    <button onclick="toggleFeatures(this)"
-                                        class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
-                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <ul class="space-y-2 text-[10px] text-secondary font-bold leading-snug flex-1">
-                                    <li>• 1/1.8″ progressive scan CMOS</li>
-                                    <li>• 32x Optical Zoom, 16x Digital Zoom</li>
-                                    <li>• Pan: 360° endless, Tilt: -20° to 90°</li>
-                                    <li>• 4MP (2560 x 1440) resolution</li>
-                                </ul>
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="Hikvision DS-2DE7A432IW-AEB(T5) 4MP AcuSense IR PTZ">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-1.png" alt="Ptz-1"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4MP AcuSense IR PTZ</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">32x Optical Zoom, 1/1.8" progressive
+                            scan CMOS, 360° endless pan.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 120,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
                                 <button data-id="cctv-ptz-1" data-name="4MP AcuSense PTZ" data-price="120000"
-                                    class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add
-                                    to Cart</button>
+                                    data-image="images/ptz-1.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
                             </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 1/1.8″ progressive scan CMOS</li>
+                                <li>• 32x Optical Zoom, 16x Digital Zoom</li>
+                                <li>• Pan: 360° endless, Tilt: -20° to 90°</li>
+                                <li>• 4MP (2560 x 1440) resolution</li>
+                            </ul>
                         </div>
                     </div>
 
                     <!-- 2. IP-1 -->
-                    <div class="camera-item product-card group" data-category="IP/Wireless Cameras"
-                        data-name="BCS IP Dome Camera 8MP NightColor Technology">
-                        <div class="card-inner">
-                            <div
-                                class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
-                                <div
-                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                                    <img src="images/ip-1.png" alt="Ip-1" class="w-full h-full object-cover">
-                                </div>
-                                <span
-                                    class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
-                                    Cameras</span>
-                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">BCS 8MP NightColor Dome</h3>
-                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">8MP Progressive Scan CMOS with
-                                    NightColor Technology and IP67.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-black text-dark dark:text-white">KES 51,000</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="toggleFeatures(this)"
-                                            class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                        <button data-id="cctv-ip-1" data-name="BCS 8MP NightColor Dome"
-                                            data-price="51000"
-                                            class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg ...">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 4v16m8-8H4" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">
-                                        Specifications</h3>
-                                    <button onclick="toggleFeatures(this)"
-                                        class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
-                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <ul class="space-y-2 text-[10px] text-secondary font-bold leading-snug flex-1">
-                                    <li>• Resolution: 8 MP (3840×2160)</li>
-                                    <li>• Sensor: 1/2.7'' CMOS, Progressive Scan</li>
-                                    <li>• Aperture: F1.6, NightColor: Yes</li>
-                                    <li>• IP Rating: IP67, PoE(802.3af)</li>
-                                </ul>
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras" data-name="BCS IP Dome Camera 8MP NightColor Technology">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ip-1.png" alt="Ip-1"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">BCS 8MP NightColor Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">8MP Progressive Scan CMOS with
+                            NightColor Technology and IP67.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 51,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
                                 <button data-id="cctv-ip-1" data-name="BCS 8MP NightColor Dome" data-price="51000"
-                                    class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add
-                                    to Cart</button>
+                                    data-image="images/ip-1.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
                             </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Resolution: 8 MP (3840×2160)</li>
+                                <li>• Sensor: 1/2.7'' CMOS, Progressive Scan</li>
+                                <li>• Aperture: F1.6, NightColor: Yes</li>
+                                <li>• IP Rating: IP67, PoE(802.3af)</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -241,11 +162,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 6,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-bullet-1" data-name="2MP ColorVu Bullet" data-price="6500"
                                     data-image="images/bullet-1.png"
@@ -281,11 +200,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 4,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-dome-1" data-name="1080p Indoor IR Dome" data-price="4500"
                                     data-image="images/dome-1.jpg"
@@ -321,11 +238,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 106,250</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ptz-2" data-name="2MP IP Speed Dome" data-price="106250"
                                     data-image="images/ptz-2.png"
@@ -362,11 +277,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 18,000</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ip-2" data-name="4MP Vandal WDR Dome" data-price="18000"
                                     data-image="images/ip-2.png"
@@ -402,11 +315,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 6,000</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-bullet-2" data-name="3K ColorVu Mini Bullet" data-price="6000"
                                     data-image="images/bullet-2.png"
@@ -442,11 +353,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 5,200</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-dome-2" data-name="Infrared Turret Dome" data-price="5200"
                                     data-image="images/dome-2.jpg"
@@ -482,11 +391,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 50,400</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ptz-3" data-name="2MP Darkfighter PTZ" data-price="50400"
                                     data-image="images/ptz-3.png"
@@ -523,11 +430,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 18,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ip-3" data-name="4MP Hybrid Bullet" data-price="18500"
                                     data-image="images/ip-3.png"
@@ -563,11 +468,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 5,800</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-bullet-3" data-name="2MP ColorVu Bullet (6mm)" data-price="5800"
                                     data-image="images/bullet-3.png"
@@ -603,11 +506,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 6,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-dome-3" data-name="5MP IR Turret Dome" data-price="6500"
                                     data-image="images/dome-3.jpg"
@@ -643,11 +544,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 35,000</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ptz-4" data-name="2MP Pro IR PTZ" data-price="35000"
                                     data-image="images/ptz-4.png"
@@ -685,11 +584,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 9,700</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ip-4" data-name="4MP Dual Light Dome" data-price="9700"
                                     data-image="images/ip-4.png"
@@ -725,11 +622,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 5,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-bullet-4" data-name="2MP ColorVu Mini Bullet" data-price="5500"
                                     data-image="images/bullet-4.png"
@@ -765,11 +660,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 7,800</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-dome-4" data-name="2MP IP Spot Light Dome" data-price="7800"
                                     data-image="images/dome-4.jpg"
@@ -805,11 +698,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 40,000</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ptz-5" data-name="4MP 25x Network PTZ" data-price="40000"
                                     data-image="images/ptz-5.png"
@@ -846,11 +737,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 27,000</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ip-5" data-name="8MP DarkFighter Dome" data-price="27000"
                                     data-image="images/ip-5.png"
@@ -886,11 +775,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 2,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-bullet-5" data-name="HD 720P IR Bullet" data-price="2500"
                                     data-image="images/bullet-5.png"
@@ -926,11 +813,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 8,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-dome-5" data-name="4K Vandal-Proof Dome" data-price="8500"
                                     data-image="images/dome-5.jpg"
@@ -966,11 +851,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 52,000</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ptz-6" data-name="2MP IR PTZ Dome" data-price="52000"
                                     data-image="images/ptz-6.png"
@@ -1008,11 +891,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 33,000</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-ip-6" data-name="2MP ColorVu IP Dome" data-price="33000"
                                     data-image="images/ip-6.png"
@@ -1048,11 +929,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 3,400</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-bullet-6" data-name="2MP Fixed Mini Bullet" data-price="3400"
                                     data-image="images/bullet-6.png"
@@ -1088,11 +967,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 12,500</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-dome-6" data-name="Motorized Zoom Dome" data-price="12500"
                                     data-image="images/dome-6.jpg"
@@ -1128,11 +1005,9 @@
                             <span class="text-sm font-black text-dark dark:text-white">KES 4,200</span>
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg></button>
                                 <button data-id="cctv-bullet-7" data-name="2MP EXIR Bullet Camera" data-price="4200"
                                     data-image="images/bullet-7.png"
@@ -1191,8 +1066,19 @@
         };
 
         window.toggleFeatures = function (btn) {
-            const card = btn.closest('.product-card');
-            card.classList.toggle('flipped');
+            const card = btn.closest('.camera-item');
+            const pane = card.querySelector('.features-pane');
+            const isHidden = pane.classList.contains('hidden');
+
+            if (isHidden) {
+                pane.classList.remove('hidden');
+                btn.classList.add('text-primary', 'border-primary', 'bg-primary/10', 'active');
+                btn.classList.remove('text-secondary');
+            } else {
+                pane.classList.add('hidden');
+                btn.classList.remove('text-primary', 'border-primary', 'bg-primary/10', 'active');
+                btn.classList.add('text-secondary');
+            }
         };
 
         window.filterCameras = function () {
