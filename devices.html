@@ -128,7 +128,35 @@
         import { Auth } from "./auth.js";
         import { deviceProducts } from "./devices-data.js";
 
-        // Dynamic Rendering Function
+        // 1. Initial UI Setup
+        AOS.init({ duration: 400, once: true });
+        if (document.getElementById('year')) document.getElementById('year').textContent = new Date().getFullYear();
+
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+
+        // 2. Define Filter & Search Logic
+        window.filterProducts = function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            const categoryTerm = categoryFilter.value;
+            const cards = document.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const category = card.dataset.category;
+
+                const matchesSearch = name.includes(searchTerm);
+                const matchesCategory = categoryTerm === 'All' || category === categoryTerm;
+
+                if (matchesSearch && matchesCategory) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        };
+
+        // 3. Dynamic Rendering Function
         function renderDeviceProducts(products) {
             const grid = document.getElementById('productGrid');
             if (!grid) return;
@@ -161,12 +189,7 @@
             window.filterProducts();
         }
 
-        renderDeviceProducts(deviceProducts);
-
-        AOS.init({ duration: 400, once: true });
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Features Toggle Logic
+        // 4. Features Toggle Logic
         window.toggleFeatures = function (btn) {
             const card = btn.closest('.product-card');
             const pane = card.querySelector('.features-pane');
@@ -183,32 +206,11 @@
             }
         };
 
-        // Filter & Search Logic
-        const searchInput = document.getElementById('searchInput');
-        const categoryFilter = document.getElementById('categoryFilter');
+        // 5. Execution
+        if (searchInput) searchInput.addEventListener('input', window.filterProducts);
+        if (categoryFilter) categoryFilter.addEventListener('change', window.filterProducts);
 
-        window.filterProducts = function () {
-            const searchTerm = searchInput.value.toLowerCase();
-            const categoryTerm = categoryFilter.value;
-            const cards = document.querySelectorAll('.product-card');
-
-            cards.forEach(card => {
-                const name = card.dataset.name.toLowerCase();
-                const category = card.dataset.category;
-
-                const matchesSearch = name.includes(searchTerm);
-                const matchesCategory = categoryTerm === 'All' || category === categoryTerm;
-
-                if (matchesSearch && matchesCategory) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        };
-
-        searchInput.addEventListener('input', window.filterProducts);
-        categoryFilter.addEventListener('change', window.filterProducts);
+        renderDeviceProducts(deviceProducts);
     </script>
 </body>
 
