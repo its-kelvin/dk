@@ -22,7 +22,7 @@
     <style>
         .product-card {
             perspective: 1000px;
-            min-height: 380px;
+            min-height: 400px;
         }
 
         .card-inner {
@@ -164,43 +164,64 @@
                     </div>
 
                     <!-- 2. IP-1 -->
-                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
-                        data-category="IP/Wireless Cameras" data-name="BCS IP Dome Camera 8MP NightColor Technology">
-                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                            <img src="images/ip-1.png" alt="Ip-1"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <span
-                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
-                            Cameras</span>
-                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">BCS 8MP NightColor Dome</h3>
-                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">8MP Progressive Scan CMOS with
-                            NightColor Technology and IP67.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm font-black text-dark dark:text-white">KES 51,000</span>
-                            <div class="flex gap-2">
-                                <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg group/btn">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg></button>
-                                <button data-id="cctv-ip-1" data-name="BCS 8MP NightColor Dome" data-price="51000"
-                                    data-image="images/ip-1.png"
-                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
-                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 4v16m8-8H4" />
-                                    </svg></button>
+                    <div class="camera-item product-card group" data-category="IP/Wireless Cameras"
+                        data-name="BCS IP Dome Camera 8MP NightColor Technology">
+                        <div class="card-inner">
+                            <div
+                                class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                                    <img src="images/ip-1.png" alt="Ip-1" class="w-full h-full object-cover">
+                                </div>
+                                <span
+                                    class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                                    Cameras</span>
+                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">BCS 8MP NightColor Dome</h3>
+                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">8MP Progressive Scan CMOS with
+                                    NightColor Technology and IP67.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-black text-dark dark:text-white">KES 51,000</span>
+                                    <div class="flex gap-2">
+                                        <button onclick="toggleFeatures(this)"
+                                            class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                        <button data-id="cctv-ip-1" data-name="BCS 8MP NightColor Dome"
+                                            data-price="51000"
+                                            class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg ...">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 4v16m8-8H4" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
-                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
-                                <li>• Resolution: 8 MP (3840×2160)</li>
-                                <li>• Sensor: 1/2.7'' CMOS, Progressive Scan</li>
-                                <li>• Aperture: F1.6, NightColor: Yes</li>
-                                <li>• IP Rating: IP67, PoE(802.3af)</li>
-                            </ul>
+                            <div
+                                class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">
+                                        Specifications</h3>
+                                    <button onclick="toggleFeatures(this)"
+                                        class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <ul class="space-y-2 text-[10px] text-secondary font-bold leading-snug flex-1">
+                                    <li>• Resolution: 8 MP (3840×2160)</li>
+                                    <li>• Sensor: 1/2.7'' CMOS, Progressive Scan</li>
+                                    <li>• Aperture: F1.6, NightColor: Yes</li>
+                                    <li>• IP Rating: IP67, PoE(802.3af)</li>
+                                </ul>
+                                <button data-id="cctv-ip-1" data-name="BCS 8MP NightColor Dome" data-price="51000"
+                                    class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add
+                                    to Cart</button>
+                            </div>
                         </div>
                     </div>
 
