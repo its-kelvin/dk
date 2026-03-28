@@ -29,31 +29,235 @@
     <main class="flex-1">
         <section class="py-10 bg-gray-50 dark:bg-dark">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-8">
-                    <h1 class="text-3xl font-black tracking-tighter uppercase mb-1">FORTUNE DK <span
-                            class="text-primary italic">Security.</span></h1>
-                    <p class="text-secondary text-sm font-medium">Professional CCTV systems — high-resolution,
-                        AI-powered, and always on.</p>
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
+                    <div>
+                        <h1 class="text-3xl font-black tracking-tighter uppercase mb-1">FORTUNE DK <span
+                                class="text-primary italic">Security.</span></h1>
+                        <p class="text-secondary text-sm font-medium">Professional CCTV systems — high-resolution,
+                            AI-powered, and always on.</p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search cameras..."
+                            class="w-full sm:w-64 pl-10 pr-4 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-primary">
+                        <svg class="absolute left-3 top-2.5 h-4 w-4 text-secondary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Category Filters -->
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <button onclick="filterCameras('All')"
-                        class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">All</button>
-                    <button onclick="filterCameras('IP Cameras')"
-                        class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">IP
+                    <button onclick="setCategory('All', this)"
+                        class="category-btn active px-4 py-2 text-xs font-bold rounded-xl border border-primary bg-primary text-white transition-all">All</button>
+                    <button onclick="setCategory('Dome Cameras', this)"
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Dome
                         Cameras</button>
-                    <button onclick="filterCameras('Analog Cameras')"
-                        class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Analog</button>
-                    <button onclick="filterCameras('Wireless Cameras')"
-                        class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Wireless</button>
-                    <button onclick="filterCameras('PTZ Cameras')"
-                        class="px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">PTZ</button>
+                    <button onclick="setCategory('Bullet Cameras', this)"
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Bullet
+                        Cameras</button>
+                    <button onclick="setCategory('PTZ Cameras', this)"
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">PTZ
+                        Cameras</button>
+                    <button onclick="setCategory('IP/Wireless Cameras', this)"
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">IP/Wireless
+                        Cameras</button>
                 </div>
 
                 <!-- Products Grid -->
                 <div id="camera-list" class="product-grid-layout">
-                    <!-- CCTV items remain unchanged -->
+                    <!-- Dome Cameras -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="Smart Indoor Dome">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-1.jpg" alt="Dome Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Smart Indoor Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Commonly used indoors for their
+                            discreet, unobtrusive design.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 4,500</span>
+                            <button data-id="cctv-dome-1" data-name="Smart Indoor Dome" data-price="4500"
+                                data-image="images/dome-1.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="Discreet Ceiling Dome">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-2.jpg" alt="Dome Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Discreet Ceiling Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Commonly used indoors for their
+                            discreet, unobtrusive design.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 5,200</span>
+                            <button data-id="cctv-dome-2" data-name="Discreet Ceiling Dome" data-price="5200"
+                                data-image="images/dome-2.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bullet Cameras -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Outdoor Bullet Pro">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-1.jpg" alt="Bullet Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Outdoor Bullet Pro</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ideal for outdoor, long-distance viewing
+                            due to their visible, pointed design.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 3,500</span>
+                            <button data-id="cctv-bullet-1" data-name="Outdoor Bullet Pro" data-price="3500"
+                                data-image="images/bullet-1.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Long-Range Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-2.jpg" alt="Bullet Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Long-Range Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ideal for outdoor, long-distance viewing
+                            due to their visible, pointed design.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 4,800</span>
+                            <button data-id="cctv-bullet-2" data-name="Long-Range Bullet" data-price="4800"
+                                data-image="images/bullet-2.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PTZ Cameras -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="Speed Dome PTZ">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-camera.jpg" alt="PTZ Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Speed Dome PTZ</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Allow remote control to move
+                            side-to-side and zoom, suitable for large, monitored areas.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 12,000</span>
+                            <button data-id="cctv-ptz-1" data-name="Speed Dome PTZ" data-price="12000"
+                                data-image="images/ptz-camera.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="Smart Auto-Tracking PTZ">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/mini-ptz.jpg" alt="PTZ Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Smart Auto-Tracking PTZ</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Allow remote control to move
+                            side-to-side and zoom, suitable for large, monitored areas.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 9,500</span>
+                            <button data-id="cctv-ptz-2" data-name="Smart Auto-Tracking PTZ" data-price="9500"
+                                data-image="images/mini-ptz.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- IP/Wireless Cameras -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras" data-name="Smart Wireless IP">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/wifi-bullet.jpg" alt="Wireless Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Smart Wireless IP</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Provide high-definition video and allow
+                            for easy remote monitoring via smartphone.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 3,800</span>
+                            <button data-id="cctv-wireless-1" data-name="Smart Wireless IP" data-price="3800"
+                                data-image="images/wifi-bullet.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras" data-name="HD WiFi Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/solar-wifi.jpg" alt="Wireless Camera"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">HD WiFi Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Provide high-definition video and allow
+                            for easy remote monitoring via smartphone.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 7,500</span>
+                            <button data-id="cctv-wireless-2" data-name="HD WiFi Bullet" data-price="7500"
+                                data-image="images/solar-wifi.jpg"
+                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -80,15 +284,41 @@
         AOS.init({ duration: 400, once: true });
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        window.filterCameras = function (category) {
+        let currentCategory = 'All';
+
+        window.setCategory = function (category, btn) {
+            currentCategory = category;
+
+            // Update button styles
+            document.querySelectorAll('.category-btn').forEach(b => {
+                b.classList.remove('active', 'bg-primary', 'text-white', 'border-primary');
+                b.classList.add('bg-white', 'text-dark', 'border-gray-200');
+            });
+            btn.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
+            btn.classList.remove('bg-white', 'text-dark', 'border-gray-200');
+
+            filterCameras();
+        };
+
+        window.filterCameras = function () {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
             document.querySelectorAll('.camera-item').forEach(item => {
-                if (item.dataset.category === category || category === 'All') {
+                const name = item.dataset.name.toLowerCase();
+                const category = item.dataset.category;
+
+                const matchesSearch = name.includes(searchTerm);
+                const matchesCategory = currentCategory === 'All' || category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
                     item.classList.remove('hidden');
                 } else {
                     item.classList.add('hidden');
                 }
             });
         };
+
+        document.getElementById('searchInput').addEventListener('input', filterCameras);
     </script>
 </body>
 
