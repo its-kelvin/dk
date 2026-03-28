@@ -27,5 +27,5 @@ A professional web platform for **FORTUNE DK IT Systems Limited**, providing hig
 2. Open the project in VS Code.
 3. Start your local server and navigate to `index.html`.
 
-## 📄 License
+## License
 &copy; 2026 FORTUNE DK IT Systems Ltd. All rights reserved.
