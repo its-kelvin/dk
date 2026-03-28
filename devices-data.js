@@ -22,7 +22,7 @@ export const deviceProducts = [
         name: "iPhone 17 Pro Max",
         category: "Phones",
         price: 245000,
-        image: "images/phone-1.jpg",
+        image: "images/iPhone 17 Pro Max.jpg",
         description: "6.9-inch LTPO Super Retina XDR OLED, A19 Pro chip, 48MP Triple Camera.",
         features: [
             "Display: 6.9-inch LTPO Super Retina XDR OLED, 120Hz ProMotion, 3000 nits, Ceramic Shield 2",
@@ -38,7 +38,7 @@ export const deviceProducts = [
         name: "Samsung Galaxy S26 Ultra",
         category: "Phones",
         price: 195000,
-        image: "images/phone-2.jpg",
+        image: "images/Samsung Galaxy S26 Ultra.jpg",
         description: "6.9-inch Dynamic AMOLED 2X, Snapdragon 8 Elite Gen 5, 200MP Camera.",
         features: [
             "Display: 6.9-inch Dynamic AMOLED 2X, 144Hz, 2800 nits, Gorilla Armor Victus 3",
@@ -54,7 +54,7 @@ export const deviceProducts = [
         name: "Google Pixel 10 Pro XL",
         category: "Phones",
         price: 165000,
-        image: "images/phone-3.jpg",
+        image: "images/Google Pixel 10 Pro XL.jpg",
         description: "6.8-inch LTPO OLED Super Actua, Tensor G5 chip, Gemini Nano AI.",
         features: [
             "Display: 6.8-inch LTPO OLED 'Super Actua', 1-120Hz, 3200 nits",
@@ -70,7 +70,7 @@ export const deviceProducts = [
         name: "iPhone 17 (Standard)",
         category: "Phones",
         price: 135000,
-        image: "images/phone-4.jpg",
+        image: "images/iPhone 17 (Standard).jpg",
         description: "6.3-inch Super Retina XDR OLED, 120Hz ProMotion, A19 Fusion chip.",
         features: [
             "Display: 6.3-inch Super Retina XDR OLED, 120Hz ProMotion",
@@ -86,7 +86,7 @@ export const deviceProducts = [
         name: "Samsung Galaxy A57 5G",
         category: "Phones",
         price: 62000,
-        image: "images/phone-5.jpg",
+        image: "images/Samsung Galaxy A57 5G.jpg",
         description: "6.6-inch Super AMOLED, 120Hz, Exynos 1580, 64MP OIS Camera.",
         features: [
             "Display: 6.6-inch Super AMOLED, 120Hz, 1600 nits",
@@ -102,7 +102,7 @@ export const deviceProducts = [
         name: "Xiaomi 16 Ultra",
         category: "Phones",
         price: 178000,
-        image: "images/phone-6.jpg",
+        image: "images/Xiaomi 16 Ultra.jpg",
         description: "6.85-inch LTPO AMOLED, 5000 nits, Leica Quad Camera, 120W HyperCharge.",
         features: [
             "Display: 6.85-inch LTPO AMOLED, 120Hz, 5000 nits peak brightness",
@@ -118,7 +118,7 @@ export const deviceProducts = [
         name: "Tecno Phantom V3 Fold",
         category: "Phones",
         price: 145000,
-        image: "images/phone-7.jpg",
+        image: "images/Tecno Phantom V3 Fold.jpg",
         description: "7.85-inch Foldable LTPO AMOLED, Dimensity 9400+, Triple 50MP Camera.",
         features: [
             "Display: 7.85\" Foldable LTPO AMOLED (Inner), 6.4\" AMOLED (Outer)",
@@ -134,7 +134,7 @@ export const deviceProducts = [
         name: "OnePlus 14 Pro",
         category: "Phones",
         price: 125000,
-        image: "images/phone-8.jpg",
+        image: "images/OnePlus 14 Pro.jpg",
         description: "6.82-inch LTPO 144Hz, Hasselblad Camera, 6500mAh Glacier Battery.",
         features: [
             "Display: 6.82-inch LTPO AMOLED, 144Hz, 4500 nits",
@@ -150,7 +150,7 @@ export const deviceProducts = [
         name: "Infinix Note 60 Pro",
         category: "Phones",
         price: 42000,
-        image: "images/phone-9.jpg",
+        image: "images/Infinix Note 60 Pro.jpg",
         description: "6.78-inch AMOLED 144Hz, Dimensity 8200 Ultimate, 108MP OIS.",
         features: [
             "Display: 6.78-inch AMOLED, 144Hz, 1300 nits",
@@ -166,7 +166,7 @@ export const deviceProducts = [
         name: "Redmi Note 15 Pro+ 5G",
         category: "Phones",
         price: 58000,
-        image: "images/phone-10.jpg",
+        image: "images/Redmi Note 15 Pro+ 5G.jpg",
         description: "200MP Main Camera, 120W HyperCharge, CrystalRes AMOLED.",
         features: [
             "Display: 6.67-inch CrystalRes AMOLED, 120Hz, 1800 nits",
@@ -182,7 +182,7 @@ export const deviceProducts = [
         name: "Samsung Galaxy Z Flip 7",
         category: "Phones",
         price: 130000,
-        image: "images/phone-11.jpg",
+        image: "images/Samsung Galaxy Z Flip 7.jpg",
         description: "6.7-inch Foldable AMOLED, Snapdragon 8 Elite, Clamshell design.",
         features: [
             "Display: 6.7\" Foldable AMOLED (Inner), 4.0\" AMOLED (Cover Screen)",
@@ -198,7 +198,7 @@ export const deviceProducts = [
         name: "Oppo Reno 13 Pro",
         category: "Phones",
         price: 75000,
-        image: "images/phone-12.jpg",
+        image: "images/Oppo Reno 13 Pro.jpg",
         description: "6.7-inch Curved AMOLED, Dimensity 8300, 50MP AF Selfie.",
         features: [
             "Display: 6.7-inch Curved AMOLED, 120Hz, 1.07 Billion Colors",
@@ -214,7 +214,7 @@ export const deviceProducts = [
         name: "Tecno Camon 40 Pro 5G",
         category: "Phones",
         price: 48000,
-        image: "images/phone-13.jpg",
+        image: "images/Tecno Camon 40 Pro 5G.jpg",
         description: "6.78-inch AMOLED 144Hz, Triple 50MP setup, 70W FastCharge.",
         features: [
             "Display: 6.78-inch AMOLED, 144Hz, Curved edges",
@@ -230,7 +230,7 @@ export const deviceProducts = [
         name: "iPhone 17 Air",
         category: "Phones",
         price: 160000,
-        image: "images/phone-14.jpg",
+        image: "images/iPhone 17 Air.jpg",
         description: "Thinnest iPhone ever (5mm), 6.6-inch OLED, Apple A19 chip.",
         features: [
             "Display: 6.6-inch OLED, 120Hz ProMotion, Ultra-slim bezels",
@@ -246,7 +246,7 @@ export const deviceProducts = [
         name: "Samsung Galaxy S26 (Standard)",
         category: "Phones",
         price: 110000,
-        image: "images/phone-15.jpg",
+        image: "images/Samsung Galaxy S26 (Standard).jpg",
         description: "6.2-inch Dynamic AMOLED 2X, Compact form factor, IP68.",
         features: [
             "Display: 6.2-inch Dynamic AMOLED 2X, 120Hz, 2000 nits",
@@ -262,7 +262,7 @@ export const deviceProducts = [
         name: "Realme GT 6 (2026 Edition)",
         category: "Phones",
         price: 85000,
-        image: "images/phone-16.jpg",
+        image: "images/Realme GT 6 (2026 Edition).jpg",
         description: "6.78-inch LTPO 6000 nits, Snapdragon 8s Gen 4, Cyberpunk design.",
         features: [
             "Display: 6.78-inch LTPO AMOLED, 120Hz, 6000 nits peak",
@@ -278,7 +278,7 @@ export const deviceProducts = [
         name: "Infinix Smart 10",
         category: "Phones",
         price: 14500,
-        image: "images/phone-17.jpg",
+        image: "images/Infinix Smart 10.jpg",
         description: "6.6-inch IPS LCD, 5000mAh battery, 13MP Dual AI Camera.",
         features: [
             "Display: 6.6-inch IPS LCD, 90Hz, 500 nits",
@@ -294,7 +294,7 @@ export const deviceProducts = [
         name: "Tecno Spark 30 Pro",
         category: "Phones",
         price: 22000,
-        image: "images/phone-18.jpg",
+        image: "images/Tecno Spark 30 Pro.jpg",
         description: "6.78-inch AMOLED 120Hz, 108MP Main camera, 33W Fast charging.",
         features: [
             "Display: 6.78-inch AMOLED, 120Hz",
@@ -310,7 +310,7 @@ export const deviceProducts = [
         name: "Galaxy A26 5G",
         category: "Phones",
         price: 35000,
-        image: "images/phone-19.jpg",
+        image: "images/Galaxy A26 5G.jpg",
         description: "6.5-inch Super AMOLED, Exynos 1330, Minimalist Samsung design.",
         features: [
             "Display: 6.5-inch Super AMOLED, 90Hz",
@@ -326,7 +326,7 @@ export const deviceProducts = [
         name: "Redmagic 10S Pro (Gaming Phone)",
         category: "Phones",
         price: 115000,
-        image: "images/phone-20.jpg",
+        image: "images/Redmagic 10S Pro (Gaming Phone).jpg",
         description: "Snapdragon 8 Elite (OC), 24GB RAM, Built-in Cooling Fan.",
         features: [
             "Display: 6.8-inch AMOLED, 165Hz, Under-display camera",

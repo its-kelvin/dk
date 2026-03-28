@@ -132,11 +132,12 @@
         AOS.init({ duration: 400, once: true });
         if (document.getElementById('year')) document.getElementById('year').textContent = new Date().getFullYear();
 
-        const searchInput = document.getElementById('searchInput');
-        const categoryFilter = document.getElementById('categoryFilter');
-
         // 2. Define Filter & Search Logic
         window.filterProducts = function () {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            if (!searchInput || !categoryFilter) return;
+
             const searchTerm = searchInput.value.toLowerCase();
             const categoryTerm = categoryFilter.value;
             const cards = document.querySelectorAll('.product-card');
@@ -207,8 +208,8 @@
         };
 
         // 5. Execution
-        if (searchInput) searchInput.addEventListener('input', window.filterProducts);
-        if (categoryFilter) categoryFilter.addEventListener('change', window.filterProducts);
+        document.getElementById('searchInput')?.addEventListener('input', window.filterProducts);
+        document.getElementById('categoryFilter')?.addEventListener('change', window.filterProducts);
 
         renderDeviceProducts(deviceProducts);
     </script>
