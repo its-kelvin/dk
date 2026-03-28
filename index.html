@@ -195,7 +195,7 @@
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <!-- Speed Test Tool -->
-                    <div class="lg:col-span-2 bg-gray-50 dark:bg-gray-900 rounded-[2.5rem] p-8 text-dark dark:text-white relative group border border-gray-100 dark:border-gray-800 shadow-xl"
+                    <div class="lg:col-span-2 bg-gray-50 dark:bg-gray-900 rounded-[2.5rem] p-8 text-dark dark:text-white relative group border-2 border-primary shadow-xl"
                         data-aos="fade-right">
                         <div class="relative z-10 h-full flex flex-col">
                             <div class="flex items-center gap-3 mb-6">
@@ -214,28 +214,11 @@
                                 </div>
                             </div>
                             <div
-                                class="flex-1 bg-white dark:bg-dark/50 rounded-3xl flex flex-col items-center justify-center p-8 border border-gray-100 dark:border-white/5 min-h-[300px] relative overflow-hidden shadow-inner">
-                                <div class="text-center relative z-10">
-                                    <!-- Static Gauge Visualization -->
-                                    <div class="w-32 h-32 rounded-full border-4 border-gray-200 dark:border-gray-800 border-t-gray-500 flex items-center justify-center mb-6 mx-auto transition-transform duration-100 ease-out"
-                                        id="speedGauge">
-                                        <div class="text-center">
-                                            <span class="text-3xl font-black text-dark dark:text-white block"
-                                                id="speedValue">0.00</span>
-                                            <span
-                                                class="text-[8px] font-bold text-gray-500 uppercase tracking-widest">Mbps</span>
-                                        </div>
-                                    </div>
-                                    <button id="startTestBtn" onclick="runSpeedTest()"
-                                        class="px-10 py-3 bg-gray-800 dark:bg-gray-700 text-white font-black rounded-xl uppercase tracking-widest text-xs hover:bg-gray-900 dark:hover:bg-gray-600 transition-all shadow-lg active:scale-95">Start
-                                        Test</button>
-                                    <p class="text-secondary text-[10px] font-bold uppercase tracking-widest mt-6">
-                                        Select a server to begin diagnostics</p>
-                                </div>
-                                <!-- Grid pattern decoration -->
-                                <div class="absolute inset-0 opacity-10 pointer-events-none"
-                                    style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;">
-                                </div>
+                                class="flex-1 bg-white dark:bg-dark/50 rounded-3xl overflow-hidden border border-gray-100 dark:border-white/5 min-h-[500px] relative shadow-inner">
+                                <iframe src="https://openspeedtest.com/Get-Widget?design=2" width="100%" height="100%"
+                                    frameborder="0"
+                                    style="border:none; position: absolute; top:0; left:0; width:100%; height:100%; min-height: 500px;">
+                                </iframe>
                             </div>
                         </div>
                     </div>
@@ -352,35 +335,6 @@
 
         // Set Year
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Speed Test Simulation Logic
-        window.runSpeedTest = function () {
-            const btn = document.getElementById('startTestBtn');
-            const val = document.getElementById('speedValue');
-            const gauge = document.getElementById('speedGauge');
-
-            if (!btn || !val || !gauge) return;
-
-            btn.disabled = true;
-            btn.textContent = 'Testing...';
-
-            let duration = 3000; // 3 seconds
-            let start = Date.now();
-
-            const timer = setInterval(() => {
-                let timePassed = Date.now() - start;
-                if (timePassed >= duration) {
-                    clearInterval(timer);
-                    btn.disabled = false;
-                    btn.textContent = 'Start Test';
-                    return;
-                }
-
-                let randomSpeed = (Math.random() * (95 - 10) + 10).toFixed(2);
-                val.textContent = randomSpeed;
-                gauge.style.transform = `rotate(${randomSpeed * 1.8}deg)`;
-            }, 100);
-        };
     </script>
 </body>
 
