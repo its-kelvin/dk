@@ -215,14 +215,31 @@
                             </div>
                             <div
                                 class="flex-1 bg-white dark:bg-dark/50 rounded-3xl overflow-hidden border border-gray-100 dark:border-white/5 min-h-[350px] relative shadow-inner">
-                                <iframe src="https://openspeedtest.com/speedtest" frameborder="0" scrolling="no" style="
-                                    border: none;
-                                    width: 100%;
-                                    height: 350px;
-                                    overflow: hidden;
-                                ">
+
+                                <!-- Refresh / Test Again Button -->
+                                <button onclick="reloadSpeedTest()"
+                                    class="absolute top-2 right-2 z-10 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm shadow">
+                                    Test Speed
+                                </button>
+
+                                <!-- Your original iframe (unchanged) -->
+                                <iframe id="speedTestFrame" src="https://openspeedtest.com/Get-Widget?design=2"
+                                    frameborder="0" scrolling="no" style="
+                                        border: none;
+                                        width: 100%;
+                                        height: 350px;
+                                        overflow: hidden;
+                                    ">
                                 </iframe>
+
                             </div>
+
+                            <script>
+                                function reloadSpeedTest() {
+                                    const iframe = document.getElementById("speedTestFrame");
+                                    iframe.src = iframe.src; // reloads the iframe for a new test
+                                }
+                            </script>
                         </div>
                     </div>
 
