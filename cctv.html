@@ -83,13 +83,33 @@
                             discreet, unobtrusive design.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 4,500</span>
-                            <button data-id="cctv-dome-1" data-name="Smart Indoor Dome" data-price="4500"
-                                data-image="images/dome-1.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-dome-1" data-name="Smart Indoor Dome" data-price="4500"
+                                    data-image="images/dome-1.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 5MP Ultra HD Resolution</li>
+                                <li>• 20m Smart IR Night Vision</li>
+                                <li>• Built-in High Sensitivity Mic</li>
+                                <li>• H.265+ Compression</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -106,13 +126,33 @@
                             discreet, unobtrusive design.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 5,200</span>
-                            <button data-id="cctv-dome-2" data-name="Discreet Ceiling Dome" data-price="5200"
-                                data-image="images/dome-2.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-dome-2" data-name="Discreet Ceiling Dome" data-price="5200"
+                                    data-image="images/dome-2.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 4MP High Dynamic Range</li>
+                                <li>• 110° Ultra Wide Angle</li>
+                                <li>• Vandal-Proof IK10 Housing</li>
+                                <li>• PoE (Power over Ethernet)</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -130,13 +170,33 @@
                             due to their visible, pointed design.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 3,500</span>
-                            <button data-id="cctv-bullet-1" data-name="Outdoor Bullet Pro" data-price="3500"
-                                data-image="images/bullet-1.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-bullet-1" data-name="Outdoor Bullet Pro" data-price="3500"
+                                    data-image="images/bullet-1.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• IP67 Weatherproof Rating</li>
+                                <li>• 30m Smart IR Night Vision</li>
+                                <li>• Active Motion Detection</li>
+                                <li>• Full Metal Weather Shield</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -153,13 +213,33 @@
                             due to their visible, pointed design.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 4,800</span>
-                            <button data-id="cctv-bullet-2" data-name="Long-Range Bullet" data-price="4800"
-                                data-image="images/bullet-2.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-bullet-2" data-name="Long-Range Bullet" data-price="4800"
+                                    data-image="images/bullet-2.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 8MP 4K Ultra HD Sensor</li>
+                                <li>• 80m EXIR Long-Range Vision</li>
+                                <li>• Smart Human/Vehicle Detection</li>
+                                <li>• 120dB True WDR for Sunlight</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -177,13 +257,33 @@
                             side-to-side and zoom, suitable for large, monitored areas.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 12,000</span>
-                            <button data-id="cctv-ptz-1" data-name="Speed Dome PTZ" data-price="12000"
-                                data-image="images/ptz-camera.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-ptz-1" data-name="Speed Dome PTZ" data-price="12000"
+                                    data-image="images/ptz-camera.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 25x Precision Optical Zoom</li>
+                                <li>• 360° Endless Pan / 90° Tilt</li>
+                                <li>• 150m Ultra Long-Range IR</li>
+                                <li>• Smart AI Object Auto-Tracking</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -200,13 +300,33 @@
                             side-to-side and zoom, suitable for large, monitored areas.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 9,500</span>
-                            <button data-id="cctv-ptz-2" data-name="Smart Auto-Tracking PTZ" data-price="9500"
-                                data-image="images/mini-ptz.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-ptz-2" data-name="Smart Auto-Tracking PTZ" data-price="9500"
+                                    data-image="images/mini-ptz.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Dual-Lens Hybrid Zoom (10x)</li>
+                                <li>• 360° Visual Coverage with AI</li>
+                                <li>• Two-Way Audio Communication</li>
+                                <li>• 2.4G/5G Dual-Band WiFi Support</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -225,13 +345,33 @@
                             for easy remote monitoring via smartphone.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 3,800</span>
-                            <button data-id="cctv-wireless-1" data-name="Smart Wireless IP" data-price="3800"
-                                data-image="images/wifi-bullet.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-wireless-1" data-name="Smart Wireless IP" data-price="3800"
+                                    data-image="images/wifi-bullet.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Full HD 1080p Stream</li>
+                                <li>• Wireless WiFi Connectivity</li>
+                                <li>• MicroSD Card Local Storage</li>
+                                <li>• Instant Phone Alert Notifications</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -249,13 +389,33 @@
                             for easy remote monitoring via smartphone.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 7,500</span>
-                            <button data-id="cctv-wireless-2" data-name="HD WiFi Bullet" data-price="7500"
-                                data-image="images/solar-wifi.jpg"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary transition-colors border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="cctv-wireless-2" data-name="HD WiFi Bullet" data-price="7500"
+                                    data-image="images/solar-wifi.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Features Pane -->
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-secondary mb-2">Quick Specs
+                            </p>
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• High-Efficiency Solar Panel</li>
+                                <li>• Intelligent PIR Motion Sensing</li>
+                                <li>• Cloud & Local SD Video Storage</li>
+                                <li>• Full Color Night Vision Enabled</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -298,6 +458,22 @@
             btn.classList.remove('bg-white', 'text-dark', 'border-gray-200');
 
             filterCameras();
+        };
+
+        window.toggleFeatures = function (btn) {
+            const card = btn.closest('.camera-item');
+            const pane = card.querySelector('.features-pane');
+            const isHidden = pane.classList.contains('hidden');
+
+            if (isHidden) {
+                pane.classList.remove('hidden');
+                btn.classList.add('text-primary', 'border-primary');
+                btn.classList.remove('text-secondary');
+            } else {
+                pane.classList.add('hidden');
+                btn.classList.remove('text-primary', 'border-primary');
+                btn.classList.add('text-secondary');
+            }
         };
 
         window.filterCameras = function () {
