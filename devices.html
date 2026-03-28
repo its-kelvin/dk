@@ -19,6 +19,39 @@
             }
         }
     </script>
+    <style>
+        .product-card {
+            perspective: 1000px;
+            min-height: 380px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .product-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body class="bg-white text-dark min-h-screen flex flex-col selection:bg-primary/20">
@@ -64,45 +97,64 @@
                 <!-- Products Grid -->
                 <div id="productGrid" class="product-grid-layout">
                     <!-- Router -->
-                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
-                        data-category="Routers" data-name="UniClone U7 Pro">
-                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
-                                alt="Product"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <span
-                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Routers</span>
-                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">UniClone U7 Pro</h3>
-                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ceiling-mounted WiFi 7 AP with 6 GHz
-                            support.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm font-black text-dark dark:text-white">KES 25,000</span>
-                            <div class="flex gap-2">
-                                <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </button>
-                                <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000"
-                                    data-image="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
-                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 4v16m8-8H4" />
-                                    </svg>
-                                </button>
+                    <div class="product-card group" data-category="Routers" data-name="UniClone U7 Pro">
+                        <div class="card-inner">
+                            <!-- Front -->
+                            <div
+                                class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
+                                        alt="Product" class="w-full h-full object-cover">
+                                </div>
+                                <span
+                                    class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Routers</span>
+                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">UniClone U7 Pro</h3>
+                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ceiling-mounted WiFi 7 AP with 6
+                                    GHz support.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-black text-dark dark:text-white">KES 25,000</span>
+                                    <div class="flex gap-2">
+                                        <button onclick="toggleFeatures(this)"
+                                            class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                        <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000"
+                                            class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 ...">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 4v16m8-8H4" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
-                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
-                                <li>• WiFi 7 technology</li>
-                                <li>• 6 GHz band support</li>
-                                <li>• 2.5 GbE uplink</li>
-                                <li>• Ceiling-mount design</li>
-                            </ul>
+                            <!-- Back -->
+                            <div
+                                class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">Technical
+                                        Specs</h3>
+                                    <button onclick="toggleFeatures(this)"
+                                        class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <ul class="space-y-2 text-[10px] text-secondary font-bold leading-snug flex-1">
+                                    <li>• WiFi 7 technology</li>
+                                    <li>• 6 GHz band support</li>
+                                    <li>• 2.5 GbE uplink</li>
+                                    <li>• Ceiling-mount design</li>
+                                </ul>
+                                <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000"
+                                    class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add
+                                    to Cart</button>
+                            </div>
                         </div>
                     </div>
                     <!-- Laptop -->
@@ -317,50 +369,69 @@
                     </div>
 
                     <!-- Phones -->
-                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
-                        data-category="Phones" data-name="iPhone 17 Pro Max">
-                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                            <img src="images/iPhone 17 Pro Max.jpg" alt="iPhone 17 Pro Max"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <span
-                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Phones</span>
-                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">iPhone 17 Pro Max</h3>
-                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">6.9" LTPO Super Retina XDR, A19 Pro
-                            chip, 48MP Triple Camera System, Titanium build.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm font-black text-dark dark:text-white">KES 245,000</span>
-                            <div class="flex gap-2">
-                                <button onclick="toggleFeatures(this)"
-                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </button>
-                                <button data-id="phone-iphone-17pm" data-name="iPhone 17 Pro Max" data-price="245000"
-                                    data-image="images/iPhone 17 Pro Max.jpg"
-                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 4v16m8-8H4" />
-                                    </svg>
-                                </button>
+                    <div class="product-card group" data-category="Phones" data-name="iPhone 17 Pro Max">
+                        <div class="card-inner">
+                            <div
+                                class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                                    <img src="images/iPhone 17 Pro Max.jpg" alt="iPhone 17 Pro Max"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <span
+                                    class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Phones</span>
+                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">iPhone 17 Pro Max</h3>
+                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">6.9" LTPO Super Retina XDR, A19
+                                    Pro chip, 48MP Triple Camera System, Titanium build.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-black text-dark dark:text-white">KES 245,000</span>
+                                    <div class="flex gap-2">
+                                        <button onclick="toggleFeatures(this)"
+                                            class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                        <button data-id="phone-iphone-17pm" data-name="iPhone 17 Pro Max"
+                                            data-price="245000"
+                                            class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg ...">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 4v16m8-8H4" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
-                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
-                                <li>• Display: 6.9-inch LTPO Super Retina XDR OLED, 120Hz ProMotion, 3000 nits peak
-                                    brightness, Ceramic Shield 2.</li>
-                                <li>• Performance: Apple A19 Pro chip (3nm) with 12GB RAM for advanced Apple
-                                    Intelligence.</li>
-                                <li>• Camera System: 48MP Main, 48MP Periscope Telephoto (10x Optical), 48MP Ultrawide;
-                                    4K 120fps video.</li>
-                                <li>• Front Camera: 24MP TrueDepth camera with FaceID and Center Stage support.</li>
-                                <li>• Battery: 5,088 mAh with 40W wired charging and 25W MagSafe.</li>
-                                <li>• Design & Connectivity: Grade 5 Titanium body, USB-C 3.2, Wi-Fi 7, and Satellite
-                                    SOS.</li>
-                            </ul>
+                            <div
+                                class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">Technical
+                                        Specs</h3>
+                                    <button onclick="toggleFeatures(this)"
+                                        class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <ul class="space-y-1.5 text-[10px] text-secondary font-bold leading-tight flex-1">
+                                    <li>• Display: 6.9-inch LTPO Super Retina XDR OLED, 120Hz ProMotion, 3000 nits peak
+                                        brightness, Ceramic Shield 2.</li>
+                                    <li>• Performance: Apple A19 Pro chip (3nm) with 12GB RAM for advanced Apple
+                                        Intelligence.</li>
+                                    <li>• Camera System: 48MP Main, 48MP Periscope Telephoto (10x Optical), 48MP
+                                        Ultrawide; 4K 120fps video.</li>
+                                    <li>• Front Camera: 24MP TrueDepth camera with FaceID and Center Stage support.</li>
+                                    <li>• Battery: 5,088 mAh with 40W wired charging and 25W MagSafe.</li>
+                                    <li>• Design & Connectivity: Grade 5 Titanium body, USB-C 3.2, Wi-Fi 7, and
+                                        Satellite SOS.</li>
+                                </ul>
+                                <button data-id="phone-iphone-17pm" data-name="iPhone 17 Pro Max" data-price="245000"
+                                    class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add
+                                    to Cart</button>
+                            </div>
                         </div>
                     </div>
 
@@ -1258,18 +1329,7 @@
         // Features Toggle Logic
         window.toggleFeatures = function (btn) {
             const card = btn.closest('.product-card');
-            const pane = card.querySelector('.features-pane');
-            const isHidden = pane.classList.contains('hidden');
-
-            if (isHidden) {
-                pane.classList.remove('hidden');
-                btn.classList.add('text-primary', 'border-primary', 'bg-primary/10', 'active');
-                btn.classList.remove('text-secondary');
-            } else {
-                pane.classList.add('hidden');
-                btn.classList.remove('text-primary', 'border-primary', 'bg-primary/10', 'active');
-                btn.classList.add('text-secondary');
-            }
+            card.classList.toggle('flipped');
         };
 
         // Filter & Search Logic
