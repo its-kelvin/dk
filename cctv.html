@@ -5,25 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORTUNE DK CCTV | Smart Security Solutions</title>
-
     <link rel="stylesheet" href="main.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#0055ff',
-                        secondary: '#64748b',
-                        dark: '#0f172a'
-                    },
-                    borderRadius: {
-                        '3xl': '1.5rem',
-                        '4xl': '2rem'
-                    }
+                    colors: { primary: '#0055ff', secondary: '#64748b', dark: '#0f172a' },
+                    borderRadius: { '3xl': '1.5rem', '4xl': '2rem' }
                 }
             }
         }
@@ -36,27 +27,20 @@
     <div id="header-placeholder"></div>
 
     <main class="flex-1">
-
-        <!-- HERO / PRODUCTS -->
         <section class="py-10 bg-gray-50 dark:bg-dark">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-                <!-- HEADER -->
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
                     <div>
-                        <h1 class="text-3xl font-black tracking-tighter uppercase mb-1">
-                            FORTUNE DK <span class="text-primary italic">Security.</span>
-                        </h1>
-                        <p class="text-secondary text-sm font-medium">
-                            Professional CCTV systems — high-resolution, AI-powered, and always on.
-                        </p>
+                        <h1 class="text-3xl font-black tracking-tighter uppercase mb-1">FORTUNE DK <span
+                                class="text-primary italic">Security.</span></h1>
+                        <p class="text-secondary text-sm font-medium">Professional CCTV systems — high-resolution,
+                            AI-powered, and always on.</p>
                     </div>
 
-                    <!-- SEARCH -->
+                    <!-- Search Input -->
                     <div class="relative">
                         <input type="text" id="searchInput" placeholder="Search cameras..."
                             class="w-full sm:w-64 pl-10 pr-4 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-primary">
-
                         <svg class="absolute left-3 top-2.5 h-4 w-4 text-secondary" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -65,86 +49,1016 @@
                     </div>
                 </div>
 
-                <!-- FILTERS -->
+                <!-- Category Filters -->
                 <div class="flex flex-wrap gap-2 mb-6">
                     <button onclick="setCategory('All', this)"
-                        class="category-btn active px-4 py-2 text-xs font-bold rounded-xl border border-primary bg-primary text-white">
-                        All
-                    </button>
-
+                        class="category-btn active px-4 py-2 text-xs font-bold rounded-xl border border-primary bg-primary text-white transition-all">All</button>
                     <button onclick="setCategory('Dome Cameras', this)"
-                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white">
-                        Dome Cameras
-                    </button>
-
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Dome
+                        Cameras</button>
                     <button onclick="setCategory('Bullet Cameras', this)"
-                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white">
-                        Bullet Cameras
-                    </button>
-
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">Bullet
+                        Cameras</button>
                     <button onclick="setCategory('PTZ Cameras', this)"
-                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white">
-                        PTZ Cameras
-                    </button>
-
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">PTZ
+                        Cameras</button>
                     <button onclick="setCategory('IP/Wireless Cameras', this)"
-                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white">
-                        IP/Wireless Cameras
-                    </button>
+                        class="category-btn px-4 py-2 text-xs font-bold rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all">IP/Wireless
+                        Cameras</button>
                 </div>
 
-                <!-- PRODUCTS -->
-                <div>
-
-                    <!-- PRODUCT -->
-                    <div class="camera-item product-card ..." data-category="PTZ Cameras"
-                        data-name="Hikvision DS-2DE7A432IW-AEB(T5) 4MP AcuSense IR PTZ">
-                        ...
+                <!-- Products Grid -->
+                <div id="camera-list" class="product-grid-layout">
+                    <!-- 1. PTZ-1 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="Hikvision DS-2DE7A432IW-AEB(T5) 4MP AcuSense IR PTZ">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-1.png" alt="Ptz-1"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4MP AcuSense IR PTZ</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">32x Optical Zoom, 1/1.8" progressive
+                            scan CMOS, 360° endless pan.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 120,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ptz-1" data-name="4MP AcuSense PTZ" data-price="120000"
+                                    data-image="images/ptz-1.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 1/1.8″ progressive scan CMOS</li>
+                                <li>• 32x Optical Zoom, 16x Digital Zoom</li>
+                                <li>• Pan: 360° endless, Tilt: -20° to 90°</li>
+                                <li>• 4MP (2560 x 1440) resolution</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <!-- PRODUCT -->
-                    <div class="camera-item product-card ..." data-category="IP/Wireless Cameras"
-                        data-name="BCS-L-EIP18FCR3L3-AI1 IP Dome 8MP NightColor">
-                        ...
+                    <!-- 2. IP-1 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras" data-name="BCS IP Dome Camera 8MP NightColor Technology">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ip-1.png" alt="Ip-1"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">BCS 8MP NightColor Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">8MP Progressive Scan CMOS with
+                            NightColor Technology and IP67.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 51,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ip-1" data-name="BCS 8MP NightColor Dome" data-price="51000"
+                                    data-image="images/ip-1.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Resolution: 8 MP (3840×2160)</li>
+                                <li>• Sensor: 1/2.7'' CMOS, Progressive Scan</li>
+                                <li>• Aperture: F1.6, NightColor: Yes</li>
+                                <li>• IP Rating: IP67, PoE(802.3af)</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <!-- (ALL YOUR OTHER PRODUCTS REMAIN EXACTLY THE SAME — JUST FORMATTED) -->
+                    <!-- 3. Bullet-1 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Hikvision DS-2CE12DF0T-FS 2MP ColorVu Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-1.png" alt="Bullet-1"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP ColorVu Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">24/7 color imaging, F1.0 aperture, and
+                            built-in mic for audio over coax.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 6,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-bullet-1" data-name="2MP ColorVu Bullet" data-price="6500"
+                                    data-image="images/bullet-1.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• High quality imaging 2 MP, 1920×1080</li>
+                                <li>• Up to 40 m white light distance</li>
+                                <li>• Built-in mic, Audio over coax</li>
+                                <li>• Water and dust resistant (IP67)</li>
+                            </ul>
+                        </div>
+                    </div>
 
+                    <!-- 4. Dome-1 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="HikVision HD 1080p Indoor IR Dome DS-2CE56DOT-IRMM">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-1.jpg" alt="Dome-1"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">1080p Indoor IR Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Compact indoor dome with 20m IR distance
+                            and Smart IR technology.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 4,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-dome-1" data-name="1080p Indoor IR Dome" data-price="4500"
+                                    data-image="images/dome-1.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 2.0 megapixel high-performance CMOS</li>
+                                <li>• HD analog output, up to 1080p</li>
+                                <li>• 2.8 mm fixed focal lens</li>
+                                <li>• Up to 20 m IR distance, Smart IR</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 5. PTZ-2 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="Hikvision DS-2DE6220IW-A/GLT 2MP PTZ IP Camera">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-2.png" alt="Ptz-2"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP IP Speed Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Industrial grade PTZ with extreme
+                            weather protection (-30°C to +65°C).</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 106,250</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ptz-2" data-name="2MP IP Speed Dome" data-price="106250"
+                                    data-image="images/ptz-2.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• IP66-rated weatherproof housing</li>
+                                <li>• 24VAC or Hi-PoE power supply</li>
+                                <li>• Dimensions: Φ220 × 353.4 mm</li>
+                                <li>• Weight: 4.5 kg (9.92 lb)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 6. IP-2 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras" data-name="Hikvision DS-2CD3143G2-LISU 4MP Vandal WDR Dome">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ip-2.png" alt="Ip-2"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4MP Vandal WDR Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Superior clarity with integrated audio
+                            and IK10 vandal protection.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 18,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ip-2" data-name="4MP Vandal WDR Dome" data-price="18000"
+                                    data-image="images/ip-2.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 4MP High Resolution fixed dome</li>
+                                <li>• Superior image clarity with WDR</li>
+                                <li>• Durable IK10/IP67 rated protection</li>
+                                <li>• Reliable indoor and outdoor security</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 7. Bullet-2 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Hikvision DS-2CE10KF0T-LPFS 3K ColorVu Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-2.png" alt="Bullet-2"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">3K ColorVu Mini Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">High quality 3K (2960×1665) imaging with
+                            Smart-Hybrid light technology.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 6,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-bullet-2" data-name="3K ColorVu Mini Bullet" data-price="6000"
+                                    data-image="images/bullet-2.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 3K resolution (2960 × 1665)</li>
+                                <li>• 24/7 color imaging, F1.0 aperture</li>
+                                <li>• 20m white light & 20m IR distance</li>
+                                <li>• Smart-Hybrid light options</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 8. Dome-2 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="Infrared Turret Dome DPRO-B24DHR 1080p">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-2.jpg" alt="Dome-2"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Infrared Turret Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Gray metal turret style with 1080p
+                            resolution and BNC connector.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 5,200</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-dome-2" data-name="Infrared Turret Dome" data-price="5200"
+                                    data-image="images/dome-2.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Video Format: AHD, HD-TVI, HD-CVI, CVBS</li>
+                                <li>• HD Resolution: 1080p / 2 Megapixel</li>
+                                <li>• 20-30m IR Night Vision</li>
+                                <li>• IP67 Indoor / Outdoor, Metal design</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 9. PTZ-3 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="HiKvision DS-2DE7225IW-AE (S6) 2MP IR PTZ">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-3.png" alt="Ptz-3"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP IR Darkfighter PTZ</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Powerful zoom speed dome with
+                            Darkfighter tech and H.265+ compression.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 50,400</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ptz-3" data-name="2MP Darkfighter PTZ" data-price="50400"
+                                    data-image="images/ptz-3.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• High-resolution imaging, Darkfighter</li>
+                                <li>• Two-way audio, IR illumination</li>
+                                <li>• H.265+ video compression</li>
+                                <li>• Weatherproof speed dome housing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 10. IP-3 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras" data-name="Hikvision DS-2CD3043G2-LIU 4MP Acusense Hybrid">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ip-3.png" alt="Ip-3"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4MP Hybrid Light Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">AcuSense AI network bullet with Smart
+                            Hybrid Light and built-in mic.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 18,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ip-3" data-name="4MP Hybrid Bullet" data-price="18500"
+                                    data-image="images/ip-3.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 4MP Network Camera, 4mm lens</li>
+                                <li>• AcuSense AI intelligence</li>
+                                <li>• Smart Hybrid Light support</li>
+                                <li>• Built-in mic, Weatherproof</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 11. Bullet-3 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Hikvision DS-2CE12DFT-F 2MP ColorVu Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-3.png" alt="Bullet-3"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP ColorVu Bullet (6mm)</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">24/7 full color imaging even against
+                            strong back lighting with 130 dB WDR.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 5,800</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-bullet-3" data-name="2MP ColorVu Bullet (6mm)" data-price="5800"
+                                    data-image="images/bullet-3.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 2MP Full time color bullet</li>
+                                <li>• Warm light range: 40 m</li>
+                                <li>• 130 dB true WDR technology</li>
+                                <li>• Water and dust resistant (IP67)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 12. Dome-3 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="IR Dome Turret Security Camera 5MP / 4MP HD-TVI">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-3.jpg" alt="Dome-3"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">5MP IR Turret Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">High resolution HD-TVI metal dome with
+                            50 Foot IR distance and IP66 housing.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 6,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-dome-3" data-name="5MP IR Turret Dome" data-price="6500"
+                                    data-image="images/dome-3.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Video Format: HD-TVI (5MP/4MP)</li>
+                                <li>• 18 Piece / 50 Foot IR Distance</li>
+                                <li>• 3.6mm Fixed Lens / 90 Degree</li>
+                                <li>• Metal White Dome, IP66 Housing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 13. PTZ-4 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="Hikvision DS-2DE4215IW-DE (T5) 2MP PTZ Camera">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-4.png" alt="Ptz-4"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP Pro IR PTZ</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Precision remote monitoring with 100m IR
+                            range and advanced H.265+ compression.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 35,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ptz-4" data-name="2MP Pro IR PTZ" data-price="35000"
+                                    data-image="images/ptz-4.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Infrared Range: Up to 100 meters</li>
+                                <li>• PoE+ (802.3at, class 4)</li>
+                                <li>• Dimensions: Φ186 × 309mm</li>
+                                <li>• Weight: 4.2kg (9.26lbs)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 14. IP-4 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras"
+                        data-name="DS-2CD3141G2E-LIU 4MP Dual Light Motion 2.0 Dome">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ip-4.png" alt="Ip-4"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4MP Dual Light Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Fixed mini dome with Motion 2.0, audio
+                            support, and hybrid light for 24/7 surveillance.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 9,700</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ip-4" data-name="4MP Dual Light Dome" data-price="9700"
+                                    data-image="images/ip-4.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Advanced motion detection 2.0</li>
+                                <li>• Built-in mic, Audio over network</li>
+                                <li>• Dual Light (IR and White)</li>
+                                <li>• 4MP (2.8mm) network dome</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 15. Bullet-4 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Hikvision DS-2CE10DF3T-PFS 2MP ColorVu Mini Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-4.png" alt="Bullet-4"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP ColorVu Mini Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">24/7 Color imaging with 130dB WDR and
+                            audio-over-coaxial cable support.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 5,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-bullet-4" data-name="2MP ColorVu Mini Bullet" data-price="5500"
+                                    data-image="images/bullet-4.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• High quality 2 MP, 1920×1080</li>
+                                <li>• 130 dB true WDR technology</li>
+                                <li>• 20m white light night distance</li>
+                                <li>• Audio over coax, built-in mic</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 16. Dome-4 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="2mp IP Dome Camera IP-D2 IR Night Vision Spot Light">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-4.jpg" alt="Dome-4"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP IP Spot Light Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Motion activated white LED spot light
+                            with built-in mic and SD slot for local storage.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 7,800</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-dome-4" data-name="2MP IP Spot Light Dome" data-price="7800"
+                                    data-image="images/dome-4.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Resolution: 2MP / 1080p, ONVIF</li>
+                                <li>• Motion Activated White LED Flood</li>
+                                <li>• Human and Vehicle detection AI</li>
+                                <li>• Built-in Mic, Micro SD Slot</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 17. PTZ-5 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="Hikvision DS-2DE4425IW-DE 4MP 25x Network PTZ">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-5.png" alt="Ptz-5"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4MP 25x Network PTZ</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ultra-low light 4MP PTZ with 25x optical
+                            zoom and 100m IR distance.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 40,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ptz-5" data-name="4MP 25x Network PTZ" data-price="40000"
+                                    data-image="images/ptz-5.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 1/2.5″ progressive scan CMOS</li>
+                                <li>• Resolution: Up to 2560 × 1440 @30fps</li>
+                                <li>• 25× optical zoom, 16× digital zoom</li>
+                                <li>• 100 m IR distance, H.265+/H.265</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 18. IP-5 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras" data-name="Hikvision DS-2CD2186G2H-I(SU) 8MP Darkfighter">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ip-5.png" alt="Ip-5"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">8MP DarkFighter IP Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">High performance 8MP dome with AcuSense
+                            analytics and built-in audio.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 27,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ip-5" data-name="8MP DarkFighter Dome" data-price="27000"
+                                    data-image="images/ip-5.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 8MP UHD network dome camera</li>
+                                <li>• Powered by DarkFighter technology</li>
+                                <li>• AcuSense deep learning analytics</li>
+                                <li>• Built-in audio, IP67 weather-proof</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 19. Bullet-5 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Hikvision DS-2CE16C0T-IRP HD720P IR Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-5.png" alt="Bullet-5"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">HD 720P IR Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Reliable entry-level analog HD output
+                            with Smart IR up to 20m distance.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 2,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-bullet-5" data-name="HD 720P IR Bullet" data-price="2500"
+                                    data-image="images/bullet-5.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 1 Megapixel high-performance CMOS</li>
+                                <li>• Analog HD output, 720P resolution</li>
+                                <li>• True Day/Night, DNR, Smart IR</li>
+                                <li>• IP66 weatherproof housing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 20. Dome-5 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="4K Vandal-Proof Security Camera Dome 4K-AD3">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-5.jpg" alt="Dome-5"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">4K Vandal-Proof Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Rugged metal armored dome with 8
+                            megapixel 4K resolution and wide view.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 8,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-dome-5" data-name="4K Vandal-Proof Dome" data-price="8500"
+                                    data-image="images/dome-5.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• HD Resolution: 4K / 8 Megapixel</li>
+                                <li>• Selectable AHD, HD-TVI, HD-CVI, CVBS</li>
+                                <li>• 20 Meter / 60 Foot IR distance</li>
+                                <li>• Armor Vandal-proof, IP67 Housing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 21. PTZ-6 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="PTZ Cameras" data-name="DS-2DE5220IW-AE Hikvision 2MP IR PTZ Dome IP Camera">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ptz-6.png" alt="Ptz-6"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">PTZ
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP IR PTZ Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Powerful 20x optical zoom with massive
+                            150m IR range and 3D positioning.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 52,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ptz-6" data-name="2MP IR PTZ Dome" data-price="52000"
+                                    data-image="images/ptz-6.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 2MP (1920 x 1080) resolution</li>
+                                <li>• 20x optical zoom, 4.7-94mm lens</li>
+                                <li>• Up to 150m IR night distance</li>
+                                <li>• 3D intelligent positioning, Hi-PoE</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 22. IP-6 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="IP/Wireless Cameras"
+                        data-name="HIKVISION 2MP COLORVU DOME CAMERA DS-2CD3327G2E-LUF">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/ip-6.png" alt="Ip-6"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">IP/Wireless
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP ColorVu IP Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Elite 2MP dome featuring hybrid light
+                            technology and smart motion detection.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 33,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-ip-6" data-name="2MP ColorVu IP Dome" data-price="33000"
+                                    data-image="images/ip-6.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 2MP ColorVu Hybrid light tech</li>
+                                <li>• Built-in mic, Smart motion detection</li>
+                                <li>• IP67 / IK10 Rugged protection</li>
+                                <li>• High quality 24/7 color imaging</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 23. Bullet-6 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Hikvision DS-2CE16D0T-IRP(C) 2MP Fixed Mini Bullet">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-6.png" alt="Bullet-6"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP Fixed Mini Bullet</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Compact and affordable 2MP bullet with
+                            smart IR and weather protection.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 3,400</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-bullet-6" data-name="2MP Fixed Mini Bullet" data-price="3400"
+                                    data-image="images/bullet-6.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 2 MP bullet camera, Fixed lens</li>
+                                <li>• Smart IR: up to 20 m distance</li>
+                                <li>• Water and dust resistant (IP67)</li>
+                                <li>• High quality Analog HD output</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 24. Dome-6 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Dome Cameras" data-name="Motorized Zoom Security Camera White Dome 1080p">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/dome-6.jpg" alt="Dome-6"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Dome
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Motorized Zoom Dome</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">White turret style with motorized 2.8mm
+                            to 12mm zoom lens and 1080p output.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 12,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-dome-6" data-name="Motorized Zoom Dome" data-price="12500"
+                                    data-image="images/dome-6.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 1080p / 2 Megapixel HD Resolution</li>
+                                <li>• 30-50m IR Night Vision range</li>
+                                <li>• 2.8mm to 12mm Motorized Zoom</li>
+                                <li>• IP67 Weatherproof, BNC connector</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 25. Bullet-7 -->
+                    <div class="camera-item product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Bullet Cameras" data-name="Hikvision DS-2CE16D0T-IT2F 2MP EXIR Bullet Camera">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/bullet-7.png" alt="Bullet-7"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Bullet
+                            Cameras</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">2MP EXIR Bullet Camera</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">High performance 2MP bullet with EXIR
+                            technology and 4-in-1 video output.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 4,200</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg></button>
+                                <button data-id="cctv-bullet-7" data-name="2MP EXIR Bullet Camera" data-price="4200"
+                                    data-image="images/bullet-7.png"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all"><svg
+                                        class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 2 MP high performance CMOS</li>
+                                <li>• 1920 × 1080 resolution</li>
+                                <li>• 2.8mm, 3.6mm fixed lens options</li>
+                                <li>• Up to 20 m EXIR Night IR distance</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- INSTALLATION -->
+        <!-- Installation Info -->
         <section class="py-12 border-t border-gray-100 dark:border-gray-900">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <!-- Installation content -->
+                    <!-- Installation content unchanged -->
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- FOOTER -->
+    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="utils.js"></script>
     <script src="cart.js"></script>
 
+    <!-- UI & Filter Logic (Standard Script for better reliability) -->
     <script>
         let currentCategory = 'All';
 
         window.setCategory = function (category, btn) {
             currentCategory = category;
 
+            // Update button styles
             document.querySelectorAll('.category-btn').forEach(b => {
                 b.classList.remove('active', 'bg-primary', 'text-white', 'border-primary');
                 b.classList.add('bg-white', 'text-dark', 'border-gray-200');
             });
-
             btn.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
             btn.classList.remove('bg-white', 'text-dark', 'border-gray-200');
 
@@ -158,8 +1072,12 @@
 
             if (isHidden) {
                 pane.classList.remove('hidden');
+                btn.classList.add('text-primary', 'border-primary', 'bg-primary/10', 'active');
+                btn.classList.remove('text-secondary');
             } else {
                 pane.classList.add('hidden');
+                btn.classList.remove('text-primary', 'border-primary', 'bg-primary/10', 'active');
+                btn.classList.add('text-secondary');
             }
         };
 
@@ -181,28 +1099,22 @@
             });
         };
 
+        // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.addEventListener('input', filterCameras);
 
-            if (searchInput) {
-                searchInput.addEventListener('input', filterCameras);
-            }
-
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 400, once: true });
-            }
-
-            if (document.getElementById('year')) {
-                document.getElementById('year').textContent = new Date().getFullYear();
-            }
+            // Initialize AOS and Year
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 400, once: true });
+            if (document.getElementById('year')) document.getElementById('year').textContent = new Date().getFullYear();
         });
     </script>
 
+    <!-- Firebase Logic (Kept as module) -->
     <script type="module">
         import { auth, db } from "./firebase-config.js";
         import { Auth } from "./auth.js";
     </script>
-
 </body>
 
 </html>
