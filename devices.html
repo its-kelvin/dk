@@ -19,39 +19,6 @@
             }
         }
     </script>
-    <style>
-        .product-card {
-            perspective: 1000px;
-            min-height: 450px;
-        }
-
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .product-card.flipped .card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .card-front,
-        .card-back {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .card-back {
-            transform: rotateY(180deg);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body class="bg-white text-dark min-h-screen flex flex-col selection:bg-primary/20">
@@ -97,188 +64,163 @@
                 <!-- Products Grid -->
                 <div id="productGrid" class="product-grid-layout">
                     <!-- Router -->
-                    <div class="product-card group" data-category="Routers" data-name="UniClone U7 Pro">
-                        <div class="card-inner">
-                            <!-- Front -->
-                            <div
-                                class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
-                                <div
-                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
-                                        alt="Product" class="w-full h-full object-cover">
-                                </div>
-                                <span
-                                    class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Routers</span>
-                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">UniClone U7 Pro</h3>
-                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ceiling-mounted WiFi 7 AP with 6
-                                    GHz support.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-black text-dark dark:text-white">KES 25,000</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="toggleFeatures(this)"
-                                            class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                        <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000"
-                                            class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 ...">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 4v16m8-8H4" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Back -->
-                            <div
-                                class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">Technical
-                                        Specs</h3>
-                                    <button onclick="toggleFeatures(this)"
-                                        class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
-                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <ul class="space-y-2 text-[10px] text-secondary font-bold leading-snug flex-1">
-                                    <li>• WiFi 7 technology</li>
-                                    <li>• 6 GHz band support</li>
-                                    <li>• 2.5 GbE uplink</li>
-                                    <li>• Ceiling-mount design</li>
-                                </ul>
+                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Routers" data-name="UniClone U7 Pro">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
+                                alt="Product"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Routers</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">UniClone U7 Pro</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Ceiling-mounted WiFi 7 AP with 6 GHz
+                            support.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 25,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
                                 <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000"
-                                    class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add
-                                    to Cart</button>
+                                    data-image="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
                             </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• WiFi 7 technology</li>
+                                <li>• 6 GHz band support</li>
+                                <li>• 2.5 GbE uplink</li>
+                                <li>• Ceiling-mount design</li>
+                            </ul>
                         </div>
                     </div>
                     <!-- Laptop -->
-                    <div class="product-card group"
+                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
                         data-category="Laptops" data-name="WorkStation Pro 14">
-                        <div class="card-inner">
-                            <div class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
-                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=300" alt="Product" class="w-full h-full object-cover">
-                                </div>
-                                <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Laptops</span>
-                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">WorkStation Pro 14</h3>
-                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">High-performance laptop for professional networking tasks.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-black text-dark dark:text-white">KES 85,000</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="toggleFeatures(this)" class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                        <button data-id="laptop-pro-14" data-name="WorkStation Pro 14" data-price="85000" class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 ...">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" /></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">Technical Specs</h3>
-                                    <button onclick="toggleFeatures(this)" class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
-                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                    </button>
-                                </div>
-                                <ul class="space-y-2 text-[10px] text-secondary font-bold leading-snug flex-1">
-                                    <li>• Intel Core i7 13th Gen</li>
-                                    <li>• 16GB DDR5 RAM</li>
-                                    <li>• 512GB NVMe SSD</li>
-                                    <li>• 14" QHD 120Hz Display</li>
-                                </ul>
-                                <button data-id="laptop-pro-14" data-name="WorkStation Pro 14" data-price="85000" class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add to Cart</button>
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=300"
+                                alt="Product"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Laptops</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">WorkStation Pro 14</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">High-performance laptop for professional
+                            networking tasks.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 85,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="laptop-pro-14" data-name="WorkStation Pro 14" data-price="85000"
+                                    data-image="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=300"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
-                    </div>
-                    <!-- Samsung S26 Ultra -->
-                    <div class="product-card group" data-category="Phones" data-name="Samsung Galaxy S26 Ultra">
-                        <div class="card-inner">
-                            <div class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
-                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                                    <img src="images/Samsung Galaxy S26 Ultra.jpg" alt="Galaxy S26 Ultra" class="w-full h-full object-cover">
-                                </div>
-                                <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Phones</span>
-                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Samsung Galaxy S26 Ultra</h3>
-                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">6.9" Dynamic AMOLED 144Hz, Snapdragon 8 Elite, 200MP Main Camera, Integrated S-Pen.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-black text-dark dark:text-white">KES 195,000</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="toggleFeatures(this)" class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                        </button>
-                                        <button data-id="phone-s26-ultra" data-name="Samsung Galaxy S26 Ultra" data-price="195000" class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg ...">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" /></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">Specifications</h3>
-                                    <button onclick="toggleFeatures(this)" class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
-                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                    </button>
-                                </div>
-                                <ul class="space-y-1.5 text-[10px] text-secondary font-bold leading-tight flex-1 overflow-y-auto">
-                                    <li>• Display: 6.9-inch Dynamic AMOLED 2X, 144Hz, 2800 nits, Gorilla Armor Victus 3.</li>
-                                    <li>• Performance: Snapdragon 8 Elite Gen 5 with 16GB RAM and integrated S-Pen.</li>
-                                    <li>• Camera: 200MP Main, 50MP Periscope (5x), 50MP Telephoto (3x), 12MP UW.</li>
-                                    <li>• Front: 12MP Dual Pixel Dual Tone camera.</li>
-                                    <li>• Battery: 5,000 mAh with 65W Wired and 25W Wireless charging.</li>
-                                    <li>• Build: Titanium frame, Wi-Fi 7, Snapdragon X85 5G Modem.</li>
-                                </ul>
-                                <button data-id="phone-s26-ultra" data-name="Samsung Galaxy S26 Ultra" data-price="195000" class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add to Cart</button>
-                            </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Intel Core i7 13th Gen</li>
+                                <li>• 16GB DDR5 RAM</li>
+                                <li>• 512GB NVMe SSD</li>
+                                <li>• 14" QHD 120Hz Display</li>
+                            </ul>
                         </div>
                     </div>
-                    <!-- Google Pixel 10 Pro XL -->
-                    <div class="product-card group" data-category="Phones" data-name="Google Pixel 10 Pro XL">
-                        <div class="card-inner">
-                            <div class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
-                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                                    <img src="images/Google Pixel 10 Pro XL.jpg" alt="Google Pixel 10 Pro XL" class="w-full h-full object-cover">
-                                </div>
-                                <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Phones</span>
-                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Google Pixel 10 Pro XL</h3>
-                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">6.8" Super Actua Display, Tensor G5 chip, 16GB RAM, Gemini Nano AI integration.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-black text-dark dark:text-white">KES 165,000</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="toggleFeatures(this)" class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                        </button>
-                                        <button data-id="phone-pixel-10pxl" data-name="Google Pixel 10 Pro XL" data-price="165000" class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg ...">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" /></svg>
-                                        </button>
-                                    </div>
-                                </div>
+                    <!-- Access Point -->
+                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Access Points" data-name="Ubiquiti U6 Pro">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&q=80&w=300"
+                                alt="Product"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Access
+                            Points</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">Ubiquiti U6 Pro</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">Indoor Wi-Fi 6 access point for
+                            enterprise networks.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 18,500</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="u6-pro" data-name="Ubiquiti U6 Pro" data-price="18500"
+                                    data-image="https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&q=80&w=300"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
                             </div>
-                            <div class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">Specifications</h3>
-                                    <button onclick="toggleFeatures(this)" class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
-                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                    </button>
-                                </div>
-                                <ul class="space-y-1.5 text-[10px] text-secondary font-bold leading-tight flex-1 overflow-y-auto">
-                                    <li>• Display: 6.8-inch LTPO OLED "Super Actua", 1-120Hz, 3200 nits.</li>
-                                    <li>• Performance: Google Tensor G5 (3nm TSMC) with 16GB RAM for Gemini AI.</li>
-                                    <li>• Camera: 50MP Main (GND sensor), 48MP Quad PD Telephoto, 48MP Ultrawide.</li>
-                                    <li>• Front: 42MP Dual PD with Ultra-Wide Field of View.</li>
-                                    <li>• Battery: 5,200 mAh with 45W Wired and Qi2 Magnetic Wireless.</li>
-                                    <li>• Security: Aluminum/Glass build, Wi-Fi 7, Titan M3 Security.</li>
-                                </ul>
-                                <button data-id="phone-pixel-10pxl" data-name="Google Pixel 10 Pro XL" data-price="165000" class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add to Cart</button>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• High-performance WiFi 6</li>
+                                <li>• 5.3 Gbps throughput</li>
+                                <li>• 300+ client capacity</li>
+                                <li>• Powered with PoE+</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Switch -->
+                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Switches" data-name="MikroTik CRS326">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&q=80&w=300"
+                                alt="Product"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Switches</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">MikroTik CRS326</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">24-port gigabit smart managed switch.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 32,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="crs326" data-name="MikroTik CRS326" data-price="32000"
+                                    data-image="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&q=80&w=300"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
                             </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• 24x Gigabit Ethernet ports</li>
+                                <li>• 2x SFP+ cages</li>
+                                <li>• Dual boot (SwOS/RouterOS)</li>
+                                <li>• L2/L3 switching features</li>
+                            </ul>
                         </div>
                     </div>
                     <!-- Cable -->
@@ -299,10 +241,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="cat6-305" data-name="Cat6 UTP 305m Roll" data-price="8500"
@@ -341,10 +281,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="toolkit-pro" data-name="Network Tool Kit Pro" data-price="4500"
@@ -367,69 +305,48 @@
                     </div>
 
                     <!-- Phones -->
-                    <div class="product-card group" data-category="Phones" data-name="iPhone 17 Pro Max">
-                        <div class="card-inner">
-                            <div
-                                class="card-front bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 h-full">
-                                <div
-                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
-                                    <img src="images/iPhone 17 Pro Max.jpg" alt="iPhone 17 Pro Max"
-                                        class="w-full h-full object-cover">
-                                </div>
-                                <span
-                                    class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Phones</span>
-                                <h3 class="text-sm font-extrabold mb-0.5 leading-tight">iPhone 17 Pro Max</h3>
-                                <p class="text-secondary text-[10px] mb-2 line-clamp-2">6.9" LTPO Super Retina XDR, A19
-                                    Pro chip, 48MP Triple Camera System, Titanium build.</p>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-sm font-black text-dark dark:text-white">KES 245,000</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="toggleFeatures(this)"
-                                            class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                        <button data-id="phone-iphone-17pm" data-name="iPhone 17 Pro Max"
-                                            data-price="245000"
-                                            class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg ...">
-                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 4v16m8-8H4" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="card-back bg-white dark:bg-dark border-2 border-primary rounded-2xl p-4 flex flex-col">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-xs font-black uppercase tracking-tighter text-primary">Technical
-                                        Specs</h3>
-                                    <button onclick="toggleFeatures(this)"
-                                        class="p-1.5 text-primary bg-primary/10 rounded-lg rotate-180">
-                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <ul class="space-y-1.5 text-[10px] text-secondary font-bold leading-tight flex-1">
-                                    <li>• Display: 6.9-inch LTPO Super Retina XDR OLED, 120Hz ProMotion, 3000 nits peak
-                                        brightness, Ceramic Shield 2.</li>
-                                    <li>• Performance: Apple A19 Pro chip (3nm) with 12GB RAM for advanced Apple
-                                        Intelligence.</li>
-                                    <li>• Camera System: 48MP Main, 48MP Periscope Telephoto (10x Optical), 48MP
-                                        Ultrawide; 4K 120fps video.</li>
-                                    <li>• Front Camera: 24MP TrueDepth camera with FaceID and Center Stage support.</li>
-                                    <li>• Battery: 5,088 mAh with 40W wired charging and 25W MagSafe.</li>
-                                    <li>• Design & Connectivity: Grade 5 Titanium body, USB-C 3.2, Wi-Fi 7, and
-                                        Satellite SOS.</li>
-                                </ul>
+                    <div class="product-card bg-gray-50 dark:bg-gray-900 rounded-2xl p-3 border border-gray-100 dark:border-gray-800 hover:border-primary transition-all duration-300 group"
+                        data-category="Phones" data-name="iPhone 17 Pro Max">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-white dark:bg-dark relative">
+                            <img src="images/iPhone 17 Pro Max.jpg" alt="iPhone 17 Pro Max"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="text-[9px] font-black uppercase tracking-widest text-primary mb-1 block">Phones</span>
+                        <h3 class="text-sm font-extrabold mb-0.5 leading-tight">iPhone 17 Pro Max</h3>
+                        <p class="text-secondary text-[10px] mb-2 line-clamp-2">6.9" LTPO Super Retina XDR, A19 Pro
+                            chip, 48MP Triple Camera System, Titanium build.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-black text-dark dark:text-white">KES 245,000</span>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
                                 <button data-id="phone-iphone-17pm" data-name="iPhone 17 Pro Max" data-price="245000"
-                                    class="add-to-cart-btn mt-4 w-full py-2 bg-primary text-white text-[10px] font-black rounded-lg uppercase">Add
-                                    to Cart</button>
+                                    data-image="images/iPhone 17 Pro Max.jpg"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
                             </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Display: 6.9-inch LTPO Super Retina XDR OLED, 120Hz ProMotion, 3000 nits peak
+                                    brightness, Ceramic Shield 2.</li>
+                                <li>• Performance: Apple A19 Pro chip (3nm) with 12GB RAM for advanced Apple
+                                    Intelligence.</li>
+                                <li>• Camera System: 48MP Main, 48MP Periscope Telephoto (10x Optical), 48MP Ultrawide;
+                                    4K 120fps video.</li>
+                                <li>• Front Camera: 24MP TrueDepth camera with FaceID and Center Stage support.</li>
+                                <li>• Battery: 5,088 mAh with 40W wired charging and 25W MagSafe.</li>
+                                <li>• Design & Connectivity: Grade 5 Titanium body, USB-C 3.2, Wi-Fi 7, and Satellite
+                                    SOS.</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -449,10 +366,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-s26-ultra" data-name="Samsung Galaxy S26 Ultra"
@@ -495,10 +410,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-pixel-10pxl" data-name="Google Pixel 10 Pro XL"
@@ -541,10 +454,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-iphone-17" data-name="iPhone 17" data-price="135000"
@@ -585,10 +496,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-a57-5g" data-name="Samsung Galaxy A57 5G" data-price="62000"
@@ -628,10 +537,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-xiaomi-16u" data-name="Xiaomi 16 Ultra" data-price="178000"
@@ -672,10 +579,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-phantom-v3" data-name="Tecno Phantom V3 Fold" data-price="145000"
@@ -715,10 +620,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-oneplus-14p" data-name="OnePlus 14 Pro" data-price="125000"
@@ -758,10 +661,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-infinix-n60p" data-name="Infinix Note 60 Pro" data-price="42000"
@@ -801,10 +702,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-redmi-n15pp" data-name="Redmi Note 15 Pro+ 5G" data-price="58000"
@@ -844,10 +743,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-z-flip-7" data-name="Samsung Galaxy Z Flip 7" data-price="130000"
@@ -888,10 +785,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-reno-13p" data-name="Oppo Reno 13 Pro" data-price="75000"
@@ -931,10 +826,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-camon-40p" data-name="Tecno Camon 40 Pro 5G" data-price="48000"
@@ -975,10 +868,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-iphone-17air" data-name="iPhone 17 Air" data-price="160000"
@@ -1018,10 +909,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-s26-standard" data-name="Samsung Galaxy S26" data-price="110000"
@@ -1061,10 +950,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-realme-gt6" data-name="Realme GT 6" data-price="85000"
@@ -1104,10 +991,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-smart-10" data-name="Infinix Smart 10" data-price="14500"
@@ -1147,10 +1032,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-spark-30p" data-name="Tecno Spark 30 Pro" data-price="22000"
@@ -1190,10 +1073,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-a26-5g" data-name="Samsung Galaxy A26 5G" data-price="35000"
@@ -1233,10 +1114,8 @@
                             <div class="flex gap-2">
                                 <button onclick="toggleFeatures(this)"
                                     class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
-                                    <svg class="h-4 w-4 transition-transform duration-300 [.active_&]:rotate-180"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </button>
                                 <button data-id="phone-redmagic-10s" data-name="Redmagic 10S Pro" data-price="115000"
@@ -1327,7 +1206,18 @@
         // Features Toggle Logic
         window.toggleFeatures = function (btn) {
             const card = btn.closest('.product-card');
-            card.classList.toggle('flipped');
+            const pane = card.querySelector('.features-pane');
+            const isHidden = pane.classList.contains('hidden');
+
+            if (isHidden) {
+                pane.classList.remove('hidden');
+                btn.classList.add('text-primary', 'border-primary', 'bg-primary/10');
+                btn.classList.remove('text-secondary');
+            } else {
+                pane.classList.add('hidden');
+                btn.classList.remove('text-primary', 'border-primary', 'bg-primary/10');
+                btn.classList.add('text-secondary');
+            }
         };
 
         // Filter & Search Logic
