@@ -78,13 +78,29 @@
                             support.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 25,000</span>
-                            <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000"
-                                data-image="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="u7-pro" data-name="UniClone U7 Pro" data-price="25000"
+                                    data-image="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=300"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• WiFi 7 technology</li>
+                                <li>• 6 GHz band support</li>
+                                <li>• 2.5 GbE uplink</li>
+                                <li>• Ceiling-mount design</li>
+                            </ul>
                         </div>
                     </div>
                     <!-- Laptop -->
@@ -102,13 +118,29 @@
                             networking tasks.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-black text-dark dark:text-white">KES 85,000</span>
-                            <button data-id="laptop-pro-14" data-name="WorkStation Pro 14" data-price="85000"
-                                data-image="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=300"
-                                class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="toggleFeatures(this)"
+                                    class="p-2 text-secondary hover:text-primary border border-gray-200 rounded-lg">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button data-id="laptop-pro-14" data-name="WorkStation Pro 14" data-price="85000"
+                                    data-image="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=300"
+                                    class="add-to-cart-btn p-2 bg-white dark:bg-dark rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="features-pane hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                            <ul class="space-y-1 text-[10px] text-secondary font-medium">
+                                <li>• Intel Core i7 13th Gen</li>
+                                <li>• 16GB DDR5 RAM</li>
+                                <li>• 512GB NVMe SSD</li>
+                                <li>• 14" QHD 120Hz Display</li>
+                            </ul>
                         </div>
                     </div>
                     <!-- Access Point -->
@@ -732,6 +764,23 @@
         import { Auth } from "./auth.js";
         AOS.init({ duration: 400, once: true });
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Features Toggle Logic
+        window.toggleFeatures = function (btn) {
+            const card = btn.closest('.product-card');
+            const pane = card.querySelector('.features-pane');
+            const isHidden = pane.classList.contains('hidden');
+
+            if (isHidden) {
+                pane.classList.remove('hidden');
+                btn.classList.add('text-primary', 'border-primary', 'bg-primary/10');
+                btn.classList.remove('text-secondary');
+            } else {
+                pane.classList.add('hidden');
+                btn.classList.remove('text-primary', 'border-primary', 'bg-primary/10');
+                btn.classList.add('text-secondary');
+            }
+        };
 
         // Filter & Search Logic
         const searchInput = document.getElementById('searchInput');
